@@ -13,7 +13,8 @@ bool Shop::add(const Book& b){
     return true;
 }
 
-bool Shop::remove(Book b){
+bool Shop::remove(string isdn){
+    db.removeISDN(isdn);
     cout << "Libro rimosso." << endl;
     return true;
 }

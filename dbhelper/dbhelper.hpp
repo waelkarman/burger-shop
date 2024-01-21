@@ -11,10 +11,9 @@ public:
 Dbhelper();
 bool createDatabase();
 bool insertBook(Book b);
-
+bool removeISDN(string isdn);
+int fetchISDN(string isdn);
 
 private:
-
-
 
 };

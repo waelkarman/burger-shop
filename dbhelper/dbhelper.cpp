@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include <string>
 #include "dbhelper.hpp"
 #include "sqlite3.h"
 
@@ -52,7 +54,7 @@ bool Dbhelper::createDatabase(){
 }
 
 
-bool insertBook(Book b){
+bool Dbhelper::insertBook(Book b){
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
@@ -69,8 +71,44 @@ bool insertBook(Book b){
     }
  
     /* Create SQL statement */
-    sql = "INSERT INTO COMPANY (ISDN,NAME,NCOPY,PRICE) "  \
-          "VALUES (qwerty, 'Paul', 32, 45);";
+    sql = "INSERT INTO SHOP (ISDN,NAME,NCOPY,PRICE) "  \
+          "VALUES ('qwerty', 'Paul', 32, 45);";
+
+    /* Execute SQL statement */
+    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+    
+    if( rc != SQLITE_OK ){
+       fprintf(stderr, "SQL error: %s\n", zErrMsg);
+       sqlite3_free(zErrMsg);
+    } else {
+       fprintf(stdout, "Records created successfully\n");
+    }
+    sqlite3_close(db);
+    return 0;
+}
+
+
+bool Dbhelper::removeISDN(string isdn){
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    const char *sql;
+ 
+    /* Open database */
+    rc = sqlite3_open("shop-db.db", &db);
+   
+    if( rc ) {
+       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+       return(0);
+    } else {
+       fprintf(stderr, "Opened database successfully\n");
+    }
+ 
+    /* Create SQL statement */
+    stringstream ss;
+    ss << "DELETE FROM SHOP WHERE ISDN = \"" << isdn << "\";";
+    sql = ss.str().c_str();
+    cout << "-----------" << ss.str().c_str() << endl;
 
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);

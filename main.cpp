@@ -16,6 +16,8 @@ int main(int argv, char** args){
 
     Shop m_shop;
     m_shop.add(m_book_a);
+    m_shop.remove("querty");
+
 
 
     return 0;

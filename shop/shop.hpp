@@ -10,7 +10,7 @@ class Shop {
 public:
 Shop();
 bool add(const Book& b);
-bool remove(Book b);
+bool remove(string isdn);
 
 private:
 Dbhelper db;
