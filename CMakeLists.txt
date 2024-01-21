@@ -4,13 +4,9 @@ project(library)
 
 set(SOURCES
     main.cpp
-    shop.cpp
-    dbhelper.cpp
 )
 
 set(HEADERS
-    shop.hpp
-    dbhelper.hpp
 )
 
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
@@ -23,7 +19,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(library
+target_link_libraries(${PROJECT_NAME}
     book
     sqlite3
     dbhelper

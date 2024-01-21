@@ -1,8 +1,9 @@
 
 #include <iostream>
 #include "book.hpp"
+#pragma once
 
-using std namespace;
+using namespace std;
 
 class Shop {
 
@@ -14,6 +15,6 @@ bool remove(Book b);
 
 private:
 string type = "autoresize";
-
+int space;
 
 };

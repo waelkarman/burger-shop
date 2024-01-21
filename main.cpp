@@ -1,6 +1,9 @@
 
 #include <iostream>
 #include "book.hpp"
+#include "shop.hpp"
+
+using namespace std;
 
 int main(int argv, char** args){
 
@@ -10,6 +13,9 @@ int main(int argv, char** args){
     m_book_a.setTitle("Il piccolo principe");
     m_book_a.setPrice(55);
     cout << "Funziona" << endl;
+
+    Shop m_shop;
+    m_shop.add(m_book_a);
 
 
     return 0;
