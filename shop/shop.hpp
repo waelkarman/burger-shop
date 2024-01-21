@@ -1,7 +1,7 @@
-
+#pragma once
 #include <iostream>
 #include "book.hpp"
-#pragma once
+#include "dbhelper.hpp"
 
 using namespace std;
 
@@ -9,12 +9,10 @@ class Shop {
 
 public:
 Shop();
-Shop(int space);
-bool add(Book b);
+bool add(const Book& b);
 bool remove(Book b);
 
 private:
-string type = "autoresize";
-int space;
+Dbhelper db;
 
 };

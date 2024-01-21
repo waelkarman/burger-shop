@@ -1,25 +1,19 @@
-
-
 #include <iostream>
 #include "shop.hpp"
+#include "dbhelper.hpp"
 
-Shop::Shop(){}
 
-Shop::Shop(int space){
-    this->space = space;
+Shop::Shop(){
+    db.createDatabase();
 }
 
-bool Shop::add(Book b){
-    Book m_book_a;
-    m_book_a.setIsdn("qwertg1234");
-    m_book_a.setTitle("Il piccolo principe");
-    m_book_a.setPrice(55);
+bool Shop::add(const Book& b){
+    db.insertBook(b);
     cout << "Libro aggiunto." << endl;
     return true;
 }
 
 bool Shop::remove(Book b){
-
     cout << "Libro rimosso." << endl;
     return true;
 }
