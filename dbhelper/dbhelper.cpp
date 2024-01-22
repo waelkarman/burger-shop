@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <string.h>
 #include "dbhelper.hpp"
 #include "sqlite3.h"
 
@@ -89,36 +90,37 @@ bool Dbhelper::insertBook(Book b){
 
 
 bool Dbhelper::removeISDN(string isdn){
-    sqlite3 *db;
-    char *zErrMsg = 0;
-    int rc;
-    const char *sql;
- 
-    /* Open database */
-    rc = sqlite3_open("shop-db.db", &db);
-   
-    if( rc ) {
-       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-       return(0);
-    } else {
-       fprintf(stderr, "Opened database successfully\n");
-    }
- 
-    /* Create SQL statement */
-    stringstream ss;
-    ss << "DELETE FROM SHOP WHERE ISDN = \"" << isdn << "\";";
-    sql = ss.str().c_str();
-    cout << "-----------" << ss.str().c_str() << endl;
+   sqlite3 *db;
+   char *zErrMsg = 0;
+   int rc;
+   char *sql;
 
-    /* Execute SQL statement */
-    rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
-    
-    if( rc != SQLITE_OK ){
-       fprintf(stderr, "SQL error: %s\n", zErrMsg);
-       sqlite3_free(zErrMsg);
-    } else {
-       fprintf(stdout, "Records created successfully\n");
-    }
-    sqlite3_close(db);
-    return 0;
+   /* Open database */
+   rc = sqlite3_open("shop-db.db", &db);
+
+   if( rc ) {
+      fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+      return(0);
+   } else {
+      fprintf(stderr, "Opened database successfully\n");
+   }
+
+   /* Create SQL statement */
+   stringstream ss;
+   ss << "DELETE FROM SHOP WHERE ISDN = '" << isdn << "';";
+
+   sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
+   strcpy(sql, ss.str().c_str());
+
+   /* Execute SQL statement */
+   rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg);
+   
+   if( rc != SQLITE_OK ){
+      fprintf(stderr, "SQL error: %s\n", zErrMsg);
+      sqlite3_free(zErrMsg);
+   } else {
+      fprintf(stdout, "Records created successfully\n");
+   }
+   sqlite3_close(db);
+   return 0;
 }
