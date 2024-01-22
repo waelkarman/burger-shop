@@ -9,8 +9,10 @@ class Shop {
 
 public:
 Shop();
-bool add(const Book& b);
-bool remove(string isdn);
+bool insertISDN(const Book& b);
+bool removeISDN(const string& isdn);
+bool fetchAll();
+bool fetchISDN(const string& isdn);
 
 private:
 Dbhelper db;

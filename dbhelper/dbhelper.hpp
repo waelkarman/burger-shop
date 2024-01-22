@@ -10,9 +10,10 @@ public:
 
 Dbhelper();
 bool createDatabase();
-bool insertBook(Book b);
+bool insertISDN(Book b);
 bool removeISDN(string isdn);
 int fetchISDN(string isdn);
+int fetchAll();
 
 private:
 

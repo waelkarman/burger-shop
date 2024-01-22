@@ -7,14 +7,22 @@ Shop::Shop(){
     db.createDatabase();
 }
 
-bool Shop::add(const Book& b){
-    db.insertBook(b);
-    cout << "Libro aggiunto." << endl;
+bool Shop::insertISDN(const Book& b){
+    db.insertISDN(b);
     return true;
 }
 
-bool Shop::remove(string isdn){
+bool Shop::removeISDN(const string& isdn){
     db.removeISDN(isdn);
-    cout << "Libro rimosso." << endl;
+    return true;
+}
+
+bool Shop::fetchAll(){
+    db.fetchAll();
+    return true;
+}
+
+bool Shop::fetchISDN(const string& isdn){
+    db.fetchISDN(isdn);
     return true;
 }
