@@ -11,7 +11,6 @@ Dbhelper::Dbhelper(){}
 
 static int dbprintoutput(void *NotUsed, int argc, char **argv, char **azColName) {
    int i;
-   cout << "--- DB OUTPUT ---" << endl;
    for(i = 0; i<argc; i++) {
       printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
    }
@@ -37,8 +36,8 @@ bool Dbhelper::createDatabase(){
     sql = "CREATE TABLE SHOP("  \
         "ISDN           CHAR(10) PRIMARY KEY     NOT NULL," \
         "NAME           TEXT    NOT NULL," \
-        "NCOPY          INT     NOT NULL," \
-        "PRICE          INT     NOT NULL );";
+        "PRICE          INT     NOT NULL," \
+        "NCOPY          INT     CHECK(NCOPY > 0));";
  
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, dbprintoutput, 0, &zErrMsg);
@@ -76,7 +75,7 @@ bool Dbhelper::insertISDN(Book b){
 
    /* Create SQL statement */
    stringstream ss;
-   ss << "INSERT INTO SHOP (ISDN,NAME,NCOPY,PRICE) VALUES ('"<< b.getIsdn() <<"', '"<< b.getTitle() <<"', 0,"<< b.getPrice() <<");";
+   ss << "INSERT INTO SHOP (ISDN,NAME,NCOPY,PRICE) VALUES ('"<< b.getIsdn() <<"', '"<< b.getTitle() <<"', 1,"<< b.getPrice() <<");";
    sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
    strcpy(sql, ss.str().c_str());
 
@@ -121,7 +120,7 @@ bool Dbhelper::removeISDN(string isdn){
 
    /* Create SQL statement */
    stringstream ss;
-   ss << "DELETE FROM SHOP WHERE ISDN = '" << isdn << "';";
+   ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE ISDN = '"<< isdn <<"';";
 
    sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
    strcpy(sql, ss.str().c_str());
@@ -132,7 +131,14 @@ bool Dbhelper::removeISDN(string isdn){
    if( rc != SQLITE_OK ){
       fprintf(stderr, "SQL error: %s\n", zErrMsg);
       sqlite3_free(zErrMsg);
-      /* DECREASE THE NCOPY */
+      /* REMOVE RECORD */
+       stringstream ss;
+      ss << "DELETE FROM SHOP WHERE ISDN = '"<< isdn <<"';";
+      sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
+      strcpy(sql, ss.str().c_str());
+
+      /* Execute SQL statement */
+      rc = sqlite3_exec(db, sql, dbprintoutput, 0, &zErrMsg);
 
    } else {
       fprintf(stdout, "Records created successfully\n");

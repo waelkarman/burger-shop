@@ -24,6 +24,9 @@ target_link_libraries(${PROJECT_NAME}
     sqlite3
     dbhelper
     shop
+    GL 
+    GLU
+    glut
 )
 
 #install(TARGETS library DESTINATION bin)
