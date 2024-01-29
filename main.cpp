@@ -7,6 +7,7 @@
 #include <QQmlFileSelector>
 #include <QQuickView>
 #include <QDebug>
+#include <QQmlContext>
 
 
 using namespace std;
@@ -52,6 +53,8 @@ int main(int argv, char** args){
 
     QQuickView view;
     view.connect(view.engine(), &QQmlEngine::quit, &app, &QCoreApplication::quit);
+
+    view.rootContext()->setContextProperty("m_shop", &m_shop);
 
     view.setSource(QUrl("qrc:/main.qml"));
 
