@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(library)
 
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Sql)
+
 set(SOURCES
     main.cpp
 )
@@ -9,7 +11,9 @@ set(SOURCES
 set(HEADERS
 )
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
+add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES}
+
+)
 add_subdirectory(sqlite)
 add_subdirectory(book)
 add_subdirectory(dbhelper)
@@ -27,6 +31,19 @@ target_link_libraries(${PROJECT_NAME}
     GL 
     GLU
     glut
+    Qt6::Core
+    Qt6::Gui
+    Qt6::Qml
+    Qt6::Quick
+    Qt6::Sql
+)
+
+qt_add_resources(${PROJECT_NAME}
+    PREFIX
+        "/"
+    FILES
+        "main.qml"
+        "ContactModel.qml"
 )
 
 #install(TARGETS library DESTINATION bin)

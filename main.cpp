@@ -1,22 +1,15 @@
 
-#include <iostream>
 #include "book.hpp"
 #include "shop.hpp"
-#include <GL/glut.h>
+
+#include <QGuiApplication>
+#include <QQmlEngine>
+#include <QQmlFileSelector>
+#include <QQuickView>
+#include <QDebug>
+
 
 using namespace std;
-
-void displayMe(void)
-{
-    glClear(GL_COLOR_BUFFER_BIT);
-    glBegin(GL_POLYGON);
-        glVertex3f(0.5, 0.0, 0.5);
-        glVertex3f(0.5, 0.0, 0.0);
-        glVertex3f(0.0, 0.5, 0.0);
-        glVertex3f(0.0, 0.0, 0.5);
-    glEnd();
-    glFlush();
-}
 
 int main(int argv, char** args){
 
@@ -47,19 +40,26 @@ int main(int argv, char** args){
     m_shop.insertISDN(m_book_c);
     m_shop.fetchAll();
 
-
-
     m_shop.removeISDN("982355324");
     m_shop.removeISDN("987267524");
-    m_shop.fetchAll();    
+    m_shop.fetchAll();
 
-    glutInit(&argv, args);
-    glutInitDisplayMode(GLUT_SINGLE);
-    glutInitWindowSize(400, 300);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow("Hello world!");
-    glutDisplayFunc(displayMe);
-    glutMainLoop();
 
-    return 0;
+
+    QCoreApplication::setApplicationName("Library");
+
+    QGuiApplication app(argv, args);
+
+    QQuickView view;
+    view.connect(view.engine(), &QQmlEngine::quit, &app, &QCoreApplication::quit);
+
+    view.setSource(QUrl("qrc:/main.qml"));
+
+    if (view.status() == QQuickView::Error)
+        return -1;
+
+    //view.setResizeMode(QQuickView::SizeRootObjectToView);
+    view.show();
+
+    return app.exec();
 }
