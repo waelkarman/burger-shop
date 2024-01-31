@@ -26,6 +26,11 @@ bool Shop::fetchISDN(const string& isdn){
     return true;
 }
 
+int Shop::countAll(){
+    db.countAll();
+    return true;
+}
+
 
 Shop::~Shop() {
 
@@ -45,7 +50,7 @@ QModelIndex Shop::parent(const QModelIndex &child) const {
 
 int Shop::rowCount(const QModelIndex &parent) const {
     // Restituisci il numero di righe sotto il genitore specificato
-    return 10;
+    return 20;
 }
 
 int Shop::columnCount(const QModelIndex &parent) const {

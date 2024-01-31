@@ -45,7 +45,8 @@ qt_add_resources(${PROJECT_NAME}
         "/"
     FILES
         "main.qml"
-        "ContactModel.qml"
+        "book.png"
+
 )
 
 #install(TARGETS library DESTINATION bin)

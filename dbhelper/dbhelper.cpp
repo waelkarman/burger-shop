@@ -9,13 +9,27 @@ using namespace std;
 
 Dbhelper::Dbhelper(){}
 
-static int dbprintoutput(void *NotUsed, int argc, char **argv, char **azColName) {
+int dbcountback(void *NotUsed, int argc, char **argv, char **azColName) {
    int i;
    for(i = 0; i<argc; i++) {
       printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+       int *a = (int*)NotUsed;
+      *a = atoi(argv[i]);
    }
+
    printf("\n");
    return 0;
+}
+
+
+int dbprintoutput(void *NotUsed, int argc, char **argv, char **azColName) {
+    int i;
+    for(i = 0; i<argc; i++) {
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+    }
+
+    printf("\n");
+    return 0;
 }
 
 bool Dbhelper::createDatabase(){
@@ -23,6 +37,7 @@ bool Dbhelper::createDatabase(){
     char *zErrMsg = 0;
     int rc;
     char *sql;
+
 
     rc = sqlite3_open("shop-db.db", &db);
 
@@ -70,8 +85,6 @@ bool Dbhelper::insertISDN(Book b){
    } else {
       fprintf(stderr, "Opened database successfully\n");
    }
-
-
 
    /* Create SQL statement */
    stringstream ss;
@@ -217,4 +230,44 @@ int Dbhelper::fetchAll(){
    }
    sqlite3_close(db);
    return true;
+}
+
+
+int Dbhelper::countAll(){
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    char *sql;
+
+    /* Open database */
+    rc = sqlite3_open("shop-db.db", &db);
+
+    if( rc ) {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        return false;
+    } else {
+        fprintf(stderr, "Opened database successfully\n");
+    }
+
+    /* Create SQL statement */
+    stringstream ss;
+    ss << "SELECT count(*) FROM SHOP;";
+
+    sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
+    strcpy(sql, ss.str().c_str());
+    int *count;
+    count = (int*)malloc(sizeof(int)*10);
+    /* Execute SQL statement */
+    rc = sqlite3_exec(db, sql, dbcountback, count, &zErrMsg);
+
+    printf("VALORE LETTO DALLA CALLBACK: %d\n\n\n",*count);
+
+    if( rc != SQLITE_OK ){
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    } else {
+        fprintf(stdout, "Records created successfully\n");
+    }
+    sqlite3_close(db);
+    return true;
 }

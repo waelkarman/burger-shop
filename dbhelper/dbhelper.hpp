@@ -8,13 +8,15 @@ class Dbhelper {
 
 public:
 
-Dbhelper();
-bool createDatabase();
-bool insertISDN(Book b);
-bool removeISDN(string isdn);
-int fetchISDN(string isdn);
-int fetchAll();
+    Dbhelper();
+    bool createDatabase();
+    bool insertISDN(Book b);
+    bool removeISDN(string isdn);
+    int fetchISDN(string isdn);
+    int fetchAll();
+    int countAll();
 
 private:
+
 
 };

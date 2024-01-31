@@ -19,6 +19,7 @@ public:
     bool removeISDN(const string& isdn);
     bool fetchAll();
     bool fetchISDN(const string& isdn);
+    int countAll();
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;

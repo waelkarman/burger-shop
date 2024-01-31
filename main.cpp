@@ -41,9 +41,10 @@ int main(int argv, char** args){
     m_shop.insertISDN(m_book_c);
     m_shop.fetchAll();
 
-    m_shop.removeISDN("982355324");
+    //m_shop.removeISDN("982355324");
     m_shop.removeISDN("987267524");
     m_shop.fetchAll();
+    m_shop.countAll();
 
 
 
