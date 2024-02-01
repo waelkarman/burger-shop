@@ -9,7 +9,20 @@ using namespace std;
 
 Dbhelper::Dbhelper(){}
 
-int dbcountback(void *NotUsed, int argc, char **argv, char **azColName) {
+
+int dbcallbackfetchNum(void *NotUsed, int argc, char **argv, char **azColName) {
+    int i;
+    for(i = 0; i<argc; i++) {
+        printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
+        char *a = (char*)NotUsed;
+        strcpy(a,argv[i]);
+    }
+    printf("\n");
+    return 0;
+}
+
+
+int dbcallbackcountAll(void *NotUsed, int argc, char **argv, char **azColName) {
    int i;
    for(i = 0; i<argc; i++) {
       printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL");
@@ -32,6 +45,39 @@ int dbprintoutput(void *NotUsed, int argc, char **argv, char **azColName) {
     return 0;
 }
 
+bool Dbhelper::dropTable(){
+    sqlite3 *db;
+    char *zErrMsg = 0;
+    int rc;
+    char *sql;
+
+
+    rc = sqlite3_open("shop-db.db", &db);
+
+    if( rc ) {
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
+        return false;
+    } else {
+        fprintf(stderr, "Opened database successfully\n");
+    }
+
+    sql = "DROP TABLE IF EXISTS SHOP;";
+
+    /* Execute SQL statement */
+    rc = sqlite3_exec(db, sql, dbprintoutput, 0, &zErrMsg);
+
+    if( rc != SQLITE_OK ){
+        fprintf(stderr, "SQL error: %s\n", zErrMsg);
+        sqlite3_free(zErrMsg);
+    } else {
+        fprintf(stdout, "Table created successfully\n");
+    }
+
+    sqlite3_close(db);
+
+    return true;
+}
+
 bool Dbhelper::createDatabase(){
     sqlite3 *db;
     char *zErrMsg = 0;
@@ -49,10 +95,11 @@ bool Dbhelper::createDatabase(){
     }
  
     sql = "CREATE TABLE SHOP("  \
-        "ISDN           CHAR(10) PRIMARY KEY     NOT NULL," \
-        "NAME           TEXT    NOT NULL," \
-        "PRICE          INT     NOT NULL," \
-        "NCOPY          INT     CHECK(NCOPY > 0));";
+        "ID             INTEGER     PRIMARY KEY AUTOINCREMENT," \
+        "ISDN           CHAR(10)    NOT NULL," \
+        "NAME           TEXT        NOT NULL," \
+        "PRICE          INT         NOT NULL," \
+        "NCOPY          INT         CHECK(NCOPY > 0));";
  
     /* Execute SQL statement */
     rc = sqlite3_exec(db, sql, dbprintoutput, 0, &zErrMsg);
@@ -160,7 +207,7 @@ bool Dbhelper::removeISDN(string isdn){
    return true;
 }
 
-int Dbhelper::fetchISDN(string isdn){
+char* Dbhelper::fetchNum(int n) const{
    sqlite3 *db;
    char *zErrMsg = 0;
    int rc;
@@ -171,21 +218,23 @@ int Dbhelper::fetchISDN(string isdn){
 
    if( rc ) {
       fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(db));
-      return false;
+      return "";
    } else {
       fprintf(stderr, "Opened database successfully\n");
    }
 
    /* Create SQL statement */
    stringstream ss;
-   ss << "SELECT * FROM SHOP WHERE ISDN = '" << isdn << "';";
+   ss << "SELECT NAME FROM SHOP WHERE ID = " << n << ";";
 
    sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
    strcpy(sql, ss.str().c_str());
 
+   char *name;
+   name = (char*)malloc(sizeof(char)*20);
    /* Execute SQL statement */
-   rc = sqlite3_exec(db, sql, dbprintoutput, 0, &zErrMsg);
-   
+   rc = sqlite3_exec(db, sql, dbcallbackfetchNum, name, &zErrMsg);
+
    if( rc != SQLITE_OK ){
       fprintf(stderr, "SQL error: %s\n", zErrMsg);
       sqlite3_free(zErrMsg);
@@ -193,7 +242,7 @@ int Dbhelper::fetchISDN(string isdn){
       fprintf(stdout, "Records created successfully\n");
    }
    sqlite3_close(db);
-   return true;
+   return name;
 }
 
 int Dbhelper::fetchAll(){
@@ -233,7 +282,7 @@ int Dbhelper::fetchAll(){
 }
 
 
-int Dbhelper::countAll(){
+int Dbhelper::countAll() const{
     sqlite3 *db;
     char *zErrMsg = 0;
     int rc;
@@ -256,11 +305,9 @@ int Dbhelper::countAll(){
     sql = (char *)malloc((strlen(ss.str().c_str())+1)*sizeof(char));
     strcpy(sql, ss.str().c_str());
     int *count;
-    count = (int*)malloc(sizeof(int)*10);
+    count = (int*)malloc(sizeof(int));
     /* Execute SQL statement */
-    rc = sqlite3_exec(db, sql, dbcountback, count, &zErrMsg);
-
-    printf("VALORE LETTO DALLA CALLBACK: %d\n\n\n",*count);
+    rc = sqlite3_exec(db, sql, dbcallbackcountAll, count, &zErrMsg);
 
     if( rc != SQLITE_OK ){
         fprintf(stderr, "SQL error: %s\n", zErrMsg);
@@ -269,5 +316,5 @@ int Dbhelper::countAll(){
         fprintf(stdout, "Records created successfully\n");
     }
     sqlite3_close(db);
-    return true;
+    return *count;
 }

@@ -15,11 +15,12 @@ class Shop: public QAbstractListModel {
 
 public:
     Shop(QObject *parent = nullptr);
+    bool dropShop();
     bool insertISDN(const Book& b);
     bool removeISDN(const string& isdn);
     bool fetchAll();
-    bool fetchISDN(const string& isdn);
-    int countAll();
+    QString fetchNum(const int& n) const;
+    int countAll() const;
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;

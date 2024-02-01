@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 #include "book.hpp"
 
 using namespace std;
@@ -9,12 +8,13 @@ class Dbhelper {
 public:
 
     Dbhelper();
+    bool dropTable();
     bool createDatabase();
     bool insertISDN(Book b);
     bool removeISDN(string isdn);
-    int fetchISDN(string isdn);
+    char* fetchNum(int n) const;
     int fetchAll();
-    int countAll();
+    int countAll() const;
 
 private:
 

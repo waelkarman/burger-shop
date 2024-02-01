@@ -3,6 +3,7 @@
 
 
 Shop::Shop(QObject* parent):QAbstractListModel(parent) {
+    dropShop();
     db.createDatabase();
 }
 
@@ -21,14 +22,17 @@ bool Shop::fetchAll(){
     return true;
 }
 
-bool Shop::fetchISDN(const string& isdn){
-    db.fetchISDN(isdn);
-    return true;
+QString Shop::fetchNum(const int& n) const {
+    QString a(db.fetchNum(n));
+    return a;
 }
 
-int Shop::countAll(){
-    db.countAll();
-    return true;
+bool Shop::dropShop(){
+    return db.dropTable();
+}
+
+int Shop::countAll() const {
+    return db.countAll();
 }
 
 
@@ -50,7 +54,7 @@ QModelIndex Shop::parent(const QModelIndex &child) const {
 
 int Shop::rowCount(const QModelIndex &parent) const {
     // Restituisci il numero di righe sotto il genitore specificato
-    return 20;
+    return countAll();
 }
 
 int Shop::columnCount(const QModelIndex &parent) const {
@@ -61,5 +65,5 @@ int Shop::columnCount(const QModelIndex &parent) const {
 QVariant Shop::data(const QModelIndex &index, int role) const {
     // Restituisci il dato per l'indice specificato e ruolo specificato
     // Ad esempio, se role è Qt::DisplayRole, restituisci il testo da visualizzare
-    return index.row();
+    return fetchNum(index.row()+1);
 }
