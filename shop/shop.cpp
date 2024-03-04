@@ -1,5 +1,7 @@
 #include "shop.hpp"
 #include "dbhelper.hpp"
+#include <string>
+#include <QString>
 
 Shop::Shop(QObject* parent):QAbstractListModel(parent) {
     QueryResult result;
@@ -26,7 +28,6 @@ QueryResult Shop::dropShop(){
     return result;
 }
 
-
 QueryResult Shop::insertBook(const Book& b){
     QueryResult result;
     db.insertBook(b,result);
@@ -41,7 +42,7 @@ QueryResult Shop::insertBook(const Book& b){
     return result;
 }
 
-QueryResult Shop::countAllBooks() {
+QueryResult Shop::countAllBooks(){
     QueryResult result;
     db.countAllBooks(result);
 
@@ -79,44 +80,62 @@ QueryResult Shop::fetchAllBooks(){
         }
         printf("\n");
     }
+
     return result;
 }
 
-QueryResult Shop::fetchBook(const Book& b) {
+QueryResult Shop::fetchByIsdn(const Book& b) {
     QueryResult result;
-    db.fetchBook(b,result);
+    db.fetchByIsdn(b,result);
+
+    for (const auto& record : result.records) {
+        for (const auto& column : record.columns) {
+            printf("%s ", column.c_str());
+        }
+        printf("\n");
+    }
+
     return result;
 }
 
+QueryResult Shop::fetchById(const int& n) {
+    QueryResult result;
+    db.fetchById(n,result);
 
+    cout << "val  " << result.records[0].columns[0] << endl;
 
+    for (const auto& record : result.records) {
+        for (const auto& column : record.columns) {
+            printf("%s ", column.c_str());
+        }
+        printf("\n");
+    }
 
-
+    return result;
+}
 
 
 QModelIndex Shop::index(int row, int column, const QModelIndex &parent) const {
-    // Restituisci l'indice per la cella specificata
-    // Utilizza QAbstractItemModel::createIndex per creare un indice
-    //return createIndex(row, column);
+    return createIndex(row, column);
 }
 
 QModelIndex Shop::parent(const QModelIndex &child) const {
-    // Restituisci l'indice del genitore per il dato indice
-    //return QModelIndex();
+    return QModelIndex();
 }
 
 int Shop::rowCount(const QModelIndex &parent) const {
-    // Restituisci il numero di righe sotto il genitore specificato
-    //return countAll();
+    QueryResult result = const_cast<Shop*>(this)->countAllBooks();
+    return stoi(result.records[0].columns[0]);
 }
 
 int Shop::columnCount(const QModelIndex &parent) const {
-    // Restituisci il numero di colonne sotto il genitore specificato
-    //return 0;
+    return 0;
 }
 
 QVariant Shop::data(const QModelIndex &index, int role) const {
     // Restituisci il dato per l'indice specificato e ruolo specificato
     // Ad esempio, se role è Qt::DisplayRole, restituisci il testo da visualizzare
-    // return fetchNum(index.row()+1);
+    QueryResult result = const_cast<Shop*>(this)->fetchById(index.row()+1);
+    cout << "valsss  " << result.records[0].columns[0] << endl;
+    return QString(result.records[0].columns[0].c_str());
 }

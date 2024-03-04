@@ -19,7 +19,8 @@ public:
     QueryResult insertBook(const Book& b);
     QueryResult removeBook(const Book& b);
     QueryResult fetchAllBooks();
-    QueryResult fetchBook(const Book& b);
+    QueryResult fetchByIsdn(const Book& b);
+    QueryResult fetchById(const int& n);
     QueryResult countAllBooks();
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;

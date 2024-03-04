@@ -28,8 +28,10 @@ public:
     void createDatabase(QueryResult &vp);
     void insertBook(Book b,QueryResult &vp);
     void removeBook(Book b,QueryResult &vp);
-    void fetchBook(Book b,QueryResult &vp);
+    void fetchByIsdn(Book b,QueryResult &vp);
     void fetchAllBooks(QueryResult &vp);
     void countAllBooks(QueryResult &vp);
+    void fetchById(int n, QueryResult& vp);
+
     ~Dbhelper();
 };

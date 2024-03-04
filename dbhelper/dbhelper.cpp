@@ -98,9 +98,15 @@ void Dbhelper::removeBook(Book b, QueryResult& vp){
     execute_query(ss,default_callback,&vp);
 }
 
-void Dbhelper::fetchBook(Book b, QueryResult& vp) {
+void Dbhelper::fetchByIsdn(Book b, QueryResult& vp) {
     stringstream ss;
     ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";
+    execute_query(ss,default_callback,&vp);
+}
+
+void Dbhelper::fetchById(int n, QueryResult& vp) {
+    stringstream ss;
+    ss << "SELECT NAME FROM SHOP WHERE ID = " << n << ";";
     execute_query(ss,default_callback,&vp);
 }
 
