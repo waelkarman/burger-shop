@@ -15,12 +15,12 @@ class Shop: public QAbstractListModel {
 
 public:
     Shop(QObject *parent = nullptr);
-    bool dropShop();
-    bool insertISDN(const Book& b);
-    bool removeISDN(const string& isdn);
-    bool fetchAll();
-    QString fetchNum(const int& n) const;
-    int countAll() const;
+    QueryResult dropShop();
+    QueryResult insertBook(const Book& b);
+    QueryResult removeBook(const Book& b);
+    QueryResult fetchAllBooks();
+    QueryResult fetchBook(const Book& b);
+    QueryResult countAllBooks();
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;
@@ -28,7 +28,7 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    ~Shop() override;
+    ~Shop() override {};
 
 private:
     Dbhelper db;
