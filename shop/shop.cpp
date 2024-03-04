@@ -17,100 +17,42 @@ Shop::Shop(QObject* parent):QAbstractListModel(parent) {
 QueryResult Shop::dropShop(){
     QueryResult result;
     db.dropTable(result);
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
 QueryResult Shop::insertBook(const Book& b){
     QueryResult result;
     db.insertBook(b,result);
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
 QueryResult Shop::countAllBooks(){
     QueryResult result;
     db.countAllBooks(result);
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
 QueryResult Shop::removeBook(const Book& b){
     QueryResult result;
     db.removeBook(b,result);
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
 QueryResult Shop::fetchAllBooks(){
     QueryResult result;
     db.fetchAllBooks(result);
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
 QueryResult Shop::fetchByIsdn(const Book& b) {
     QueryResult result;
     db.fetchByIsdn(b,result);
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
 QueryResult Shop::fetchById(const int& n) {
     QueryResult result;
     db.fetchById(n,result);
-
-    cout << "val  " << result.records[0].columns[0] << endl;
-
-    for (const auto& record : result.records) {
-        for (const auto& column : record.columns) {
-            printf("%s ", column.c_str());
-        }
-        printf("\n");
-    }
-
     return result;
 }
 
@@ -136,6 +78,5 @@ QVariant Shop::data(const QModelIndex &index, int role) const {
     // Restituisci il dato per l'indice specificato e ruolo specificato
     // Ad esempio, se role è Qt::DisplayRole, restituisci il testo da visualizzare
     QueryResult result = const_cast<Shop*>(this)->fetchById(index.row()+1);
-    cout << "valsss  " << result.records[0].columns[0] << endl;
     return QString(result.records[0].columns[0].c_str());
 }
