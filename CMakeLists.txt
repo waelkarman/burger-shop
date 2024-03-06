@@ -19,7 +19,9 @@ set(HEADERS
 
 add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES}
 
+
 )
+
 add_subdirectory(sqlite)
 add_subdirectory(book)
 add_subdirectory(dbhelper)
@@ -49,6 +51,8 @@ qt_add_resources(${PROJECT_NAME}
         "/"
     FILES
         "main.qml"
+        "Bookslistpage.qml"
+        "Shoppingcartpage.qml"
         "media/book.png"
         "media/a1.jpg"
         "media/a2.jpg"
@@ -63,6 +67,12 @@ qt_add_resources(${PROJECT_NAME}
         "media/a11.jpg"
         "media/a12.jpg"
         "media/a13.jpg"
+)
+
+target_sources(book-shop_other_files
+  PRIVATE
+    Bookslistpage.qml
+    Shoppingcartpage.qml
 )
 
 #install(TARGETS library DESTINATION bin)
