@@ -43,7 +43,7 @@ Rectangle {
             Image {
                 anchors.horizontalCenter: nameText.horizontalCenter
                 width: 64; height: 64
-                source: "./book.png"
+                source: "./media/book.png"
 
                 MouseArea{
                     anchors.fill: parent
