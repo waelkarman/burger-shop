@@ -1,7 +1,7 @@
 ## Book Shop App
 The aim of this project is to practice programming.
 
-<img src="doc/screen.png">
+<img src="doc/screen.gif">
 
 Stack:
 - SQLite
