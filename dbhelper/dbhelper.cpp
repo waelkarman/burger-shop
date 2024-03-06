@@ -106,7 +106,7 @@ void Dbhelper::fetchByIsdn(Book b, QueryResult& vp) {
 
 void Dbhelper::fetchById(int n, QueryResult& vp) {
     stringstream ss;
-    ss << "SELECT NAME FROM SHOP WHERE ID = " << n << ";";
+    ss << "SELECT NAME, PRICE FROM SHOP WHERE ID = " << n << ";";
     execute_query(ss,default_callback,&vp);
 }
 

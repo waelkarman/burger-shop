@@ -28,39 +28,39 @@ int main(int argv, char** args){
 
 
     m_book_a.setIsdn("987255324");
-    m_book_a.setTitle("Il piccolo principe.");
+    m_book_a.setTitle("Il piccolo principe");
     m_book_a.setPrice(55);
 
     m_book_b.setIsdn("982355324");
-    m_book_b.setTitle("La guerra di piero.");
+    m_book_b.setTitle("La guerra di piero");
     m_book_b.setPrice(23);
 
     m_book_c.setIsdn("987267524");
-    m_book_c.setTitle("Le mille e una notte.");
+    m_book_c.setTitle("Le mille e una notte");
     m_book_c.setPrice(15);
 
     m_book_d.setIsdn("987877524");
-    m_book_d.setTitle("ewtr ytuetu");
+    m_book_d.setTitle("Murakami");
     m_book_d.setPrice(15);
 
     m_book_e.setIsdn("987254324");
-    m_book_e.setTitle("qerwrt wreya notte.");
+    m_book_e.setTitle("Il cavaliere insesistente");
     m_book_e.setPrice(15);
 
     m_book_f.setIsdn("923267524");
-    m_book_f.setTitle("Lq yqeyqrey.");
+    m_book_f.setTitle("Il giorno della civetta");
     m_book_f.setPrice(15);
 
     m_book_g.setIsdn("987276473");
-    m_book_g.setTitle("Leqr tqotte.");
+    m_book_g.setTitle("Sherlock");
     m_book_g.setPrice(15);
 
     m_book_h.setIsdn("987287654");
-    m_book_h.setTitle("Le wetetwe.");
+    m_book_h.setTitle("Io non ho paura");
     m_book_h.setPrice(15);
 
     m_book_i.setIsdn("341267524");
-    m_book_i.setTitle("wrwe twtewte.");
+    m_book_i.setTitle("Noi vogliamo tutto");
     m_book_i.setPrice(15);
 
 
@@ -110,7 +110,7 @@ int main(int argv, char** args){
     if (view.status() == QQuickView::Error)
         return -1;
 
-    //view.setResizeMode(QQuickView::SizeRootObjectToView);
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.show();
 
     return app.exec();

@@ -27,7 +27,8 @@ public:
     QModelIndex parent(const QModelIndex &child) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-    QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+    QVariant data(const QModelIndex &index, int role = 100) const override;
+    QHash<int, QByteArray> roleNames() const override;
 
     ~Shop() override {};
 
