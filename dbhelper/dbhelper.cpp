@@ -113,7 +113,6 @@ void Dbhelper::fetchById(int n, QueryResult& vp) {
 
 void Dbhelper::fetchAllBooks(QueryResult& vp){
     stringstream ss;
-
     ss << "SELECT * FROM SHOP;";
     execute_query(ss,default_callback,&vp);
 }
