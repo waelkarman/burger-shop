@@ -5,7 +5,8 @@ Rectangle {
     id: root
     width: 800
     height: 600
-    // color: "black"
+    color: "light gray"
+
     property var model_name: m_shop
 
     Image {
@@ -13,6 +14,9 @@ Rectangle {
         anchors.fill: parent
         anchors.centerIn: parent
         source: ""
+        asynchronous: true
+        smooth: true
+        opacity: 0.3
     }
 
     Text {
@@ -31,7 +35,7 @@ Rectangle {
 
         Column {
             id: wrapper
-            opacity: PathView.isCurrentItem ? 1 : 0.3
+            opacity: PathView.isCurrentItem ? 1 : 0.6
             property var bookname : namerole
             property var bookprice : pricerole
             property var bookbackground : backgroundrole

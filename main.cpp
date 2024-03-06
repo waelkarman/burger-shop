@@ -40,37 +40,37 @@ int main(int argv, char** args){
     m_book_c.setIsdn("987267524");
     m_book_c.setTitle("Le mille e una notte");
     m_book_c.setPrice(15);
-    m_book_c.setBackground("./a1.jpg");
+    m_book_c.setBackground("./a3.jpg");
 
     m_book_d.setIsdn("987877524");
     m_book_d.setTitle("Murakami");
     m_book_d.setPrice(14);
-    m_book_d.setBackground("./a2.jpg");
+    m_book_d.setBackground("./a4.jpg");
 
     m_book_e.setIsdn("987254324");
     m_book_e.setTitle("Il cavaliere insesistente");
     m_book_e.setPrice(5);
-    m_book_e.setBackground("./a1.jpg");
+    m_book_e.setBackground("./a5.jpg");
 
     m_book_f.setIsdn("923267524");
     m_book_f.setTitle("Il giorno della civetta");
     m_book_f.setPrice(45);
-    m_book_f.setBackground("./a2.jpg");
+    m_book_f.setBackground("./a6.jpg");
 
     m_book_g.setIsdn("987276473");
     m_book_g.setTitle("Sherlock");
     m_book_g.setPrice(95);
-    m_book_g.setBackground("./a1.jpg");
+    m_book_g.setBackground("./a7.jpg");
 
     m_book_h.setIsdn("987287654");
     m_book_h.setTitle("Io non ho paura");
     m_book_h.setPrice(2);
-    m_book_h.setBackground("./a2.jpg");
+    m_book_h.setBackground("./a8.jpg");
 
     m_book_i.setIsdn("341267524");
     m_book_i.setTitle("Noi vogliamo tutto");
     m_book_i.setPrice(8);
-    m_book_i.setBackground("./a1.jpg");
+    m_book_i.setBackground("./a9.jpg");
 
 
     Shop m_shop;

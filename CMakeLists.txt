@@ -52,6 +52,17 @@ qt_add_resources(${PROJECT_NAME}
         "book.png"
         "a1.jpg"
         "a2.jpg"
+        "a3.jpg"
+        "a4.jpg"
+        "a5.jpg"
+        "a6.jpg"
+        "a7.jpg"
+        "a8.jpg"
+        "a9.jpg"
+        "a10.jpg"
+        "a11.jpg"
+        "a12.jpg"
+        "a13.jpg"
 )
 
 #install(TARGETS library DESTINATION bin)
