@@ -1,7 +1,8 @@
-Book Shop
+## Book Shop App
+The aim of this project is to practice programming.
 <img src="doc/screen.png">
 
-Practice with:
+Stack:
 - SQLite
 - C++/17
 - Qt6
