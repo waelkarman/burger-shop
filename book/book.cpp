@@ -22,6 +22,11 @@ string Book::getTitle()
     return title;
 }
 
+string Book::getBackground()
+{
+    return background;
+}
+
 float Book::getPrice()
 {
     return price;
@@ -35,6 +40,11 @@ void Book::setIsdn(const string& isdn)
 void Book::setTitle(const string& title)
 {
     this->title = title;
+}
+
+void Book::setBackground(const string& background)
+{
+    this->background = background;
 }
 
 void Book::setPrice(const float& price)

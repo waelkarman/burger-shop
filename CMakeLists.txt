@@ -50,6 +50,8 @@ qt_add_resources(${PROJECT_NAME}
     FILES
         "main.qml"
         "book.png"
+        "a1.jpg"
+        "a2.jpg"
 )
 
 #install(TARGETS library DESTINATION bin)

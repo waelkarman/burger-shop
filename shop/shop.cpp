@@ -1,5 +1,6 @@
 #include "shop.hpp"
 #include "dbhelper.hpp"
+#include "qurl.h"
 #include <string>
 #include <QString>
 
@@ -72,13 +73,14 @@ int Shop::rowCount(const QModelIndex &parent) const {
 }
 
 int Shop::columnCount(const QModelIndex &parent) const {
-    return 1;
+    return 2;
 }
 
 
 enum ItemDataRole {
     namerole = 0,
-    pricerole = 1
+    pricerole = 1,
+    backgroundrole = 2
 };
 
 QVariant Shop::data(const QModelIndex &index, int role) const {
@@ -89,9 +91,11 @@ QVariant Shop::data(const QModelIndex &index, int role) const {
 
     switch (role) {
     case namerole:
-        return QString(result.records[0].columns[0].c_str());;
+        return QString(result.records[0].columns[2].c_str());
     case pricerole:
-        return QString(result.records[0].columns[1].c_str());;
+        return QString(result.records[0].columns[1].c_str());
+    case backgroundrole:
+        return QString(result.records[0].columns[0].c_str());
     default:
         return QVariant();
     }
@@ -104,6 +108,7 @@ QHash<int, QByteArray> Shop::roleNames() const
     // Definisci i nomi dei ruoli associati
     roles[namerole] = "namerole";
     roles[pricerole] = "pricerole";
+    roles[backgroundrole] = "backgroundrole";
 
     // Aggiungi altri nomi dei ruoli se necessario
 

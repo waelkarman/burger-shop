@@ -8,6 +8,13 @@ Rectangle {
     // color: "black"
     property var model_name: m_shop
 
+    Image {
+        id: background
+        anchors.fill: parent
+        anchors.centerIn: parent
+        source: ""
+    }
+
     Text {
         anchors.top: parent.top
         anchors.topMargin: 50
@@ -27,6 +34,7 @@ Rectangle {
             opacity: PathView.isCurrentItem ? 1 : 0.3
             property var bookname : namerole
             property var bookprice : pricerole
+            property var bookbackground : backgroundrole
 
             Image {
                 anchors.horizontalCenter: nameText.horizontalCenter
@@ -68,6 +76,7 @@ Rectangle {
 
         onCurrentIndexChanged: {
             currentbook.text = itemAtIndex(currentIndex).bookname
+            background.source = itemAtIndex(currentIndex).bookbackground
         }
     }
 
@@ -83,6 +92,5 @@ Rectangle {
         font.pointSize: 24
         color: "black"
     }
-
 
 }

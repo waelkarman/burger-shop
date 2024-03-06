@@ -2,5 +2,7 @@
 <qresource prefix="/">
     <file>main.qml</file>
     <file>book.png</file>
+    <file>a1.jpg</file>
+    <file>a2.jpg</file>
 </qresource>
 </RCC>

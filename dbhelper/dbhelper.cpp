@@ -58,6 +58,7 @@ void Dbhelper::createDatabase(QueryResult& vp){
        << "ISDN           CHAR(10)    NOT NULL,"
        << "NAME           TEXT        NOT NULL,"
        << "PRICE          INT         NOT NULL,"
+       << "BACKGROUND     CHAR(10)    NOT NULL,"
        << "NCOPY          INT         CHECK(NCOPY > 0));";
     execute_query(ss,default_callback,&vp);
 }
@@ -71,8 +72,8 @@ void Dbhelper::insertBook(Book b, QueryResult& vp){
     if ( stoi(vp.records[0].columns[0]) > 0){
         ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE ISDN = '"<< b.getIsdn() <<"';";
     }else{
-        ss << "INSERT INTO SHOP (ISDN,NAME,NCOPY,PRICE) VALUES ('"
-           << b.getIsdn() <<"', '"<< b.getTitle() <<"', 1,"
+        ss << "INSERT INTO SHOP (ISDN,NAME,BACKGROUND,NCOPY,PRICE) VALUES ('"
+           << b.getIsdn() <<"', '"<< b.getBackground() <<"', '"<< b.getTitle() <<"', 1,"
            << b.getPrice() <<");";
     }
 
@@ -106,7 +107,7 @@ void Dbhelper::fetchByIsdn(Book b, QueryResult& vp) {
 
 void Dbhelper::fetchById(int n, QueryResult& vp) {
     stringstream ss;
-    ss << "SELECT NAME, PRICE FROM SHOP WHERE ID = " << n << ";";
+    ss << "SELECT NAME, PRICE, BACKGROUND FROM SHOP WHERE ID = " << n << ";";
     execute_query(ss,default_callback,&vp);
 }
 
