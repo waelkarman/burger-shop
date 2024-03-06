@@ -96,7 +96,7 @@ int main(int argv, char** args){
 
 
 
-    QCoreApplication::setApplicationName("Library");
+    QCoreApplication::setApplicationName("Book Shop");
 
     QGuiApplication app(argv, args);
 

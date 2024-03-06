@@ -19,7 +19,6 @@ Rectangle {
         color: "black"
     }
 
-
     Component {
         id: delegate
 
@@ -44,8 +43,14 @@ Rectangle {
 
             Text {
                 id: nameText
-                text: bookprice
+                text: bookname
                 font.pointSize: 10
+            }
+
+            Text {
+                id: priceText
+                text: bookprice+" €"
+                font.pointSize: 8
             }
         }
     }
@@ -59,20 +64,11 @@ Rectangle {
         path: Path {
             startX: root.width/5; startY: root.height-root.height/3
             PathQuad { x: root.width+root.width/10; y: root.height/10; controlX: root.width/4; controlY: root.height/5 }
-
-            //startX: root.width/2; startY: root.height/2
-            //PathQuad { x: root.width/4; y: root.height/3; controlX: root.width/4; controlY: root.height/2 }
-            //PathQuad { x: root.width/2; y: root.height/5; controlX: root.width/4; controlY: root.height/5 }
-            //PathQuad { x: root.width/2+root.width/4; y: root.height/3; controlX: root.width/2+root.width/4; controlY: root.height/5 }
-            //PathQuad { x: root.width/2; y: root.height/2; controlX: root.width/2+root.width/4; controlY: root.height/2 }
         }
 
         onCurrentIndexChanged: {
             currentbook.text = itemAtIndex(currentIndex).bookname
         }
-
-
-
     }
 
 

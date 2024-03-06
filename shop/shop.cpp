@@ -87,14 +87,6 @@ QVariant Shop::data(const QModelIndex &index, int role) const {
     //FIXME
     QueryResult result = const_cast<Shop*>(this)->fetchById(index.row()+1);
 
-    cout << result.records[0].columns[0].c_str() << result.records[0].columns[1].c_str() << endl;
-
-    for(const auto i : result.records ){
-        for(const auto k : i.columns){
-            cout << k << endl;
-        }
-    }
-
     switch (role) {
     case namerole:
         return QString(result.records[0].columns[0].c_str());;
@@ -103,8 +95,6 @@ QVariant Shop::data(const QModelIndex &index, int role) const {
     default:
         return QVariant();
     }
-
-    //return QString(result.records[0].columns[0].c_str());
 }
 
 QHash<int, QByteArray> Shop::roleNames() const
