@@ -1,5 +1,5 @@
-## Book Shop App
-[in development]
+## Book Shop App [in development]
+
 The aim of this project is to practice programming.
 
 <img src="doc/screen.gif">
