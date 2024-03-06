@@ -6,10 +6,7 @@ using namespace std;
 
 Book::Book(){}
 
-Book::Book(string isdn, string title, float price){
-    this->isdn=isdn;
-    this->title=title;
-    this->price=price;
+Book::Book(string isdn, string title, float price):isdn(isdn),title(title),price(price){
 }
 
 string Book::getIsdn()
