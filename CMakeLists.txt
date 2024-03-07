@@ -11,16 +11,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick Sql)
 
 set(SOURCES
+    main.qrc
     main.cpp
 )
 
-set(HEADERS
-)
+set(HEADERS)
 
-add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES}
-
-
-)
+qt_add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
 add_subdirectory(sqlite)
 add_subdirectory(book)
@@ -31,48 +28,16 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PUBLIC
     book
     sqlite3
     dbhelper
     shop
-    GL 
-    GLU
-    glut
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
     Qt6::Quick
     Qt6::Sql
-)
-
-qt_add_resources(${PROJECT_NAME}
-    PREFIX
-        "/"
-    FILES
-        "main.qml"
-        "Bookslistpage.qml"
-        "Shoppingcartpage.qml"
-        "media/book.png"
-        "media/a1.jpg"
-        "media/a2.jpg"
-        "media/a3.jpg"
-        "media/a4.jpg"
-        "media/a5.jpg"
-        "media/a6.jpg"
-        "media/a7.jpg"
-        "media/a8.jpg"
-        "media/a9.jpg"
-        "media/a10.jpg"
-        "media/a11.jpg"
-        "media/a12.jpg"
-        "media/a13.jpg"
-)
-
-target_sources(book-shop_other_files
-  PRIVATE
-    Bookslistpage.qml
-    Shoppingcartpage.qml
 )
 
 #install(TARGETS library DESTINATION bin)
