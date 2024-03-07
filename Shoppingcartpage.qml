@@ -14,4 +14,46 @@ Item {
         font.pointSize: 24
         color: "black"
     }
+
+    ListView {
+        id: chartlist
+        width: 400
+        height: 400
+        anchors.top: parent.top
+        anchors.topMargin: 300
+        anchors.horizontalCenter: parent.horizontalCenter
+        orientation: ListView.Vertical
+
+        model: m_shop
+        delegate: contactsDelegate
+        focus: true
+
+
+        Component {
+            id: contactsDelegate
+            Rectangle {
+                id: wrapper
+                width: 400
+                height: contactInfo.height
+
+                color: ListView.isCurrentItem ? "black" : "grey"
+                property var bookname : namerole
+                property var bookprice : pricerole
+                property var bookbackground : backgroundrole
+
+                Text {
+                    id: contactInfo
+                    text: bookname
+                    color: wrapper.ListView.isCurrentItem ? "grey" : "black"
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            chartlist.currentIndex = index
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
