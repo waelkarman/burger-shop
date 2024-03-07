@@ -34,5 +34,6 @@ public:
 
 private:
     Dbhelper db;
+    int sum = 0;
 
 };

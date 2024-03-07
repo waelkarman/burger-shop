@@ -114,7 +114,7 @@ int main(int argv, char** args){
 
     view.rootContext()->setContextProperty("m_shop", &m_shop);
 
-    view.setSource(QUrl("qrc:/main.qml"));
+    view.setSource(QUrl("qrc:/qml/main.qml"));
 
     if (view.status() == QQuickView::Error)
         return -1;
