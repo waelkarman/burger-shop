@@ -8,16 +8,20 @@ Item {
     Rectangle {
         id: root
         anchors.fill: parent
-        color: "light gray"
+        color: "white"
 
         Image {
             id: background
-            anchors.fill: parent
-            anchors.centerIn: parent
+            height: 270
+            width: 210
+            anchors.right: parent.right
+            anchors.rightMargin: 90
+            anchors.top: parent.top
+            anchors.topMargin: 195
             source: ""
             asynchronous: true
             smooth: true
-            opacity: 0.3
+            opacity: 1
         }
 
         Text {
@@ -77,8 +81,8 @@ Item {
             model: model_name
             delegate: delegate
             path: Path {
-                startX: root.width/5; startY: root.height-root.height/3
-                PathQuad { x: root.width+root.width/10; y: root.height/10; controlX: root.width/4; controlY: root.height/5 }
+                startX: root.width/9; startY: root.height-root.height/3
+                PathQuad { x: root.width+root.width/10; y: root.height/10; controlX: root.width/5; controlY: root.height/6 }
             }
 
             onCurrentIndexChanged: {

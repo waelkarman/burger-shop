@@ -18,12 +18,12 @@ Item {
     ListView {
         id: chartlist
         width: 400
-        height: 400
+        height: 100
         anchors.top: parent.top
         anchors.topMargin: 300
         anchors.horizontalCenter: parent.horizontalCenter
         orientation: ListView.Vertical
-
+        clip: false
         model: m_shop
         delegate: contactsDelegate
         focus: true
@@ -36,7 +36,7 @@ Item {
                 width: 400
                 height: contactInfo.height
 
-                color: ListView.isCurrentItem ? "black" : "grey"
+                color: ListView.isCurrentItem ? "black" : "white"
                 property var bookname : namerole
                 property var bookprice : pricerole
                 property var bookbackground : backgroundrole

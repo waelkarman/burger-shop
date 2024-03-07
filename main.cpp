@@ -48,7 +48,7 @@ int main(int argv, char** args){
     m_book_d.setBackground("./media/a4.jpg");
 
     m_book_e.setIsdn("987254324");
-    m_book_e.setTitle("Il cavaliere insesistente");
+    m_book_e.setTitle("Il cavaliere inesistente");
     m_book_e.setPrice(5);
     m_book_e.setBackground("./media/a5.jpg");
 
