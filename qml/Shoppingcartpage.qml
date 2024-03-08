@@ -9,6 +9,12 @@ Item {
         anchors.fill: parent
         color: "black"
 
+        Image {
+            id: background1
+            anchors.fill: parent
+            source: "./media/background1.jpg"
+            opacity: 0.3
+        }
 
         Text {
             anchors.top: parent.top

@@ -15,7 +15,7 @@ Item{
             id: firstPage
 
             Image {
-                id: bookcover
+                id: burgercover
                 height: 270
                 width: 210
                 anchors.right: parent.right

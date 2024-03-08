@@ -11,9 +11,9 @@ Item {
         color: "black"
 
         Image {
-            id: background
+            id: background0
             anchors.fill: parent
-            source: "./media/background.jpg"
+            source: "./media/background0.jpg"
             opacity: 0.3
         }
 
@@ -35,9 +35,9 @@ Item {
             Column {
                 id: wrapper
                 opacity: PathView.isCurrentItem ? 1 : 0.6
-                property var bookname : namerole
-                property var bookprice : pricerole
-                property var bookbackground : backgroundrole
+                property var burgername : namerole
+                property var burgerprice : pricerole
+                property var burgerbackground : backgroundrole
 
                 Image {
                     anchors.horizontalCenter: nameText.horizontalCenter
@@ -47,21 +47,21 @@ Item {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-                            console.log("price of : ",bookname)
+                            console.log("price of : ",burgerprice)
                         }
                     }
                 }
 
                 Text {
                     id: nameText
-                    text: bookname
+                    text: burgername
                     font.pointSize: 8
                     color: "white"
                 }
 
                 Text {
                     id: priceText
-                    text: bookprice+" €"
+                    text: burgerprice+" €"
                     font.pointSize: 7
                     color: "white"
                 }
@@ -71,7 +71,7 @@ Item {
         PathView {
             property var model_name: m_shop
 
-            id: bookpath
+            id: burgerpath
             anchors.centerIn: parent
             anchors.fill: parent
             model: model_name
@@ -82,19 +82,19 @@ Item {
             }
 
             onCurrentIndexChanged: {
-                currentbook.text = itemAtIndex(currentIndex).bookname
-                currentprice.text = itemAtIndex(currentIndex).bookprice+" €"
-                bookcover.source = itemAtIndex(currentIndex).bookbackground
+                currentburger.text = itemAtIndex(currentIndex).burgername
+                currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
+                burgercover.source = itemAtIndex(currentIndex).burgerbackground
             }
         }
 
         Text {
-            id: currentbook
+            id: currentburger
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 50
             anchors.right: parent.right
             anchors.rightMargin: 50
-            text: ""
+            text: itemAtIndex(currentIndex).burgername
             font.family: "HelveticaS"
             font.pointSize: 24
             color: "white"
@@ -106,7 +106,7 @@ Item {
             anchors.bottomMargin: 20
             anchors.right: parent.right
             anchors.rightMargin: 50
-            text: ""
+            text: itemAtIndex(currentIndex).burgerprice+" €"
             font.family: "HelveticaS"
             font.pointSize: 16
             color: "white"
