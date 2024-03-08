@@ -55,6 +55,33 @@ Item{
                 font.pointSize: 16
                 color: "white"
             }
+
+            Rectangle{
+                id: buybutton
+                anchors.top: burgercover.bottom
+                anchors.topMargin: 20
+                anchors.horizontalCenter: burgercover.horizontalCenter
+                width: 180
+                height: 40
+                border.color: "black"
+                border.width: 5
+                radius: 15
+
+                Text {
+                    anchors.centerIn: parent
+                    text: "add to cart"
+                    font.family: "roboto"
+                    font.pointSize: 15
+                    color: "black"
+                }
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        console.log("CART BUTTON PRESSED")
+                    }
+                }
+            }
         }
 
         Shoppingcartpage {
