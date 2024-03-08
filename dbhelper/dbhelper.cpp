@@ -63,7 +63,7 @@ void Dbhelper::createDatabase(QueryResult& vp){
     execute_query(ss,default_callback,&vp);
 }
 
-void Dbhelper::insertBook(Book b, QueryResult& vp){
+void Dbhelper::insertBurger(Burger b, QueryResult& vp){
     stringstream ss;
 
     ss << "SELECT count(*) FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
@@ -80,13 +80,13 @@ void Dbhelper::insertBook(Book b, QueryResult& vp){
     execute_query(ss,default_callback,&vp);
 }
 
-void Dbhelper::countAllBooks(QueryResult& vp){
+void Dbhelper::countAllBurgers(QueryResult& vp){
     stringstream ss;
     ss << "SELECT COUNT(*) FROM SHOP;";
     execute_query(ss,default_callback,&vp);
 }
 
-void Dbhelper::removeBook(Book b, QueryResult& vp){
+void Dbhelper::removeBurger(Burger b, QueryResult& vp){
     stringstream ss;
     ss << "SELECT NCOPY FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
     execute_query(ss,default_callback,&vp);
@@ -99,7 +99,7 @@ void Dbhelper::removeBook(Book b, QueryResult& vp){
     execute_query(ss,default_callback,&vp);
 }
 
-void Dbhelper::fetchByIsdn(Book b, QueryResult& vp) {
+void Dbhelper::fetchByIsdn(Burger b, QueryResult& vp) {
     stringstream ss;
     ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";
     execute_query(ss,default_callback,&vp);
@@ -111,7 +111,7 @@ void Dbhelper::fetchById(int n, QueryResult& vp) {
     execute_query(ss,default_callback,&vp);
 }
 
-void Dbhelper::fetchAllBooks(QueryResult& vp){
+void Dbhelper::fetchAllBurgers(QueryResult& vp){
     stringstream ss;
     ss << "SELECT * FROM SHOP;";
     execute_query(ss,default_callback,&vp);

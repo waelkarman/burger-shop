@@ -1,5 +1,5 @@
 
-#include "book.hpp"
+#include "burger.hpp"
 #include "shop.hpp"
 #include "dbhelper.hpp"
 
@@ -16,15 +16,15 @@ using namespace std;
 int main(int argv, char** args){
 
     // Test Book class
-    Book m_burger_a;
-    Book m_burger_b;
-    Book m_burger_c;
-    Book m_burger_d;
-    Book m_burger_e;
-    Book m_burger_f;
-    Book m_burger_g;
-    Book m_burger_h;
-    Book m_burger_i;
+    Burger m_burger_a;
+    Burger m_burger_b;
+    Burger m_burger_c;
+    Burger m_burger_d;
+    Burger m_burger_e;
+    Burger m_burger_f;
+    Burger m_burger_g;
+    Burger m_burger_h;
+    Burger m_burger_i;
 
 
     m_burger_a.setIsdn("987255324");
@@ -74,28 +74,28 @@ int main(int argv, char** args){
 
 
     Shop m_shop;
-    m_shop.insertBook(m_burger_a);
-    m_shop.insertBook(m_burger_a);
-    m_shop.insertBook(m_burger_a);
-    m_shop.fetchAllBooks();
+    m_shop.insertBurger(m_burger_a);
+    m_shop.insertBurger(m_burger_a);
+    m_shop.insertBurger(m_burger_a);
+    m_shop.fetchAllBurgers();
     cout << "---------------" << endl;
-    m_shop.removeBook(m_burger_a);
-    m_shop.removeBook(m_burger_a);
-    m_shop.fetchAllBooks();
-    m_shop.insertBook(m_burger_a);
-    m_shop.insertBook(m_burger_b);
-    m_shop.insertBook(m_burger_c);
-    m_shop.insertBook(m_burger_d);
-    m_shop.insertBook(m_burger_e);
-    m_shop.insertBook(m_burger_e);
-    m_shop.insertBook(m_burger_e);
-    m_shop.insertBook(m_burger_f);
-    m_shop.insertBook(m_burger_g);
-    m_shop.insertBook(m_burger_h);
-    m_shop.insertBook(m_burger_i);
+    m_shop.removeBurger(m_burger_a);
+    m_shop.removeBurger(m_burger_a);
+    m_shop.fetchAllBurgers();
+    m_shop.insertBurger(m_burger_a);
+    m_shop.insertBurger(m_burger_b);
+    m_shop.insertBurger(m_burger_c);
+    m_shop.insertBurger(m_burger_d);
+    m_shop.insertBurger(m_burger_e);
+    m_shop.insertBurger(m_burger_e);
+    m_shop.insertBurger(m_burger_e);
+    m_shop.insertBurger(m_burger_f);
+    m_shop.insertBurger(m_burger_g);
+    m_shop.insertBurger(m_burger_h);
+    m_shop.insertBurger(m_burger_i);
 
-    m_shop.fetchAllBooks();
-    m_shop.countAllBooks();
+    m_shop.fetchAllBurgers();
+    m_shop.countAllBurgers();
     m_shop.fetchById(2);
 
 
@@ -105,7 +105,7 @@ int main(int argv, char** args){
 
 
 
-    QCoreApplication::setApplicationName("Book Shop");
+    QCoreApplication::setApplicationName("Burger Shop");
 
     QGuiApplication app(argv, args);
 

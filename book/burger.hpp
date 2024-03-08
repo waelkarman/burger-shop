@@ -3,11 +3,11 @@
 
 using namespace std;
 
-class Book { 
+class Burger {
 
 public:
-    Book();
-    Book(string isdn,string title,float price);
+    Burger();
+    Burger(string isdn,string title,float price);
     string getIsdn();
     string getTitle();
     float getPrice();

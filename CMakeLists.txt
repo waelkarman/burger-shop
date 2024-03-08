@@ -20,7 +20,7 @@ set(HEADERS)
 qt_add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
 add_subdirectory(sqlite)
-add_subdirectory(book)
+add_subdirectory(burger)
 add_subdirectory(dbhelper)
 add_subdirectory(shop)
 
@@ -29,7 +29,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 
 target_link_libraries(${PROJECT_NAME} PUBLIC
-    book
+    burger
     sqlite3
     dbhelper
     shop

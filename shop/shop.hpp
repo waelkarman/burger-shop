@@ -1,5 +1,5 @@
 #pragma once
-#include "book.hpp"
+#include "burger.hpp"
 #include "dbhelper.hpp"
 
 #include <QAbstractListModel>
@@ -16,12 +16,12 @@ class Shop: public QAbstractListModel {
 public:
     Shop(QObject *parent = nullptr);
     QueryResult dropShop();
-    QueryResult insertBook(const Book& b);
-    QueryResult removeBook(const Book& b);
-    QueryResult fetchAllBooks();
-    QueryResult fetchByIsdn(const Book& b);
+    QueryResult insertBurger(const Burger& b);
+    QueryResult removeBurger(const Burger& b);
+    QueryResult fetchAllBurgers();
+    QueryResult fetchByIsdn(const Burger& b);
     QueryResult fetchById(const int& n);
-    QueryResult countAllBooks();
+    QueryResult countAllBurgers();
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;

@@ -20,31 +20,31 @@ QueryResult Shop::dropShop(){
     return result;
 }
 
-QueryResult Shop::insertBook(const Book& b){
+QueryResult Shop::insertBurger(const Burger& b){
     QueryResult result;
-    db.insertBook(b,result);
+    db.insertBurger(b,result);
     return result;
 }
 
-QueryResult Shop::countAllBooks(){
+QueryResult Shop::countAllBurgers(){
     QueryResult result;
-    db.countAllBooks(result);
+    db.countAllBurgers(result);
     return result;
 }
 
-QueryResult Shop::removeBook(const Book& b){
+QueryResult Shop::removeBurger(const Burger& b){
     QueryResult result;
-    db.removeBook(b,result);
+    db.removeBurger(b,result);
     return result;
 }
 
-QueryResult Shop::fetchAllBooks(){
+QueryResult Shop::fetchAllBurgers(){
     QueryResult result;
-    db.fetchAllBooks(result);
+    db.fetchAllBurgers(result);
     return result;
 }
 
-QueryResult Shop::fetchByIsdn(const Book& b) {
+QueryResult Shop::fetchByIsdn(const Burger& b) {
     QueryResult result;
     db.fetchByIsdn(b,result);
     return result;
@@ -67,7 +67,7 @@ QModelIndex Shop::parent(const QModelIndex &child) const {
 
 int Shop::rowCount(const QModelIndex &parent) const {
     //FIXME
-    QueryResult result = const_cast<Shop*>(this)->countAllBooks();
+    QueryResult result = const_cast<Shop*>(this)->countAllBurgers();
     return stoi(result.records[0].columns[0]);
 }
 

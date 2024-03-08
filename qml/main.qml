@@ -11,7 +11,7 @@ Item{
         currentIndex: 0
         anchors.fill: parent
 
-        Bookslistpage{
+        Burgerslistpage{
             id: firstPage
 
             Image {
