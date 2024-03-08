@@ -1,4 +1,4 @@
-## Book Shop App [in development]
+## Burger Shop App [in development]
 
 The aim of this project is to practice programming.
 
