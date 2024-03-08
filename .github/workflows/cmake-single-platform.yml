@@ -20,17 +20,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install Qt
+ - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
+        aqtversion: '==3.1.*'
         version: '6.2.2'
         host: 'linux'
         target: 'desktop'
-        dir: '${{ github.workspace }}/build/'
-        install-deps: 'true'
-        setup-python: 'true'
-        tools: 'tools_ifw tools_qtcreator,qt.tools.qtcreator'
-        set-env: 'true'
+        arch: 'gcc_64'
+        modules: 'qt3d qtcharts qtconnectivity qtdatavis3d qtimageformats qtlottie qtmultimedia qtnetworkauth qtpositioning qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtvirtualkeyboard qtwebchannel qtwebengine qtwebsockets qtwebview debug_info qt5compat qtquick3d qtquicktimeline qtshadertools qtwaylandcompositor'
             
     - uses: actions/checkout@v3
 
