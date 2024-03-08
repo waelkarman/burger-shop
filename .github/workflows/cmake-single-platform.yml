@@ -28,6 +28,9 @@ jobs:
         target: 'desktop'
         dir: '${{ github.workspace }}/build/'
         install-deps: 'true'
+        setup-python: 'true'
+        tools: 'tools_ifw tools_qtcreator,qt.tools.qtcreator'
+        set-env: 'true'
             
     - uses: actions/checkout@v3
 
