@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+import QtQml
 
 Item {
     width: 800
@@ -16,7 +17,6 @@ Item {
             source: "./media/background0.jpg"
             opacity: 0.3
         }
-
 
         Text {
             anchors.top: parent.top
@@ -69,16 +69,20 @@ Item {
         }
 
         PathView {
-            property var model_name: m_shop
-
             id: burgerpath
             anchors.centerIn: parent
             anchors.fill: parent
-            model: model_name
+            model: m_shop
             delegate: delegate
             path: Path {
                 startX: root.width/9; startY: root.height-root.height/3
                 PathQuad { x: root.width+root.width/10; y: root.height/10; controlX: root.width/5; controlY: root.height/6 }
+            }
+
+            Component.onCompleted: {
+                currentburger.text = itemAtIndex(currentIndex).burgername
+                currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
+                burgercover.source = itemAtIndex(currentIndex).burgerbackground
             }
 
             onCurrentIndexChanged: {
@@ -86,30 +90,6 @@ Item {
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
             }
-        }
-
-        Text {
-            id: currentburger
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 50
-            anchors.right: parent.right
-            anchors.rightMargin: 50
-            text: itemAtIndex(currentIndex).burgername
-            font.family: "HelveticaS"
-            font.pointSize: 24
-            color: "white"
-        }
-
-        Text {
-            id: currentprice
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
-            anchors.right: parent.right
-            anchors.rightMargin: 50
-            text: itemAtIndex(currentIndex).burgerprice+" €"
-            font.family: "HelveticaS"
-            font.pointSize: 16
-            color: "white"
         }
     }
 }

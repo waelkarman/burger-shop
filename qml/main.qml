@@ -22,7 +22,6 @@ Item{
                 anchors.rightMargin: 90
                 anchors.top: parent.top
                 anchors.topMargin: 195
-                source: ""
                 asynchronous: true
                 smooth: true
                 opacity: 1
@@ -33,6 +32,28 @@ Item{
                         view.currentIndex = view.currentIndex+1
                     }
                 }
+            }
+
+            Text {
+                id: currentburger
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 260
+                anchors.right: burgercover.left
+                anchors.rightMargin: 20
+                font.family: "HelveticaS"
+                font.pointSize: 24
+                color: "white"
+            }
+
+            Text {
+                id: currentprice
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 240
+                anchors.right: burgercover.left
+                anchors.rightMargin: 20
+                font.family: "HelveticaS"
+                font.pointSize: 16
+                color: "white"
             }
         }
 
