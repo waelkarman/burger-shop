@@ -7,7 +7,7 @@ class Burger {
 
 public:
     Burger();
-    Burger(string isdn,string title,float price);
+    Burger(string isdn,string title,float price,string background);
     string getIsdn();
     string getTitle();
     float getPrice();

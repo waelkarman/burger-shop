@@ -5,6 +5,7 @@
 #include <QList>
 #include <QVariant>
 #include <QObject>
+#include "burger.hpp"
 
 using namespace std;
 
@@ -14,8 +15,9 @@ class Cart: public QAbstractListModel {
 
 public:
     Cart();
-    int add(int n);
-    int remove(int n);
+    void add(Burger n);
+    void remove(Burger n);
+    int getSum();
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;
@@ -24,7 +26,7 @@ public:
     QVariant data(const QModelIndex &index, int role = 100) const override;
     QHash<int, QByteArray> roleNames() const override;
     
-private: 
-    int sum=0;
+private:
+    int sum;
     vector<int> cartlist;  
 };

@@ -6,7 +6,7 @@ using namespace std;
 
 Burger::Burger(){}
 
-Burger::Burger(string isdn, string title, float price):isdn(isdn),title(title),price(price){
+Burger::Burger(string isdn, string title, float price,string background):isdn(isdn),title(title),price(price),background(background){
 }
 
 string Burger::getIsdn()

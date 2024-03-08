@@ -4,7 +4,39 @@
 
 using namespace std;
 
-Cart::Cart() {}
+Cart::Cart():sum(0){}
+
+void Cart::add(Burger n){
+
+}
+
+void Cart::remove(Burger n){
+
+}
+
+int Cart::getSum(){
+    return sum;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 QModelIndex Cart::index(int row, int column, const QModelIndex &parent) const {
