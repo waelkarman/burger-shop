@@ -15,8 +15,8 @@ class Cart: public QAbstractListModel {
 
 public:
     Cart();
-    void add(Burger n);
-    void remove(Burger n);
+    void add(Burger b);
+    void remove(Burger b, int index);
     int getSum();
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
@@ -28,5 +28,5 @@ public:
     
 private:
     int sum;
-    vector<int> cartlist;  
+    vector<Burger> cartlist;
 };

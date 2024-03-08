@@ -25,6 +25,8 @@ int main(int argv, char** args){
     Burger m_burger_g("123","Central Park",11,"./media/a7.jpg");
     Burger m_burger_h("421","Santana Burger",12,"./media/a8.jpg");
     Burger m_burger_i("321","Beyonce Burger",14,"./media/a9.jpg");
+    Burger m_burger_l("784","Algo Burger",12,"./media/a10.jpg");
+    Burger m_burger_m("946","Safari Burger",11,"./media/a11.jpg");
 
 
     Shop m_shop;
@@ -47,6 +49,8 @@ int main(int argv, char** args){
     m_shop.insertBurger(m_burger_g);
     m_shop.insertBurger(m_burger_h);
     m_shop.insertBurger(m_burger_i);
+    m_shop.insertBurger(m_burger_l);
+    m_shop.insertBurger(m_burger_m);
 
     m_shop.fetchAllBurgers();
     m_shop.countAllBurgers();
