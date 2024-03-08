@@ -1,6 +1,5 @@
 #include "shop.hpp"
 #include "dbhelper.hpp"
-#include "qurl.h"
 #include <string>
 #include <QString>
 

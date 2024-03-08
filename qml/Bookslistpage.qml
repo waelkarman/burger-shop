@@ -8,31 +8,25 @@ Item {
     Rectangle {
         id: root
         anchors.fill: parent
-        color: "white"
+        color: "black"
 
         Image {
             id: background
-            height: 270
-            width: 210
-            anchors.right: parent.right
-            anchors.rightMargin: 90
-            anchors.top: parent.top
-            anchors.topMargin: 195
-            source: ""
-            asynchronous: true
-            smooth: true
-            opacity: 1
+            anchors.fill: parent
+            source: "./media/background.jpg"
+            opacity: 0.3
         }
+
 
         Text {
             anchors.top: parent.top
             anchors.topMargin: 50
             anchors.left: parent.left
             anchors.leftMargin: 50
-            text: "Book Shop"
+            text: "Burger Shop"
             font.family: "HelveticaS"
             font.pointSize: 24
-            color: "black"
+            color: "white"
         }
 
         Component {
@@ -47,8 +41,8 @@ Item {
 
                 Image {
                     anchors.horizontalCenter: nameText.horizontalCenter
-                    width: 64; height: 64
-                    source: "./media/book.png"
+                    width: 55; height: 55
+                    source: "./media/burger.png"
 
                     MouseArea{
                         anchors.fill: parent
@@ -61,13 +55,15 @@ Item {
                 Text {
                     id: nameText
                     text: bookname
-                    font.pointSize: 10
+                    font.pointSize: 8
+                    color: "white"
                 }
 
                 Text {
                     id: priceText
                     text: bookprice+" €"
-                    font.pointSize: 8
+                    font.pointSize: 7
+                    color: "white"
                 }
             }
         }
@@ -87,10 +83,10 @@ Item {
 
             onCurrentIndexChanged: {
                 currentbook.text = itemAtIndex(currentIndex).bookname
-                background.source = itemAtIndex(currentIndex).bookbackground
+                currentprice.text = itemAtIndex(currentIndex).bookprice+" €"
+                bookcover.source = itemAtIndex(currentIndex).bookbackground
             }
         }
-
 
         Text {
             id: currentbook
@@ -101,7 +97,19 @@ Item {
             text: ""
             font.family: "HelveticaS"
             font.pointSize: 24
-            color: "black"
+            color: "white"
+        }
+
+        Text {
+            id: currentprice
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 50
+            text: ""
+            font.family: "HelveticaS"
+            font.pointSize: 16
+            color: "white"
         }
     }
 }
