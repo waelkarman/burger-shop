@@ -28,7 +28,6 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'gcc_64'
-        modules: 'qt3d qtcharts qtconnectivity qtdatavis3d qtimageformats qtlottie qtmultimedia qtnetworkauth qtpositioning qtremoteobjects qtscxml qtsensors qtserialbus qtserialport qtvirtualkeyboard qtwebchannel qtwebengine qtwebsockets qtwebview debug_info qt5compat qtquick3d qtquicktimeline qtshadertools qtwaylandcompositor'
             
     - uses: actions/checkout@v3
 
