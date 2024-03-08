@@ -119,7 +119,7 @@ int main(int argv, char** args){
     if (view.status() == QQuickView::Error)
         return -1;
 
-    //view.setResizeMode(QQuickView::SizeRootObjectToView);
+    view.setResizeMode(QQuickView::SizeRootObjectToView);
     view.show();
 
     return app.exec();
