@@ -1,4 +1,2 @@
-#include "dberror.h"
+#include "dberror.hpp"
 
-dberror::dberror(string e) 
-{}
