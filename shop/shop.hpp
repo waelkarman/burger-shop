@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// FIXME: make it as singleton
 class Shop: public QAbstractListModel {
 
     Q_OBJECT

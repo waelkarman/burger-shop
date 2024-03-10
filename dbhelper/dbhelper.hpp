@@ -1,5 +1,4 @@
 #pragma once
-#include "burger.hpp"
 #include <sstream>
 #include <vector>
 #include "sqlite3.h"
