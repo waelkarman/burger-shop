@@ -1,6 +1,6 @@
 ## Burger Shop App [in development]
 
-The aim of this project is to practice programming.
+Just for fun !
 
 <img src="doc/screen.gif">
 
