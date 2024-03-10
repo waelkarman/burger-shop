@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -8,10 +8,10 @@ class Burger {
 public:
     Burger();
     Burger(string isdn,string title,float price,string background);
-    string getIsdn();
-    string getTitle();
-    float getPrice();
-    string getBackground();
+    string getIsdn() const;
+    string getTitle() const;
+    float getPrice() const;
+    string getBackground() const;
     void setIsdn(const string& isdn);
     void setTitle(const string& title);
     void setBackground(const string& background);

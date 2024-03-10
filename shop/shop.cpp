@@ -27,7 +27,7 @@ QueryResult Shop::dropShop(){
     return result;
 }
 
-QueryResult Shop::insertBurger(Burger b){
+QueryResult Shop::insertBurger(const Burger& b){
     QueryResult result;
     stringstream ss;
 
@@ -54,7 +54,7 @@ QueryResult Shop::countAllBurgers(){
     return result;
 }
 
-QueryResult Shop::removeBurger(Burger b){
+QueryResult Shop::removeBurger(const Burger& b){
     stringstream ss;
     QueryResult result;
     ss << "SELECT NCOPY FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
@@ -77,7 +77,7 @@ QueryResult Shop::fetchAllBurgers(){
     return result;
 }
 
-QueryResult Shop::fetchByIsdn(Burger b) {
+QueryResult Shop::fetchByIsdn(const Burger& b) {
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";

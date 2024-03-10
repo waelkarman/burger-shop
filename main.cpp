@@ -1,4 +1,4 @@
-
+#include <iostream>
 #include "burger.hpp"
 #include "shop.hpp"
 #include "dbhelper.hpp"
@@ -9,6 +9,7 @@
 #include <QQuickView>
 #include <QDebug>
 #include <QQmlContext>
+
 
 
 using namespace std;

@@ -16,10 +16,10 @@ class Shop: public QAbstractListModel {
 public:
     Shop(QObject *parent = nullptr);
     QueryResult dropShop();
-    QueryResult insertBurger(Burger b);
-    QueryResult removeBurger(Burger b);
+    QueryResult insertBurger(const Burger& b);
+    QueryResult removeBurger(const Burger& b);
     QueryResult fetchAllBurgers();
-    QueryResult fetchByIsdn(Burger b);
+    QueryResult fetchByIsdn(const Burger& b);
     QueryResult fetchById(const int& n);
     QueryResult countAllBurgers();
 

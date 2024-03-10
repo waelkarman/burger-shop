@@ -9,22 +9,22 @@ Burger::Burger(){}
 Burger::Burger(string isdn, string title, float price,string background):isdn(isdn),title(title),price(price),background(background){
 }
 
-string Burger::getIsdn()
+string Burger::getIsdn() const
 {
     return isdn;
 }
 
-string Burger::getTitle()
+string Burger::getTitle() const
 {
     return title;
 }
 
-string Burger::getBackground()
+string Burger::getBackground() const
 {
     return background;
 }
 
-float Burger::getPrice()
+float Burger::getPrice() const
 {
     return price;
 }
