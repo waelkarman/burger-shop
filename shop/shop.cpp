@@ -1,4 +1,5 @@
 #include "shop.hpp"
+#include "dberrors.hpp"
 #include "dbhelper.hpp"
 #include <string>
 #include <QString>
@@ -18,7 +19,16 @@ Shop::Shop(QObject* parent):QAbstractListModel(parent)
        << "PRICE          INT         NOT NULL,"
        << "BACKGROUND     CHAR(10)    NOT NULL,"
        << "NCOPY          INT         CHECK(NCOPY > 0));";
-    db.execute_query(ss,&result);
+
+    try{
+        db.execute_query(ss,&result);
+    }catch(dberrors e){
+        e.what();
+    }catch(exception e){
+        e.what();
+    }catch(...){
+        cout << "DataBase unknown error.";
+    }
 }
 
 QueryResult Shop::dropShop()

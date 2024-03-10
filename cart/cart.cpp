@@ -32,18 +32,6 @@ int Cart::getSum() const
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 QModelIndex Cart::index(int row, int column, const QModelIndex &parent) const {
     return createIndex(row, column);
 }
