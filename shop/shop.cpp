@@ -12,8 +12,9 @@ Shop::Shop(QObject* parent):QAbstractListModel(parent)
 
     ss << "CREATE TABLE SHOP("
        << "ID             INTEGER     PRIMARY KEY AUTOINCREMENT,"
-       << "ISDN           CHAR(10)    NOT NULL,"
+       << "TYPE           CHAR(10)    NOT NULL,"
        << "NAME           TEXT        NOT NULL,"
+       << "DESCRIPTION    CHAR(50)    NOT NULL,"
        << "PRICE          INT         NOT NULL,"
        << "BACKGROUND     CHAR(10)    NOT NULL,"
        << "NCOPY          INT         CHECK(NCOPY > 0));";
@@ -34,16 +35,16 @@ QueryResult Shop::insertBurger(const Burger& b)
     QueryResult result;
     stringstream ss;
 
-    ss << "SELECT count(*) FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
+    ss << "SELECT count(*) FROM SHOP WHERE NAME = '"<< b.getTitle() <<"';";
     db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 0)
     {
-        ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE ISDN = '"<< b.getIsdn() <<"';";
+        ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE NAME = '"<< b.getTitle() <<"';";
     }else
     {
-        ss << "INSERT INTO SHOP (ISDN,NAME,BACKGROUND,NCOPY,PRICE) VALUES ('"
-           << b.getIsdn() <<"', '"<< b.getBackground() <<"', '"<< b.getTitle() <<"', 1,"
+        ss << "INSERT INTO SHOP (TYPE,NAME,BACKGROUND,DESCRIPTION,NCOPY,PRICE) VALUES ('"
+           << b.getType() <<"', '"<< b.getTitle()<<"', '"<< b.getBackground() <<"', '"<< b.getDescription() <<"', 1,"
            << b.getPrice() <<");";
     }
 
@@ -64,15 +65,15 @@ QueryResult Shop::removeBurger(const Burger& b)
 {
     stringstream ss;
     QueryResult result;
-    ss << "SELECT NCOPY FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
+    ss << "SELECT NCOPY FROM SHOP WHERE NAME = '"<< b.getTitle() <<"';";
     db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 1)
     {
-        ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE ISDN = '"<< b.getIsdn() <<"';";
+        ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE NAME = '"<< b.getTitle() <<"';";
     }else
     {
-        ss << "DELETE FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
+        ss << "DELETE FROM SHOP WHERE NAME = '"<< b.getTitle() <<"';";
     }
     db.execute_query(ss,&result);
     return result;
@@ -87,11 +88,11 @@ QueryResult Shop::fetchAllBurgers()
     return result;
 }
 
-QueryResult Shop::fetchByIsdn(const Burger& b)
+QueryResult Shop::fetchByType(const Burger& b)
 {
     stringstream ss;
     QueryResult result;
-    ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";
+    ss << "SELECT NAME FROM SHOP WHERE TYPE = " << b.getType() << ";";
     db.execute_query(ss,&result);
     return result;
 }
@@ -146,11 +147,11 @@ QVariant Shop::data(const QModelIndex &index, int role) const
     switch (role) 
     {
     case namerole:
-        return QString(result.records[0].columns[2].c_str());
+        return QString(result.records[0].columns[0].c_str());
     case pricerole:
         return QString(result.records[0].columns[1].c_str());
     case backgroundrole:
-        return QString(result.records[0].columns[0].c_str());
+        return QString(result.records[0].columns[2].c_str());
     default:
         return QVariant();
     }

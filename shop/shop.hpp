@@ -21,7 +21,7 @@ public:
     QueryResult insertBurger(const Burger& b);
     QueryResult removeBurger(const Burger& b);
     QueryResult fetchAllBurgers();
-    QueryResult fetchByIsdn(const Burger& b);
+    QueryResult fetchByType(const Burger& b);
     QueryResult fetchById(const int& n);
     QueryResult countAllBurgers();
 

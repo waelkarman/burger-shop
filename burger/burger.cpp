@@ -6,12 +6,12 @@ using namespace std;
 
 Burger::Burger(){}
 
-Burger::Burger(string isdn, string title, float price,string background):isdn(isdn),title(title),price(price),background(background){
+Burger::Burger(string type, string title, float price, string background, string description):type(type),title(title),price(price),background(background),description(description){
 }
 
-string Burger::getIsdn() const
+string Burger::getType() const
 {
-    return isdn;
+    return type;
 }
 
 string Burger::getTitle() const
@@ -24,14 +24,19 @@ string Burger::getBackground() const
     return background;
 }
 
+string Burger::getDescription() const
+{
+    return description;
+}
+
 float Burger::getPrice() const
 {
     return price;
 }
 
-void Burger::setIsdn(const string& isdn)
+void Burger::setType(const string& type)
 {
-    this->isdn = isdn;
+    this->type = type;
 }
 
 void Burger::setTitle(const string& title)

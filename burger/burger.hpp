@@ -7,20 +7,22 @@ class Burger {
 
 public:
     Burger();
-    Burger(string isdn,string title,float price,string background);
-    string getIsdn() const;
+    Burger(string type, string title, float price, string background, string description);
+    string getType() const;
     string getTitle() const;
     float getPrice() const;
+    string getDescription() const;
     string getBackground() const;
-    void setIsdn(const string& isdn);
+    void setType(const string& type);
     void setTitle(const string& title);
     void setBackground(const string& background);
     void setPrice(const float& price);
 
 private: 
-    string isdn;
+    string type;
     string title;
     string background;
+    string description;
     float price;
 
 };
