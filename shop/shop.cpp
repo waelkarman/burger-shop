@@ -5,54 +5,91 @@
 
 Shop::Shop(QObject* parent):QAbstractListModel(parent) {
     QueryResult result;
+    stringstream ss;
+
     dropShop();
 
-    try {
-        db.createDatabase(result);
-    } catch (exception& e) {
-        cout << e.what() << endl;
-    }
+    ss << "CREATE TABLE SHOP("
+       << "ID             INTEGER     PRIMARY KEY AUTOINCREMENT,"
+       << "ISDN           CHAR(10)    NOT NULL,"
+       << "NAME           TEXT        NOT NULL,"
+       << "PRICE          INT         NOT NULL,"
+       << "BACKGROUND     CHAR(10)    NOT NULL,"
+       << "NCOPY          INT         CHECK(NCOPY > 0));";
+    db.execute_query(ss,default_callback,&result);
 }
 
 QueryResult Shop::dropShop(){
+    stringstream ss;
     QueryResult result;
-    db.dropTable(result);
+    ss << "DROP TABLE IF EXISTS SHOP;";
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
-QueryResult Shop::insertBurger(const Burger& b){
+QueryResult Shop::insertBurger(Burger b){
     QueryResult result;
-    db.insertBurger(b,result);
+    stringstream ss;
+
+    ss << "SELECT count(*) FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
+    db.execute_query(ss,default_callback,&result);
+
+    if ( stoi(result.records[0].columns[0]) > 0){
+        ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE ISDN = '"<< b.getIsdn() <<"';";
+    }else{
+        ss << "INSERT INTO SHOP (ISDN,NAME,BACKGROUND,NCOPY,PRICE) VALUES ('"
+           << b.getIsdn() <<"', '"<< b.getBackground() <<"', '"<< b.getTitle() <<"', 1,"
+           << b.getPrice() <<");";
+    }
+
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
 QueryResult Shop::countAllBurgers(){
+    stringstream ss;
     QueryResult result;
-    db.countAllBurgers(result);
+    ss << "SELECT COUNT(*) FROM SHOP;";
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
-QueryResult Shop::removeBurger(const Burger& b){
+QueryResult Shop::removeBurger(Burger b){
+    stringstream ss;
     QueryResult result;
-    db.removeBurger(b,result);
+    ss << "SELECT NCOPY FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
+    db.execute_query(ss,default_callback,&result);
+
+    if ( stoi(result.records[0].columns[0]) > 1){
+        ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE ISDN = '"<< b.getIsdn() <<"';";
+    }else{
+        ss << "DELETE FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
+    }
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
 QueryResult Shop::fetchAllBurgers(){
+    stringstream ss;
     QueryResult result;
-    db.fetchAllBurgers(result);
+    ss << "SELECT * FROM SHOP;";
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
-QueryResult Shop::fetchByIsdn(const Burger& b) {
+QueryResult Shop::fetchByIsdn(Burger b) {
+    stringstream ss;
     QueryResult result;
-    db.fetchByIsdn(b,result);
+    ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
 QueryResult Shop::fetchById(const int& n) {
+    stringstream ss;
     QueryResult result;
-    db.fetchById(n,result);
+    ss << "SELECT NAME, PRICE, BACKGROUND FROM SHOP WHERE ID = " << n << ";";
+    db.execute_query(ss,default_callback,&result);
     return result;
 }
 
