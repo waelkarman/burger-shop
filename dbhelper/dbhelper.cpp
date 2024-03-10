@@ -25,7 +25,7 @@ int default_callback(void *NotUsed, int argc, char **argv, char **azColName) {
     return 0;
 }
 
-void Dbhelper::execute_query(const stringstream& ss, int(*f)(void *NotUsed, int argc, char **argv, char **azColName), void* vp){
+void Dbhelper::execute_query(const stringstream& ss, void* vp, int(*f)(void *NotUsed, int argc, char **argv, char **azColName)){
     char *zErrMsg = 0;
     char *sql;
 

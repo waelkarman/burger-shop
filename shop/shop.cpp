@@ -16,14 +16,14 @@ Shop::Shop(QObject* parent):QAbstractListModel(parent) {
        << "PRICE          INT         NOT NULL,"
        << "BACKGROUND     CHAR(10)    NOT NULL,"
        << "NCOPY          INT         CHECK(NCOPY > 0));";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
 }
 
 QueryResult Shop::dropShop(){
     stringstream ss;
     QueryResult result;
     ss << "DROP TABLE IF EXISTS SHOP;";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 
@@ -32,7 +32,7 @@ QueryResult Shop::insertBurger(Burger b){
     stringstream ss;
 
     ss << "SELECT count(*) FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 0){
         ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE ISDN = '"<< b.getIsdn() <<"';";
@@ -42,7 +42,7 @@ QueryResult Shop::insertBurger(Burger b){
            << b.getPrice() <<");";
     }
 
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 
@@ -50,7 +50,7 @@ QueryResult Shop::countAllBurgers(){
     stringstream ss;
     QueryResult result;
     ss << "SELECT COUNT(*) FROM SHOP;";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 
@@ -58,14 +58,14 @@ QueryResult Shop::removeBurger(Burger b){
     stringstream ss;
     QueryResult result;
     ss << "SELECT NCOPY FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 1){
         ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE ISDN = '"<< b.getIsdn() <<"';";
     }else{
         ss << "DELETE FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
     }
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 
@@ -73,7 +73,7 @@ QueryResult Shop::fetchAllBurgers(){
     stringstream ss;
     QueryResult result;
     ss << "SELECT * FROM SHOP;";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 
@@ -81,7 +81,7 @@ QueryResult Shop::fetchByIsdn(Burger b) {
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 
@@ -89,7 +89,7 @@ QueryResult Shop::fetchById(const int& n) {
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME, PRICE, BACKGROUND FROM SHOP WHERE ID = " << n << ";";
-    db.execute_query(ss,default_callback,&result);
+    db.execute_query(ss,&result);
     return result;
 }
 

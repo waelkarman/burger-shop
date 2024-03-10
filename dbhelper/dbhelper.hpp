@@ -23,7 +23,7 @@ class Dbhelper {
 
 public:
     Dbhelper();
-    void execute_query(const stringstream& ss, int (*f)(void *, int, char **, char **) = default_callback, void* vp = nullptr);
+    void execute_query(const stringstream& ss, void* vp = nullptr, int (*f)(void *, int, char **, char **) = default_callback);
 
     ~Dbhelper();
 };
