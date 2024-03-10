@@ -17,17 +17,17 @@ using namespace std;
 int main(int argv, char** args){
 
     // Test Book class
-    Burger m_burger_a("Burger","Hot Dog",23,"./media/a1.jpg", "");
-    Burger m_burger_b("Burger","Chicken Burger",12,"./media/a2.jpg", "");
-    Burger m_burger_c("Burger","Cheeseburger",18,"./media/a3.jpg", "");
-    Burger m_burger_d("Burger","Chicken Little",16,"./media/a4.jpg", "");
+    Burger m_burger_a("Burger","Hot Dog",23,"./media/a1.jpg", "descrizione");
+    Burger m_burger_b("Burger","Chicken Burger",12,"./media/a2.jpg", "descrizione");
+    Burger m_burger_c("Burger","Cheeseburger",18,"./media/a3.jpg", "descrizione");
+    Burger m_burger_d("Burger","Chicken Little",16,"./media/a4.jpg", "descrizione");
     Burger m_burger_e("Burger","Vegan Burger",8,"./media/a5.jpg", "");
-    Burger m_burger_f("Burger","Quentin Tarallino",10,"./media/a6.jpg", "");
-    Burger m_burger_g("Burger","Central Park",11,"./media/a7.jpg", "");
-    Burger m_burger_h("Burger","Santana Burger",12,"./media/a8.jpg", "");
-    Burger m_burger_i("Burger","Beyonce Burger",14,"./media/a9.jpg", "");
-    Burger m_burger_l("Burger","Algo Burger",12,"./media/a10.jpg", "");
-    Burger m_burger_m("Burger","Safari Burger",11,"./media/a11.jpg", "");
+    Burger m_burger_f("Burger","Quentin Tarallino",10,"./media/a6.jpg", "descrizione");
+    Burger m_burger_g("Burger","Central Park",11,"./media/a7.jpg", "descrizione");
+    Burger m_burger_h("Burger","Santana Burger",12,"./media/a8.jpg", "descrizione");
+    Burger m_burger_i("Burger","Beyonce Burger",14,"./media/a9.jpg", "descrizione");
+    Burger m_burger_l("Burger","Algo Burger",12,"./media/a10.jpg", "descrizione");
+    Burger m_burger_m("Burger","Safari Burger",11,"./media/a11.jpg", "descrizione");
 
 
     Shop m_shop;

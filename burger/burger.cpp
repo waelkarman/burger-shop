@@ -6,7 +6,7 @@ using namespace std;
 
 Burger::Burger(){}
 
-Burger::Burger(string type, string title, float price, string background, string description):type(type),title(title),price(price),background(background),description(description){
+Burger::Burger(string type, string name, float price, string background, string description):type(type),name(name),price(price),background(background),description(description){
 }
 
 string Burger::getType() const
@@ -14,9 +14,9 @@ string Burger::getType() const
     return type;
 }
 
-string Burger::getTitle() const
+string Burger::getName() const
 {
-    return title;
+    return name;
 }
 
 string Burger::getBackground() const
@@ -39,9 +39,9 @@ void Burger::setType(const string& type)
     this->type = type;
 }
 
-void Burger::setTitle(const string& title)
+void Burger::setName(const string& name)
 {
-    this->title = title;
+    this->name = name;
 }
 
 void Burger::setBackground(const string& background)

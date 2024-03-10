@@ -35,16 +35,16 @@ QueryResult Shop::insertBurger(const Burger& b)
     QueryResult result;
     stringstream ss;
 
-    ss << "SELECT count(*) FROM SHOP WHERE NAME = '"<< b.getTitle() <<"';";
+    ss << "SELECT count(*) FROM SHOP WHERE NAME = '"<< b.getName() <<"';";
     db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 0)
     {
-        ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE NAME = '"<< b.getTitle() <<"';";
+        ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE NAME = '"<< b.getName() <<"';";
     }else
     {
         ss << "INSERT INTO SHOP (TYPE,NAME,BACKGROUND,DESCRIPTION,NCOPY,PRICE) VALUES ('"
-           << b.getType() <<"', '"<< b.getTitle()<<"', '"<< b.getBackground() <<"', '"<< b.getDescription() <<"', 1,"
+           << b.getType() <<"', '"<< b.getName()<<"', '"<< b.getBackground() <<"', '"<< b.getDescription() <<"', 1,"
            << b.getPrice() <<");";
     }
 
@@ -65,15 +65,15 @@ QueryResult Shop::removeBurger(const Burger& b)
 {
     stringstream ss;
     QueryResult result;
-    ss << "SELECT NCOPY FROM SHOP WHERE NAME = '"<< b.getTitle() <<"';";
+    ss << "SELECT NCOPY FROM SHOP WHERE NAME = '"<< b.getName() <<"';";
     db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 1)
     {
-        ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE NAME = '"<< b.getTitle() <<"';";
+        ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE NAME = '"<< b.getName() <<"';";
     }else
     {
-        ss << "DELETE FROM SHOP WHERE NAME = '"<< b.getTitle() <<"';";
+        ss << "DELETE FROM SHOP WHERE NAME = '"<< b.getName() <<"';";
     }
     db.execute_query(ss,&result);
     return result;
