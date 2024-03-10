@@ -5,18 +5,21 @@
 
 using namespace std;
 
-struct Record {
+struct Record 
+{
     std::vector<std::string> columns;
 };
 
-struct QueryResult {
+struct QueryResult 
+{
     std::vector<Record> records;
 };
 
 int default_callback(void *NotUsed, int argc, char **argv, char **azColName);
 
 
-class Dbhelper {
+class Dbhelper 
+{
     int rc;
     sqlite3 *db;
 

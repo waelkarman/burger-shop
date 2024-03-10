@@ -17,7 +17,7 @@ public:
     Cart();
     void add(Burger b);
     void remove(Burger b, int index);
-    int getSum();
+    int getSum() const;
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;

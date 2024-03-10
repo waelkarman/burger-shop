@@ -1,5 +1,4 @@
 #include "dberror.h"
 
-dberror::dberror(string e) {
-
-}
+dberror::dberror(string e) 
+{}

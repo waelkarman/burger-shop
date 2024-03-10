@@ -3,7 +3,8 @@
 #include <string>
 #include <QString>
 
-Shop::Shop(QObject* parent):QAbstractListModel(parent) {
+Shop::Shop(QObject* parent):QAbstractListModel(parent)
+{
     QueryResult result;
     stringstream ss;
 
@@ -19,7 +20,8 @@ Shop::Shop(QObject* parent):QAbstractListModel(parent) {
     db.execute_query(ss,&result);
 }
 
-QueryResult Shop::dropShop(){
+QueryResult Shop::dropShop()
+{
     stringstream ss;
     QueryResult result;
     ss << "DROP TABLE IF EXISTS SHOP;";
@@ -27,16 +29,19 @@ QueryResult Shop::dropShop(){
     return result;
 }
 
-QueryResult Shop::insertBurger(const Burger& b){
+QueryResult Shop::insertBurger(const Burger& b)
+{
     QueryResult result;
     stringstream ss;
 
     ss << "SELECT count(*) FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
     db.execute_query(ss,&result);
 
-    if ( stoi(result.records[0].columns[0]) > 0){
+    if ( stoi(result.records[0].columns[0]) > 0)
+    {
         ss << "UPDATE SHOP SET NCOPY = NCOPY+1 WHERE ISDN = '"<< b.getIsdn() <<"';";
-    }else{
+    }else
+    {
         ss << "INSERT INTO SHOP (ISDN,NAME,BACKGROUND,NCOPY,PRICE) VALUES ('"
            << b.getIsdn() <<"', '"<< b.getBackground() <<"', '"<< b.getTitle() <<"', 1,"
            << b.getPrice() <<");";
@@ -46,7 +51,8 @@ QueryResult Shop::insertBurger(const Burger& b){
     return result;
 }
 
-QueryResult Shop::countAllBurgers(){
+QueryResult Shop::countAllBurgers()
+{
     stringstream ss;
     QueryResult result;
     ss << "SELECT COUNT(*) FROM SHOP;";
@@ -54,22 +60,26 @@ QueryResult Shop::countAllBurgers(){
     return result;
 }
 
-QueryResult Shop::removeBurger(const Burger& b){
+QueryResult Shop::removeBurger(const Burger& b)
+{
     stringstream ss;
     QueryResult result;
     ss << "SELECT NCOPY FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
     db.execute_query(ss,&result);
 
-    if ( stoi(result.records[0].columns[0]) > 1){
+    if ( stoi(result.records[0].columns[0]) > 1)
+    {
         ss << "UPDATE SHOP SET NCOPY = NCOPY-1 WHERE ISDN = '"<< b.getIsdn() <<"';";
-    }else{
+    }else
+    {
         ss << "DELETE FROM SHOP WHERE ISDN = '"<< b.getIsdn() <<"';";
     }
     db.execute_query(ss,&result);
     return result;
 }
 
-QueryResult Shop::fetchAllBurgers(){
+QueryResult Shop::fetchAllBurgers()
+{
     stringstream ss;
     QueryResult result;
     ss << "SELECT * FROM SHOP;";
@@ -77,7 +87,8 @@ QueryResult Shop::fetchAllBurgers(){
     return result;
 }
 
-QueryResult Shop::fetchByIsdn(const Burger& b) {
+QueryResult Shop::fetchByIsdn(const Burger& b)
+{
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME FROM SHOP WHERE ISDN = " << b.getIsdn() << ";";
@@ -85,7 +96,8 @@ QueryResult Shop::fetchByIsdn(const Burger& b) {
     return result;
 }
 
-QueryResult Shop::fetchById(const int& n) {
+QueryResult Shop::fetchById(const int& n)
+{
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME, PRICE, BACKGROUND FROM SHOP WHERE ID = " << n << ";";
@@ -94,38 +106,45 @@ QueryResult Shop::fetchById(const int& n) {
 }
 
 
-QModelIndex Shop::index(int row, int column, const QModelIndex &parent) const {
+QModelIndex Shop::index(int row, int column, const QModelIndex &parent) const
+{
     return createIndex(row, column);
 }
 
-QModelIndex Shop::parent(const QModelIndex &child) const {
+QModelIndex Shop::parent(const QModelIndex &child) const
+{
     return QModelIndex();
 }
 
-int Shop::rowCount(const QModelIndex &parent) const {
+int Shop::rowCount(const QModelIndex &parent) const
+{
     //FIXME
     QueryResult result = const_cast<Shop*>(this)->countAllBurgers();
     return stoi(result.records[0].columns[0]);
 }
 
-int Shop::columnCount(const QModelIndex &parent) const {
+int Shop::columnCount(const QModelIndex &parent) const
+{
     return 2;
 }
 
 
-enum ItemDataRole {
+enum ItemDataRole
+{
     namerole = 0,
     pricerole = 1,
     backgroundrole = 2
 };
 
-QVariant Shop::data(const QModelIndex &index, int role) const {
+QVariant Shop::data(const QModelIndex &index, int role) const
+{
     // Restituisci il dato per l'indice specificato e ruolo specificato
     // Ad esempio, se role è Qt::DisplayRole, restituisci il testo da visualizzare
     //FIXME
     QueryResult result = const_cast<Shop*>(this)->fetchById(index.row()+1);
 
-    switch (role) {
+    switch (role) 
+    {
     case namerole:
         return QString(result.records[0].columns[2].c_str());
     case pricerole:
@@ -150,3 +169,7 @@ QHash<int, QByteArray> Shop::roleNames() const
 
     return roles;
 }
+
+
+Shop::~Shop()
+{}

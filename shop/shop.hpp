@@ -10,7 +10,8 @@
 using namespace std;
 
 // FIXME: make it as singleton
-class Shop: public QAbstractListModel {
+class Shop: public QAbstractListModel
+{
 
     Q_OBJECT
 
@@ -31,7 +32,7 @@ public:
     QVariant data(const QModelIndex &index, int role = 100) const override;
     QHash<int, QByteArray> roleNames() const override;
 
-    ~Shop() override {};
+    ~Shop() override;
 
 private:
     Dbhelper db;

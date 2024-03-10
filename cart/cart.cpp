@@ -6,17 +6,20 @@ using namespace std;
 
 Cart::Cart():sum(0){}
 
-void Cart::add(Burger b){
+void Cart::add(Burger b)
+{
     sum += b.getPrice();
     cartlist.push_back(b);
 }
 
-void Cart::remove(Burger b, int index){
+void Cart::remove(Burger b, int index)
+{
     sum -= b.getPrice();
 
 }
 
-int Cart::getSum(){
+int Cart::getSum() const
+{
     return sum;
 }
 

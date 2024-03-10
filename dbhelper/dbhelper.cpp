@@ -9,15 +9,21 @@
 
 using namespace std;
 
-Dbhelper::Dbhelper():rc(sqlite3_open("shop-db.db", &db)){}
+Dbhelper::Dbhelper():rc(sqlite3_open("shop-db.db", &db))
+{}
 
-Dbhelper::~Dbhelper(){sqlite3_close(db);}
+Dbhelper::~Dbhelper()
+{
+    sqlite3_close(db);
+}
 
-int default_callback(void *NotUsed, int argc, char **argv, char **azColName) {
+int default_callback(void *NotUsed, int argc, char **argv, char **azColName)
+{
     QueryResult* result = reinterpret_cast<QueryResult*>(NotUsed);
     Record record;
 
-    for(int i = 0; i<argc; i++) {
+    for(int i = 0; i<argc; i++) 
+    {
         record.columns.push_back(argv[i] ? argv[i] : "NULL");
     }
 
@@ -25,11 +31,13 @@ int default_callback(void *NotUsed, int argc, char **argv, char **azColName) {
     return 0;
 }
 
-void Dbhelper::execute_query(const stringstream& ss, void* vp, int(*f)(void *NotUsed, int argc, char **argv, char **azColName)){
+void Dbhelper::execute_query(const stringstream& ss, void* vp, int(*f)(void *NotUsed, int argc, char **argv, char **azColName))
+{
     char *zErrMsg = 0;
     char *sql;
 
-    if( rc ) {
+    if( rc ) 
+    {
         throw dberrors(sqlite3_errmsg(db));
     }
 
@@ -39,7 +47,8 @@ void Dbhelper::execute_query(const stringstream& ss, void* vp, int(*f)(void *Not
     rc = sqlite3_exec(db, sql, f, vp, &zErrMsg);
     free(sql);
 
-    if( rc != SQLITE_OK ){
+    if( rc != SQLITE_OK )
+    {
         throw dberrors(string(zErrMsg));
         sqlite3_free(zErrMsg);
     }
