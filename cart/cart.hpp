@@ -1,11 +1,11 @@
 #pragma once
-#include <iostream>
-#include <vector>
 #include <QAbstractListModel>
 #include <QList>
 #include <QVariant>
 #include <QObject>
 #include "burger.hpp"
+#include "dbhelper.hpp"
+#include "dberrors.hpp"
 
 using namespace std;
 
@@ -15,9 +15,14 @@ class Cart: public QAbstractListModel {
 
 public:
     Cart();
+    QueryResult dropCart();
     void add(Burger b);
     void remove(Burger b, int index);
     int getSum() const;
+    string getNote() const;
+    QueryResult fetchCartContent();
+    QueryResult countCartContent();
+    QueryResult fetchById(const int& n);
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;
@@ -27,6 +32,6 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     
 private:
-    int sum;
-    vector<Burger> cartlist;
+    Dbhelper db;
+
 };

@@ -1,6 +1,7 @@
 #include <iostream>
 #include "burger.hpp"
 #include "shop.hpp"
+#include "cart.hpp"
 #include "dbhelper.hpp"
 
 #include <QGuiApplication>
@@ -59,9 +60,11 @@ int main(int argv, char** args){
 
 
 
-
-
-
+    Cart m_cart;
+    m_cart.add(m_burger_m);
+    m_cart.add(m_burger_l);
+    m_cart.add(m_burger_i);
+    m_cart.add(m_burger_h);
 
 
     QCoreApplication::setApplicationName("Burger Shop");
@@ -69,6 +72,7 @@ int main(int argv, char** args){
     QQuickView view;
     view.connect(view.engine(), &QQmlEngine::quit, &app, &QCoreApplication::quit);
     view.rootContext()->setContextProperty("m_shop", &m_shop);
+    view.rootContext()->setContextProperty("m_cart", &m_cart);
     view.setSource(QUrl("qrc:/qml/main.qml"));
     
     if (view.status() == QQuickView::Error)

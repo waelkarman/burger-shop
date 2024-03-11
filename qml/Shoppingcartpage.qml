@@ -36,7 +36,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             orientation: ListView.Vertical
             clip: false
-            model: m_shop
+            model: m_cart
             delegate: contactsDelegate
             focus: true
 
@@ -50,8 +50,8 @@ Item {
 
                     color: ListView.isCurrentItem ? "gray" : "white"
                     property var bookname : namerole
-                    property var bookprice : pricerole
-                    property var bookbackground : backgroundrole
+                    //property var bookprice : pricerole
+                    //property var bookbackground : backgroundrole
 
                     Text {
                         id: contactInfo
