@@ -17,6 +17,7 @@ public:
     Cart();
     QueryResult dropCart();
     void add(Burger b);
+    Q_INVOKABLE void add();
     void remove(Burger b, int index);
     int getSum() const;
     string getNote() const;

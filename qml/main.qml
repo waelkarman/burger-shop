@@ -1,5 +1,6 @@
 import QtQuick
 import QtQuick.Controls
+//import cart 1.0
 
 Item{
     width: 800
@@ -75,10 +76,16 @@ Item{
                     color: "black"
                 }
 
+                //Cart
+                //{
+                //    id:cart
+                //}
+
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
                         console.log("CART BUTTON PRESSED")
+                        m_cart.add()
                     }
                 }
             }
