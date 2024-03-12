@@ -57,23 +57,22 @@ void Cart::add(Burger b)
     db.execute_query(ss,&result);
 }
 
-void Cart::add()
+void Cart::add(QString s)
 {
-    string s="CIAO";
     QueryResult result;
     stringstream ss;
 
-    ss << "SELECT count(*) FROM CART WHERE NAME = '"<< s <<"';";
+    ss << "SELECT count(*) FROM CART WHERE NAME = '"<< s.toStdString() <<"';";
     db.execute_query(ss,&result);
 
     if ( stoi(result.records[0].columns[0]) > 0)
     {
-        ss << "UPDATE CART SET NCOPY = NCOPY+1 WHERE NAME = '"<< s <<"';";
+        ss << "UPDATE CART SET NCOPY = NCOPY+1 WHERE NAME = '"<< s.toStdString() <<"';";
         db.execute_query(ss,&result);
     }else
     {
         ss << "INSERT INTO CART (NAME,NOTE,NCOPY) VALUES ('"
-           << s <<"', '"<< "NOTE-NOTE" <<"', '"<< 1 <<"');";
+           << s.toStdString() <<"', '"<< "NOTE-NOTE" <<"', '"<< 1 <<"');";
 
         beginInsertRows( QModelIndex(), stoi(countCartContent().records[0].columns[0]), stoi(countCartContent().records[0].columns[0]) );
         db.execute_query(ss,&result);

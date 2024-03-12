@@ -84,8 +84,7 @@ Item{
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("CART BUTTON PRESSED")
-                        m_cart.add()
+                        m_cart.add(currentburger.text)
                     }
                 }
             }

@@ -61,8 +61,6 @@ int main(int argv, char** args){
 
 
     Cart m_cart;
-    m_cart.add(m_burger_m);
-    m_cart.add(m_burger_l);
 
 
 
