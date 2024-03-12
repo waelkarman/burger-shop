@@ -4,6 +4,18 @@
 #include <string>
 #include <QString>
 
+void Shop::execute(const stringstream& ss, void* vp){
+    try{
+        db.execute_query(ss,vp);
+    }catch(dberrors e){
+        e.what();
+    }catch(exception e){
+        e.what();
+    }catch(...){
+        cout << "DataBase unknown error.";
+    }
+}
+
 Shop::Shop(QObject* parent):QAbstractListModel(parent)
 {
     QueryResult result;
@@ -20,15 +32,7 @@ Shop::Shop(QObject* parent):QAbstractListModel(parent)
        << "BACKGROUND     CHAR(10)    NOT NULL,"
        << "NCOPY          INT         CHECK(NCOPY > 0));";
 
-    try{
-        db.execute_query(ss,&result);
-    }catch(dberrors e){
-        e.what();
-    }catch(exception e){
-        e.what();
-    }catch(...){
-        cout << "DataBase unknown error.";
-    }
+    execute(ss,&result);
 }
 
 QueryResult Shop::dropShop()
@@ -36,7 +40,7 @@ QueryResult Shop::dropShop()
     stringstream ss;
     QueryResult result;
     ss << "DROP TABLE IF EXISTS SHOP;";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -46,7 +50,9 @@ QueryResult Shop::insertBurger(const Burger& b)
     stringstream ss;
 
     ss << "SELECT count(*) FROM SHOP WHERE NAME = '"<< b.getName() <<"';";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
+
+    ss.flush();
 
     if ( stoi(result.records[0].columns[0]) > 0)
     {
@@ -58,7 +64,7 @@ QueryResult Shop::insertBurger(const Burger& b)
            << b.getPrice() <<");";
     }
 
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -67,7 +73,7 @@ QueryResult Shop::countAllBurgers()
     stringstream ss;
     QueryResult result;
     ss << "SELECT COUNT(*) FROM SHOP;";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -76,7 +82,9 @@ QueryResult Shop::removeBurger(const Burger& b)
     stringstream ss;
     QueryResult result;
     ss << "SELECT NCOPY FROM SHOP WHERE NAME = '"<< b.getName() <<"';";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
+
+    ss.flush();
 
     if ( stoi(result.records[0].columns[0]) > 1)
     {
@@ -85,7 +93,7 @@ QueryResult Shop::removeBurger(const Burger& b)
     {
         ss << "DELETE FROM SHOP WHERE NAME = '"<< b.getName() <<"';";
     }
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -94,7 +102,7 @@ QueryResult Shop::fetchAllBurgers()
     stringstream ss;
     QueryResult result;
     ss << "SELECT * FROM SHOP;";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -103,7 +111,7 @@ QueryResult Shop::fetchByType(const Burger& b)
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME FROM SHOP WHERE TYPE = " << b.getType() << ";";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -112,7 +120,7 @@ QueryResult Shop::fetchById(const int& n)
     stringstream ss;
     QueryResult result;
     ss << "SELECT NAME, PRICE, BACKGROUND FROM SHOP WHERE ID = " << n << ";";
-    db.execute_query(ss,&result);
+    execute(ss,&result);
     return result;
 }
 
@@ -171,12 +179,9 @@ QHash<int, QByteArray> Shop::roleNames() const
 {
     QHash<int, QByteArray> roles;
 
-    // Definisci i nomi dei ruoli associati
     roles[namerole] = "namerole";
     roles[pricerole] = "pricerole";
     roles[backgroundrole] = "backgroundrole";
-
-    // Aggiungi altri nomi dei ruoli se necessario
 
     return roles;
 }

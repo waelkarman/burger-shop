@@ -61,6 +61,12 @@ int main(int argv, char** args){
 
 
     Cart m_cart;
+    m_cart.add(QString("CIAO m"));
+    m_cart.add(QString("CIAO a"));
+    m_cart.add(QString("CIAO b"));
+    m_cart.add(QString("CIAO c"));
+
+
 
 
 

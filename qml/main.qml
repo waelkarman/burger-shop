@@ -1,6 +1,5 @@
 import QtQuick
 import QtQuick.Controls
-//import cart 1.0
 
 Item{
     width: 800
@@ -76,15 +75,11 @@ Item{
                     color: "black"
                 }
 
-                //Cart
-                //{
-                //    id:cart
-                //}
-
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
                         m_cart.add(currentburger.text)
+                        m_cart.fetchCartContent()
                     }
                 }
             }

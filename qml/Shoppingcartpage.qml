@@ -9,7 +9,7 @@ Item {
         anchors.fill: parent
         color: "black"
 
-        property string nameBurger
+        property string nameBurger : ""
 
         Image {
             id: background1
@@ -51,7 +51,10 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    m_cart.remove(root.nameBurger,chartlist.currentIndex)
+                    if(chartlist.currentIndex != -1){
+                        m_cart.remove(chartlist.currentIndex)
+                        m_cart.fetchCartContent()
+                    }
                 }
             }
         }

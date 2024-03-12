@@ -24,6 +24,7 @@ public:
     QueryResult fetchByType(const Burger& b);
     QueryResult fetchById(const int& n);
     QueryResult countAllBurgers();
+    void execute(const stringstream& ss, void* vp);
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;

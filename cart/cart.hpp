@@ -3,9 +3,6 @@
 #include <QList>
 #include <QVariant>
 #include <QObject>
-#include "burger.hpp"
-#include "dbhelper.hpp"
-#include "dberrors.hpp"
 
 using namespace std;
 
@@ -15,15 +12,15 @@ class Cart: public QAbstractListModel {
 
 public:
     Cart();
-    QueryResult dropCart();
-    void add(Burger b);
+    void dropCart();
     Q_INVOKABLE void add(QString s);
-    Q_INVOKABLE void remove(QString s, int index);
+    Q_INVOKABLE void remove(int index);
     int getSum() const;
     string getNote() const;
-    QueryResult fetchCartContent();
-    QueryResult countCartContent();
-    QueryResult fetchById(const int& n);
+    Q_INVOKABLE void fetchCartContent();
+    int countCartContent() const ;
+    QString fetchById(const int& n) const;
+
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;
@@ -33,6 +30,5 @@ public:
     QHash<int, QByteArray> roleNames() const override;
     
 private:
-    Dbhelper db;
-
+    QVector<QString> orders;
 };
