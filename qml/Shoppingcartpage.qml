@@ -9,6 +9,8 @@ Item {
         anchors.fill: parent
         color: "black"
 
+        property string nameBurger
+
         Image {
             id: background1
             anchors.fill: parent
@@ -27,6 +29,33 @@ Item {
             color: "white"
         }
 
+        Rectangle{
+            id: buybutton
+            anchors.top: parent.top
+            anchors.topMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: 180
+            height: 40
+            border.color: "black"
+            border.width: 5
+            radius: 15
+
+            Text {
+                anchors.centerIn: parent
+                text: "remove from cart"
+                font.family: "roboto"
+                font.pointSize: 10
+                color: "black"
+            }
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    m_cart.remove(root.nameBurger,chartlist.currentIndex)
+                }
+            }
+        }
+
         ListView {
             id: chartlist
             width: 400
@@ -43,25 +72,25 @@ Item {
 
             Component {
                 id: contactsDelegate
+
                 Rectangle {
                     id: wrapper
                     width: 400
                     height: contactInfo.height
 
                     color: ListView.isCurrentItem ? "gray" : "white"
-                    property var bookname : namerole
-                    //property var bookprice : pricerole
-                    //property var bookbackground : backgroundrole
+                    property var burgername : namerole
 
                     Text {
                         id: contactInfo
-                        text: bookname
+                        text: burgername
                         color: wrapper.ListView.isCurrentItem ? "black" : "black"
 
                         MouseArea{
                             anchors.fill: parent
                             onClicked: {
                                 chartlist.currentIndex = index
+                                root.nameBurger = burgername
                             }
                         }
                     }

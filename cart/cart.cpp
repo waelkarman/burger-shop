@@ -80,9 +80,25 @@ void Cart::add(QString s)
     }
 }
 
-void Cart::remove(Burger b, int index)
+void Cart::remove(QString s, int index)
 {
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT NCOPY FROM CART WHERE NAME = '"<< s.toStdString() <<"';";
+    db.execute_query(ss,&result);
 
+    if ( stoi(result.records[0].columns[0]) > 1)
+    {
+        ss << "UPDATE CART SET NCOPY = NCOPY-1 WHERE NAME = '"<< s.toStdString() <<"';";
+        db.execute_query(ss,&result);
+    }else
+    {
+        ss << "DELETE FROM CART WHERE NAME = '"<< s.toStdString() <<"';";
+
+        beginRemoveRows( QModelIndex(), index, index );
+        db.execute_query(ss,&result);
+        endRemoveRows();
+    }
 }
 
 int Cart::getSum() const

@@ -1,25 +1,25 @@
 <RCC>
-<qresource prefix="/">
-    <file>qml/main.qml</file>
-    <file>qml/Burgerslistpage.qml</file>
-    <file>qml/Shoppingcartpage.qml</file>
-    <file>qml/media/background.jpg</file>
-    <file>qml/media/background0.jpg</file>
-    <file>qml/media/background1.jpg</file>
-    <file>qml/media/book.png</file>
-    <file>qml/media/burger.png</file>
-    <file>qml/media/a1.jpg</file>
-    <file>qml/media/a2.jpg</file>
-    <file>qml/media/a3.jpg</file>
-    <file>qml/media/a4.jpg</file>
-    <file>qml/media/a5.jpg</file>
-    <file>qml/media/a6.jpg</file>
-    <file>qml/media/a7.jpg</file>
-    <file>qml/media/a8.jpg</file>
-    <file>qml/media/a9.jpg</file>
-    <file>qml/media/a10.jpg</file>
-    <file>qml/media/a11.jpg</file>
-    <file>qml/media/a12.jpg</file>
-    <file>qml/media/a13.jpg</file>
-</qresource>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/Burgerslistpage.qml</file>
+        <file>qml/Shoppingcartpage.qml</file>
+        <file>qml/media/background.jpg</file>
+        <file>qml/media/background0.jpg</file>
+        <file>qml/media/background1.jpg</file>
+        <file>qml/media/book.png</file>
+        <file>qml/media/burger.png</file>
+        <file>qml/media/a1.jpg</file>
+        <file>qml/media/a2.jpg</file>
+        <file>qml/media/a3.jpg</file>
+        <file>qml/media/a4.jpg</file>
+        <file>qml/media/a5.jpg</file>
+        <file>qml/media/a6.jpg</file>
+        <file>qml/media/a7.jpg</file>
+        <file>qml/media/a8.jpg</file>
+        <file>qml/media/a9.jpg</file>
+        <file>qml/media/a10.jpg</file>
+        <file>qml/media/a11.jpg</file>
+        <file>qml/media/a12.jpg</file>
+        <file>qml/media/a13.jpg</file>
+    </qresource>
 </RCC>
