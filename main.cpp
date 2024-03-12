@@ -63,8 +63,7 @@ int main(int argv, char** args){
     Cart m_cart;
     m_cart.add(m_burger_m);
     m_cart.add(m_burger_l);
-    m_cart.add(m_burger_i);
-    m_cart.add(m_burger_h);
+
 
 
     QCoreApplication::setApplicationName("Burger Shop");

@@ -69,13 +69,16 @@ void Cart::add()
     if ( stoi(result.records[0].columns[0]) > 0)
     {
         ss << "UPDATE CART SET NCOPY = NCOPY+1 WHERE NAME = '"<< s <<"';";
+        db.execute_query(ss,&result);
     }else
     {
         ss << "INSERT INTO CART (NAME,NOTE,NCOPY) VALUES ('"
            << s <<"', '"<< "NOTE-NOTE" <<"', '"<< 1 <<"');";
-    }
 
-    db.execute_query(ss,&result);
+        beginInsertRows( QModelIndex(), stoi(countCartContent().records[0].columns[0]), stoi(countCartContent().records[0].columns[0]) );
+        db.execute_query(ss,&result);
+        endInsertRows();
+    }
 }
 
 void Cart::remove(Burger b, int index)
