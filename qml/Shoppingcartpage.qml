@@ -31,8 +31,8 @@ Item {
 
         Rectangle{
             id: buybutton
-            anchors.top: parent.top
-            anchors.topMargin: 20
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 40
             anchors.horizontalCenter: parent.horizontalCenter
             width: 180
             height: 40
@@ -51,9 +51,8 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    if(chartlist.currentIndex != -1){
+                    if(chartlist.currentIndex !== -1){
                         m_cart.remove(chartlist.currentIndex)
-                        m_cart.fetchCartContent()
                     }
                 }
             }
