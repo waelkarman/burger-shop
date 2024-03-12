@@ -42,4 +42,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     Qt6::Sql
 )
 
-#install(TARGETS library DESTINATION bin)
+install(TARGETS burger-shop DESTINATION bin)
+install(TARGETS burger cart sqlite3 dbhelper shop DESTINATION lib)
+install(DIRECTORY include/mylib DESTINATION include)
+

@@ -33,7 +33,6 @@ int default_callback(void *NotUsed, int argc, char **argv, char **azColName)
 
 void Dbhelper::execute_query(const stringstream& ss, void* vp, int(*f)(void *NotUsed, int argc, char **argv, char **azColName))
 {
-    cout << "eseguo "<< ss.str()<< endl;
     char *zErrMsg = 0;
     char *sql;
 
