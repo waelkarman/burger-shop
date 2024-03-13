@@ -77,7 +77,7 @@ Item {
         ListView {
             id: chartlist
             width: 400
-            height: 100
+            height: 160
             anchors.top: parent.top
             anchors.topMargin: 300
             anchors.left: parent.left
@@ -99,18 +99,27 @@ Item {
 
                     color: ListView.isCurrentItem ? "gray" : "white"
                     property var burgername : namerole
+                    property var burgerprice : pricerole
 
                     Text {
                         id: contactInfo
                         text: burgername
                         color: wrapper.ListView.isCurrentItem ? "black" : "black"
+                    }
 
-                        MouseArea{
-                            anchors.fill: parent
-                            onClicked: {
-                                chartlist.currentIndex = index
-                                main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
-                            }
+                    Text {
+                        id: priceInfo
+                        text: burgerprice + "€"
+                        color: wrapper.ListView.isCurrentItem ? "black" : "black"
+                        anchors.left: contactInfo.right
+                        anchors.leftMargin: 4
+                    }
+
+                    MouseArea{
+                        anchors.fill: parent
+                        onClicked: {
+                            chartlist.currentIndex = index
+                            main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
                         }
                     }
                 }

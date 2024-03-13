@@ -21,6 +21,7 @@ public:
     Q_INVOKABLE void fetchCartContent();
     int countCartContent() const ;
     Q_INVOKABLE QString fetchById(const int& n) const;
+    int queryPrice(QString s) const;
 
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;

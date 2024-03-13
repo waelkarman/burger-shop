@@ -45,12 +45,7 @@ void Cart::add(QString s)
 
 void Cart::remove(QString s, int index)
 {
-    stringstream ss;
-    QueryResult result;
-    ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
-    execute(ss,&result);
-
-    sum-=stoi(result.records[0].columns[0]); //FIXME;
+    sum-=queryPrice(s); //FIXME;
     beginRemoveRows( QModelIndex(), index, index );
     orders.removeAt(index);
     endRemoveRows();
@@ -84,11 +79,20 @@ QString Cart::fetchById(const int& n) const
     return orders.at(n);
 }
 
+int Cart::queryPrice(QString s) const
+{
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
+    execute(ss,&result);
+    return stoi(result.records[0].columns[0]);
+}
 
 
 
 
 QModelIndex Cart::index(int row, int column, const QModelIndex &parent) const {
+
     return createIndex(row, column);
 }
 
@@ -101,16 +105,26 @@ int Cart::rowCount(const QModelIndex &parent) const {
 }
 
 int Cart::columnCount(const QModelIndex &parent) const {
-    return 0;
+    return 1;
 }
 
 
 enum ItemDataRole {
-    namerole = 0
+    namerole = 0,
+    pricerole = 1
 };
 
 QVariant Cart::data(const QModelIndex &index, int role) const {
-    return fetchById(index.row());
+
+    switch (role)
+    {
+    case namerole:
+        return fetchById(index.row());
+    case pricerole:
+        return queryPrice(fetchById(index.row()));
+    default:
+        return QVariant();
+    }
 }
 
 QHash<int, QByteArray> Cart::roleNames() const
@@ -118,6 +132,7 @@ QHash<int, QByteArray> Cart::roleNames() const
     QHash<int, QByteArray> roles;
 
     roles[namerole] = "namerole";
+    roles[pricerole] = "pricerole";
 
     return roles;
 }
