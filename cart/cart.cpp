@@ -41,6 +41,9 @@ void Cart::add(QString s)
     beginInsertRows( QModelIndex(), orders.size(), orders.size() );
     orders.append(s);
     endInsertRows();
+    for (auto a:orders){
+        cout << a.toStdString() << endl;
+    }
     emit sumChanged();
 }
 
@@ -52,11 +55,13 @@ void Cart::remove(QString s, int index)
     ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
     execute(ss,&result);
 
-    cout << "RIMUOVO: " << result.records[0].columns[0] << endl;
     sum-=stoi(result.records[0].columns[0]); //FIXME;
     beginRemoveRows( QModelIndex(), index, index );
     orders.removeAt(index);
     endRemoveRows();
+    for (auto a:orders){
+        cout << a.toStdString() << endl;
+    }
     emit sumChanged();
 }
 
@@ -84,11 +89,8 @@ int Cart::countCartContent() const
 
 QString Cart::fetchById(const int& n) const
 {
-    if(orders.isEmpty()){
-        return "";
-    }else{
-        return orders.at(n);
-    }
+    cout << "fetch by restituisce: " << n << endl;
+    return orders.at(n);
 }
 
 
@@ -117,6 +119,7 @@ enum ItemDataRole {
 };
 
 QVariant Cart::data(const QModelIndex &index, int role) const {
+    cout << "data chiama" << endl;
     return fetchById(index.row());
 }
 

@@ -37,7 +37,7 @@ Item {
             anchors.bottomMargin: 50
             anchors.right: parent.right
             anchors.rightMargin: 50
-            text: m_cart.sum
+            text: m_cart.sum + "€"
             font.family: "HelveticaS"
             font.pointSize: 80
             color: "white"
@@ -49,7 +49,7 @@ Item {
             id: buybutton
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 40
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.horizontalCenter: chartlist.horizontalCenter
             width: 180
             height: 40
             border.color: "black"
@@ -68,9 +68,8 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if(chartlist.currentIndex !== -1){
-                        if(main.nameBurger !== "" ){
-                            m_cart.remove(main.nameBurger,chartlist.currentIndex)
-                        }
+                        console.log("--->> ", chartlist.currentIndex, " -- ", main.nameBurger)
+                        m_cart.remove(main.nameBurger,chartlist.currentIndex)
                     }
                 }
             }
@@ -82,7 +81,8 @@ Item {
             height: 100
             anchors.top: parent.top
             anchors.topMargin: 300
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 50
             orientation: ListView.Vertical
             clip: false
             model: m_cart
@@ -110,7 +110,7 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 chartlist.currentIndex = index
-                                main.nameBurger = burgername
+                                main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
                             }
                         }
                     }
@@ -120,15 +120,17 @@ Item {
             Connections {
                 target: m_cart
                 function onSumChanged() {
-                    if(chartlist.currentIndex !== -1){
-                        main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
+                    if(chartlist.currentIndex === 0){
+                        if(chartlist.count>0){
+                            main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
+                        }
                     }
                 }
             }
 
             onCurrentIndexChanged: {
                 if(chartlist.currentIndex !== -1){
-                    main.nameBurger = itemAtIndex(chartlist.currentIndex).burgername
+                    main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
                 }
             }
         }
