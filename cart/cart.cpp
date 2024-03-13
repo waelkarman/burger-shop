@@ -110,7 +110,6 @@ enum ItemDataRole {
 };
 
 QVariant Cart::data(const QModelIndex &index, int role) const {
-    cout << "data chiama" << endl;
     return fetchById(index.row());
 }
 

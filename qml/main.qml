@@ -8,7 +8,6 @@ Item{
     SwipeView {
         id: view
 
-        currentIndex: 0
         anchors.fill: parent
 
         Burgerslistpage{
