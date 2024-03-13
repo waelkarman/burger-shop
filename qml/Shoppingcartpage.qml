@@ -68,7 +68,6 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if(chartlist.currentIndex !== -1){
-                        console.log("--->> ", chartlist.currentIndex, " -- ", main.nameBurger)
                         m_cart.remove(main.nameBurger,chartlist.currentIndex)
                     }
                 }
