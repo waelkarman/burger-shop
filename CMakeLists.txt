@@ -44,5 +44,4 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 
 install(TARGETS burger-shop DESTINATION bin)
 install(TARGETS burger cart sqlite3 dbhelper shop DESTINATION lib)
-install(DIRECTORY include/mylib DESTINATION include)
 
