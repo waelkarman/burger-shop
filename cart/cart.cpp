@@ -36,7 +36,8 @@ void Cart::add(QString s)
     ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
     execute(ss,&result);
 
-    cout << "Aggiungo: " << result.records[0].columns[0] << endl;
+
+    cout << "AGGIUNGO: " << s.toStdString() << ", " << stoi(result.records[0].columns[0]) << endl;
     sum+=stoi(result.records[0].columns[0]); //FIXME
     beginInsertRows( QModelIndex(), orders.size(), orders.size() );
     orders.append(s);
@@ -49,7 +50,6 @@ void Cart::add(QString s)
 
 void Cart::remove(QString s, int index)
 {
-    cout << "RIMUOVO: " << s.toStdString() << "--" << index << endl;
     stringstream ss;
     QueryResult result;
     ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
@@ -59,6 +59,9 @@ void Cart::remove(QString s, int index)
     beginRemoveRows( QModelIndex(), index, index );
     orders.removeAt(index);
     endRemoveRows();
+
+    cout << "RIMUOVO: " << s.toStdString() << ", " << stoi(result.records[0].columns[0]) << "--" << index << endl;
+
     for (auto a:orders){
         cout << a.toStdString() << endl;
     }
@@ -89,7 +92,6 @@ int Cart::countCartContent() const
 
 QString Cart::fetchById(const int& n) const
 {
-    cout << "fetch by restituisce: " << n << endl;
     return orders.at(n);
 }
 

@@ -120,10 +120,8 @@ Item {
             Connections {
                 target: m_cart
                 function onSumChanged() {
-                    if(chartlist.currentIndex === 0){
-                        if(chartlist.count>0){
-                            main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
-                        }
+                    if(chartlist.currentIndex > 0 && chartlist.currentIndex < chartlist.count && chartlist.count>0 ){
+                        main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
                     }
                 }
             }
