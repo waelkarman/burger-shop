@@ -117,9 +117,23 @@ Item {
                 }
             }
 
+            Connections {
+                target: m_cart
+                function onSumChanged() {
+                    if(chartlist.currentIndex !== -1){
+                        main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
+                    }
+                }
+            }
+
             onCurrentIndexChanged: {
-                main.nameBurger = itemAtIndex(chartlist.currentIndex).burgername
+                if(chartlist.currentIndex !== -1){
+                    main.nameBurger = itemAtIndex(chartlist.currentIndex).burgername
+                }
             }
         }
     }
 }
+
+
+

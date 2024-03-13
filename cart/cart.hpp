@@ -20,7 +20,7 @@ public:
     string getNote() const;
     Q_INVOKABLE void fetchCartContent();
     int countCartContent() const ;
-    QString fetchById(const int& n) const;
+    Q_INVOKABLE QString fetchById(const int& n) const;
 
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;

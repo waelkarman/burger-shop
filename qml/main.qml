@@ -82,9 +82,7 @@ Item{
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        console.log("--->> ",firstPage.currentpriceBurger)
                         m_cart.add(currentburger.text)
-                        m_cart.fetchCartContent()
                     }
                 }
             }

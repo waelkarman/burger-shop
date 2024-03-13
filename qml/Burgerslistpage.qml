@@ -51,10 +51,8 @@ Item {
                     MouseArea{
                         anchors.fill: parent
                         onClicked: {
-                            console.log("price of : ",burgerprice)
                             burgerpath.currentIndex = index
                             main.currentpriceBurger = burgerprice
-                            console.log("--->> ",main.currentpriceBurger)
                         }
                     }
                 }
@@ -95,7 +93,6 @@ Item {
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
                 main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
-                console.log("--->> ",main.currentpriceBurger)
             }
 
             onCurrentIndexChanged: {
@@ -103,7 +100,6 @@ Item {
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
                 main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
-                console.log("--->> ",main.currentpriceBurger)
             }
         }
     }
