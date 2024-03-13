@@ -9,12 +9,13 @@ using namespace std;
 class Cart: public QAbstractListModel {
 
     Q_OBJECT
+    Q_PROPERTY(int sum READ getSum NOTIFY sumChanged)
 
 public:
     Cart();
     void dropCart();
     Q_INVOKABLE void add(QString s);
-    Q_INVOKABLE void remove(int index);
+    Q_INVOKABLE void remove(QString s, int index);
     int getSum() const;
     string getNote() const;
     Q_INVOKABLE void fetchCartContent();
@@ -28,7 +29,12 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role) const override;
     QHash<int, QByteArray> roleNames() const override;
+
+signals:
+    void sumChanged();
     
 private:
     QVector<QString> orders;
+    int sum = 0;
+
 };

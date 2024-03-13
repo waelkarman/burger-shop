@@ -1,8 +1,25 @@
 
 #include <iostream>
 #include "cart.hpp"
+#include <QDebug>
+#include <string>
+#include "dbhelper.hpp"
+#include "dberrors.hpp"
 
 using namespace std;
+
+void execute(const stringstream& ss, void* vp){
+    Dbhelper db;
+    try{
+        db.execute_query(ss,vp);
+    }catch(dberrors e){
+        e.what();
+    }catch(exception e){
+        e.what();
+    }catch(...){
+        cout << "DataBase unknown error.";
+    }
+}
 
 Cart::Cart(){
 }
@@ -14,13 +31,27 @@ void Cart::dropCart()
 
 void Cart::add(QString s)
 {
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
+    execute(ss,&result);
+
+    sum+=stoi(result.records[0].columns[0]); //FIXME
+    emit sumChanged();
     beginInsertRows( QModelIndex(), orders.size(), orders.size() );
     orders.append(s);
     endInsertRows();
 }
 
-void Cart::remove(int index)
+void Cart::remove(QString s, int index)
 {
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
+    execute(ss,&result);
+
+    sum-=stoi(result.records[0].columns[0]); //FIXME;
+    emit sumChanged();
     beginRemoveRows( QModelIndex(), index, index );
     orders.removeAt(index);
     endRemoveRows();
@@ -28,7 +59,7 @@ void Cart::remove(int index)
 
 int Cart::getSum() const
 {
-    return 0;
+    return sum;
 }
 
 string Cart::getNote() const

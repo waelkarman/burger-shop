@@ -1,15 +1,16 @@
 import QtQuick 2.15
 
 Item {
+    id: main
     width: 800
     height: 600
+
+    property string nameBurger : ""
 
     Rectangle{
         id: root
         anchors.fill: parent
         color: "black"
-
-        property string nameBurger : ""
 
         Image {
             id: background1
@@ -27,6 +28,21 @@ Item {
             font.family: "HelveticaS"
             font.pointSize: 24
             color: "white"
+            style: Text.Outline;
+            styleColor: "black"
+        }
+
+        Text {
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 50
+            anchors.right: parent.right
+            anchors.rightMargin: 50
+            text: m_cart.sum
+            font.family: "HelveticaS"
+            font.pointSize: 80
+            color: "white"
+            style: Text.Outline;
+            styleColor: "black"
         }
 
         Rectangle{
@@ -52,7 +68,9 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     if(chartlist.currentIndex !== -1){
-                        m_cart.remove(chartlist.currentIndex)
+                        if(main.nameBurger !== "" ){
+                            m_cart.remove(main.nameBurger,chartlist.currentIndex)
+                        }
                     }
                 }
             }
@@ -92,11 +110,15 @@ Item {
                             anchors.fill: parent
                             onClicked: {
                                 chartlist.currentIndex = index
-                                root.nameBurger = burgername
+                                main.nameBurger = burgername
                             }
                         }
                     }
                 }
+            }
+
+            onCurrentIndexChanged: {
+                main.nameBurger = itemAtIndex(chartlist.currentIndex).burgername
             }
         }
     }

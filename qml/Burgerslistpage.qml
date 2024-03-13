@@ -3,13 +3,15 @@ import QtQuick.Controls
 import QtQml
 
 Item {
+    id:main
     width: 800
     height: 600
+    property int currentpriceBurger : 0
 
     Rectangle {
         id: root
         anchors.fill: parent
-        color: "black"
+        color: "black"   
 
         Image {
             id: background0
@@ -24,6 +26,8 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 50
             text: "Burger Shop"
+            style: Text.Outline;
+            styleColor: "black"
             font.family: "HelveticaS"
             font.pointSize: 24
             color: "white"
@@ -48,6 +52,9 @@ Item {
                         anchors.fill: parent
                         onClicked: {
                             console.log("price of : ",burgerprice)
+                            burgerpath.currentIndex = index
+                            main.currentpriceBurger = burgerprice
+                            console.log("--->> ",main.currentpriceBurger)
                         }
                     }
                 }
@@ -57,6 +64,8 @@ Item {
                     text: burgername
                     font.pointSize: 8
                     color: "white"
+                    style: Text.Outline;
+                    styleColor: "black"
                 }
 
                 Text {
@@ -64,6 +73,8 @@ Item {
                     text: burgerprice+" €"
                     font.pointSize: 7
                     color: "white"
+                    style: Text.Outline;
+                    styleColor: "black"
                 }
             }
         }
@@ -83,12 +94,16 @@ Item {
                 currentburger.text = itemAtIndex(currentIndex).burgername
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
+                main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
+                console.log("--->> ",main.currentpriceBurger)
             }
 
             onCurrentIndexChanged: {
                 currentburger.text = itemAtIndex(currentIndex).burgername
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
+                main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
+                console.log("--->> ",main.currentpriceBurger)
             }
         }
     }

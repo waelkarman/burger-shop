@@ -29,7 +29,7 @@ Item{
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
-                        view.currentIndex = view.currentIndex+1
+                        //view.currentIndex = view.currentIndex+1
                     }
                 }
             }
@@ -43,17 +43,21 @@ Item{
                 font.family: "HelveticaS"
                 font.pointSize: 24
                 color: "white"
+                style: Text.Outline;
+                styleColor: "black"
             }
 
             Text {
                 id: currentprice
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 240
+                anchors.top: currentburger.bottom
+                anchors.topMargin: 15
                 anchors.right: burgercover.left
                 anchors.rightMargin: 20
                 font.family: "HelveticaS"
                 font.pointSize: 16
                 color: "white"
+                style: Text.Outline;
+                styleColor: "black"
             }
 
             Rectangle{
@@ -78,6 +82,7 @@ Item{
                 MouseArea{
                     anchors.fill: parent
                     onClicked: {
+                        console.log("--->> ",firstPage.currentpriceBurger)
                         m_cart.add(currentburger.text)
                         m_cart.fetchCartContent()
                     }
