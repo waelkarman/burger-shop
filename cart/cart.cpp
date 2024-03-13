@@ -36,15 +36,10 @@ void Cart::add(QString s)
     ss << "SELECT PRICE FROM SHOP WHERE NAME = '" << s.toStdString() << "';";
     execute(ss,&result);
 
-
-    cout << "AGGIUNGO: " << s.toStdString() << ", " << stoi(result.records[0].columns[0]) << endl;
     sum+=stoi(result.records[0].columns[0]); //FIXME
     beginInsertRows( QModelIndex(), orders.size(), orders.size() );
     orders.append(s);
     endInsertRows();
-    for (auto a:orders){
-        cout << a.toStdString() << endl;
-    }
     emit sumChanged();
 }
 
@@ -59,12 +54,6 @@ void Cart::remove(QString s, int index)
     beginRemoveRows( QModelIndex(), index, index );
     orders.removeAt(index);
     endRemoveRows();
-
-    cout << "RIMUOVO: " << s.toStdString() << ", " << stoi(result.records[0].columns[0]) << "--" << index << endl;
-
-    for (auto a:orders){
-        cout << a.toStdString() << endl;
-    }
     emit sumChanged();
 }
 
