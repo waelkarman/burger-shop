@@ -20,26 +20,6 @@ Item {
             opacity: 0.3
         }
 
-        Image {
-            id: burgercover
-            height: 270
-            width: 210
-            anchors.right: parent.right
-            anchors.rightMargin: 90
-            anchors.top: parent.top
-            anchors.topMargin: 195
-            asynchronous: true
-            smooth: true
-            opacity: 1
-
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    //view.currentIndex = view.currentIndex+1
-                }
-            }
-        }
-
         Text {
             id: currentprice
             anchors.top: currentburger.bottom
@@ -138,6 +118,7 @@ Item {
                 currentburger.text = itemAtIndex(currentIndex).burgername
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
+                burgercoverfullscreen.source = itemAtIndex(currentIndex).burgerbackground
                 main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
             }
 
@@ -145,6 +126,7 @@ Item {
                 currentburger.text = itemAtIndex(currentIndex).burgername
                 currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
                 burgercover.source = itemAtIndex(currentIndex).burgerbackground
+                burgercoverfullscreen.source = itemAtIndex(currentIndex).burgerbackground
                 main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
             }
         }
@@ -172,6 +154,44 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     m_cart.add(currentburger.text)
+                }
+            }
+        }
+
+        Image {
+            id: burgercover
+            height: 270
+            width: 210
+            anchors.right: parent.right
+            anchors.rightMargin: 90
+            anchors.top: parent.top
+            anchors.topMargin: 195
+            asynchronous: true
+            smooth: true
+            opacity: 1
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    burgercoverfullscreen.visible = true
+                }
+            }
+        }
+
+        Image {
+            id: burgercoverfullscreen
+            height: parent.height-50
+            width: parent.width-50
+            visible: false
+            anchors.centerIn: parent
+            asynchronous: true
+            smooth: true
+            opacity: 1
+
+            MouseArea{
+                anchors.fill: parent
+                onClicked: {
+                    burgercoverfullscreen.visible = false
                 }
             }
         }
