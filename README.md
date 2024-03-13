@@ -8,3 +8,4 @@ Just for fun !
 - C++/17
 - Qt6
 - QML
+- Cmake
