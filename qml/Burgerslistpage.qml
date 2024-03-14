@@ -138,11 +138,13 @@ Item {
             anchors.horizontalCenter: burgercover.horizontalCenter
             width: 180
             height: 40
+            color: "white"
             border.color: "black"
             border.width: 5
             radius: 15
 
             Text {
+                id: textaddchart
                 anchors.centerIn: parent
                 text: "add to cart"
                 font.family: "roboto"
@@ -154,6 +156,17 @@ Item {
                 anchors.fill: parent
                 onClicked: {
                     m_cart.add(currentburger.text)
+                }
+
+                onPressed: {
+                    buybutton.color = "black"
+                    buybutton.border.color = "white"
+                    textaddchart.color = "white"
+                }
+                onReleased: {
+                    buybutton.color = "white"
+                    buybutton.border.color = "black"
+                    textaddchart.color = "black"
                 }
             }
         }

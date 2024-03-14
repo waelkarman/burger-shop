@@ -57,6 +57,7 @@ Item {
             radius: 15
 
             Text {
+                id: buttontextremove
                 anchors.centerIn: parent
                 text: "remove from cart"
                 font.family: "roboto"
@@ -70,6 +71,17 @@ Item {
                     if(chartlist.currentIndex !== -1){
                         m_cart.remove(main.nameBurger,chartlist.currentIndex)
                     }
+                }
+
+                onPressed: {
+                    buybutton.color = "black"
+                    buybutton.border.color = "white"
+                    buttontextremove.color = "white"
+                }
+                onReleased: {
+                    buybutton.color = "white"
+                    buybutton.border.color = "black"
+                    buttontextremove.color = "black"
                 }
             }
         }
