@@ -4,19 +4,19 @@ import QtQml
 
 Item {
     id:main
-    width: 800
-    height: 600
+    width: 1920
+    height: 1080
     property int currentpriceBurger : 0
 
     Rectangle {
         id: root
         anchors.fill: parent
-        color: "black"   
+        color: "black"
 
         Image {
             id: background0
             anchors.fill: parent
-            source: "./media/background0.jpg"
+            source: "./media/background2.png"
             opacity: 0.3
         }
 
@@ -24,8 +24,7 @@ Item {
             id: currentprice
             anchors.top: currentburger.bottom
             anchors.topMargin: 15
-            anchors.right: burgercover.left
-            anchors.rightMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaS"
             font.pointSize: 16
             color: "white"
@@ -35,10 +34,9 @@ Item {
 
         Text {
             id: currentburger
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 260
-            anchors.right: burgercover.left
-            anchors.rightMargin: 20
+            anchors.top: burgercover.bottom
+            anchors.topMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaS"
             font.pointSize: 24
             color: "white"
@@ -51,7 +49,7 @@ Item {
             anchors.topMargin: 50
             anchors.left: parent.left
             anchors.leftMargin: 50
-            text: "Burger Shop"
+            text: "Data Modul Shop"
             style: Text.Outline;
             styleColor: "black"
             font.family: "HelveticaS"
@@ -64,15 +62,16 @@ Item {
 
             Column {
                 id: wrapper
-                opacity: PathView.isCurrentItem ? 1 : 0.6
+                opacity: PathView.isCurrentItem ? 1 : 0.7
                 property var burgername : namerole
                 property var burgerprice : pricerole
                 property var burgerbackground : backgroundrole
 
                 Image {
                     anchors.horizontalCenter: nameText.horizontalCenter
-                    width: 55; height: 55
-                    source: "./media/burger.png"
+                    width: root.width/20
+                    height: root.height/10
+                    source: burgerbackground
 
                     MouseArea{
                         anchors.fill: parent
@@ -111,7 +110,8 @@ Item {
             delegate: delegate
             path: Path {
                 startX: root.width/9; startY: root.height-root.height/3
-                PathQuad { x: root.width+root.width/10; y: root.height/10; controlX: root.width/5; controlY: root.height/6 }
+                PathQuad { x: root.width/2; y: root.height/10; controlX: root.width/9; controlY: root.height/10 }
+                PathQuad { x: root.width-root.width/9; y: root.height-root.height/3; controlX: root.width-root.width/9; controlY: root.height/10 }
             }
 
             Component.onCompleted: {
@@ -133,9 +133,10 @@ Item {
 
         Rectangle{
             id: buybutton
-            anchors.top: burgercover.bottom
-            anchors.topMargin: 20
-            anchors.horizontalCenter: burgercover.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 20
             width: 180
             height: 40
             color: "white"
@@ -173,12 +174,11 @@ Item {
 
         Image {
             id: burgercover
-            height: 270
-            width: 210
-            anchors.right: parent.right
-            anchors.rightMargin: 90
+            height: root.height/6
+            width: root.width/10
             anchors.top: parent.top
-            anchors.topMargin: 195
+            anchors.topMargin: parent.height/4
+            anchors.horizontalCenter: parent.horizontalCenter
             asynchronous: true
             smooth: true
             opacity: 1

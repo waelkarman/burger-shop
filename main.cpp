@@ -29,6 +29,7 @@ int main(int argv, char** args){
     Burger m_burger_i("Burger","Beyonce Burger",14,"./media/a9.jpg", "descrizione");
     Burger m_burger_l("Burger","Algo Burger",12,"./media/a10.jpg", "descrizione");
     Burger m_burger_m("Burger","Safari Burger",11,"./media/a11.jpg", "descrizione");
+    Burger m_burger_n("Burger","Latin Burger",17,"./media/a12.jpg", "descrizione");
 
 
     Shop m_shop;
@@ -53,6 +54,7 @@ int main(int argv, char** args){
     m_shop.insertBurger(m_burger_i);
     m_shop.insertBurger(m_burger_l);
     m_shop.insertBurger(m_burger_m);
+    m_shop.insertBurger(m_burger_n);
 
     m_shop.fetchAllBurgers();
     m_shop.countAllBurgers();
@@ -67,7 +69,7 @@ int main(int argv, char** args){
 
 
 
-    QCoreApplication::setApplicationName("Burger Shop");
+    QCoreApplication::setApplicationName("Data Modul Shop");
     QGuiApplication app(argv, args);
     QQuickView view;
     view.connect(view.engine(), &QQmlEngine::quit, &app, &QCoreApplication::quit);
