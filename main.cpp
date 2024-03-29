@@ -1,8 +1,6 @@
-#include <iostream>
 #include "burger.hpp"
 #include "shop.hpp"
 #include "cart.hpp"
-#include "dbhelper.hpp"
 
 #include <QGuiApplication>
 #include <QQmlEngine>
@@ -11,13 +9,10 @@
 #include <QDebug>
 #include <QQmlContext>
 
-
-
 using namespace std;
 
 int main(int argv, char** args){
 
-    // Test Book class
     Burger m_burger_a("Burger","Hot Dog",23,"./media/a1.jpg", "descrizione");
     Burger m_burger_b("Burger","Chicken Burger",12,"./media/a2.jpg", "descrizione");
     Burger m_burger_c("Burger","Cheeseburger",18,"./media/a3.jpg", "descrizione");
@@ -30,22 +25,11 @@ int main(int argv, char** args){
     Burger m_burger_l("Burger","Algo Burger",12,"./media/a10.jpg", "descrizione");
     Burger m_burger_m("Burger","Safari Burger",11,"./media/a11.jpg", "descrizione");
 
-
     Shop m_shop;
-    m_shop.insertBurger(m_burger_a);
-    m_shop.insertBurger(m_burger_a);
-    m_shop.insertBurger(m_burger_a);
-    m_shop.fetchAllBurgers();
-    cout << "---------------" << endl;
-    m_shop.removeBurger(m_burger_a);
-    m_shop.removeBurger(m_burger_a);
-    m_shop.fetchAllBurgers();
     m_shop.insertBurger(m_burger_a);
     m_shop.insertBurger(m_burger_b);
     m_shop.insertBurger(m_burger_c);
     m_shop.insertBurger(m_burger_d);
-    m_shop.insertBurger(m_burger_e);
-    m_shop.insertBurger(m_burger_e);
     m_shop.insertBurger(m_burger_e);
     m_shop.insertBurger(m_burger_f);
     m_shop.insertBurger(m_burger_g);
@@ -54,18 +38,7 @@ int main(int argv, char** args){
     m_shop.insertBurger(m_burger_l);
     m_shop.insertBurger(m_burger_m);
 
-    m_shop.fetchAllBurgers();
-    m_shop.countAllBurgers();
-    m_shop.fetchById(2);
-
-
-
     Cart m_cart;
-
-
-
-
-
 
     QCoreApplication::setApplicationName("Burger Shop");
     QGuiApplication app(argv, args);
@@ -73,7 +46,6 @@ int main(int argv, char** args){
     view.connect(view.engine(), &QQmlEngine::quit, &app, &QCoreApplication::quit);
     view.rootContext()->setContextProperty("m_shop", &m_shop);
     view.rootContext()->setContextProperty("m_cart", &m_cart);
-    qmlRegisterType<Cart>("cart", 1, 0, "Cart");
     view.setSource(QUrl("qrc:/qml/main.qml"));
     
     if (view.status() == QQuickView::Error)
