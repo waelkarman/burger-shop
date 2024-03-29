@@ -54,7 +54,7 @@ int main(int argv, char** args){
     view.rootContext()->setContextProperty("m_shop", &m_shop);
     view.rootContext()->setContextProperty("m_cart", &m_cart);
     view.rootContext()->setContextProperty("m_kod", &m_kod);
-    qmlRegisterType<Cart>("cart", 1, 0, "Cart");
+    //qmlRegisterType<Cart>("cart", 1, 0, "Cart");
     view.setSource(QUrl("qrc:/qml/main.qml"));
     
     if (view.status() == QQuickView::Error)
