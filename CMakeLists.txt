@@ -21,6 +21,7 @@ qt_add_executable(${PROJECT_NAME} ${HEADERS} ${SOURCES})
 
 add_subdirectory(sqlite)
 add_subdirectory(burger)
+add_subdirectory(KoDInput)
 add_subdirectory(cart)
 add_subdirectory(dbhelper)
 add_subdirectory(shop)
@@ -35,6 +36,7 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
     sqlite3
     dbhelper
     shop
+    KoDInput
     Qt6::Core
     Qt6::Gui
     Qt6::Qml
@@ -43,5 +45,5 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 )
 
 install(TARGETS burger-shop DESTINATION bin)
-install(TARGETS burger cart sqlite3 dbhelper shop DESTINATION lib)
+install(TARGETS burger cart sqlite3 dbhelper shop KoDInput DESTINATION lib)
 

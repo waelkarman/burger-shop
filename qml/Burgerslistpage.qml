@@ -209,4 +209,11 @@ Item {
             }
         }
     }
+
+    Connections {
+        target: m_kod
+        function onPositionChanged(value) {
+            burgerpath.currentIndex = value
+        }
+    }
 }
