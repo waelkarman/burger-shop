@@ -138,8 +138,6 @@ Item {
             anchors.horizontalCenter: burgercover.horizontalCenter
             width: 180
             height: 40
-            color: "white"
-            border.color: "black"
             border.width: 5
             radius: 15
 
@@ -153,22 +151,39 @@ Item {
             }
 
             MouseArea{
+                id: buybuttonMA
                 anchors.fill: parent
+                onPressed: {
+                    textaddchart.color = "white"
+                    buybutton.state = "clicked"
+                }
                 onClicked: {
                     m_cart.add(currentburger.text)
                 }
-
-                onPressed: {
-                    buybutton.color = "black"
-                    buybutton.border.color = "white"
-                    textaddchart.color = "white"
-                }
-                onReleased: {
-                    buybutton.color = "white"
-                    buybutton.border.color = "black"
+                onReleased: { 
+                    buybutton.state = 'unclicked'
                     textaddchart.color = "black"
                 }
             }
+
+            states: [
+                State {
+                    name: "clicked"
+                    PropertyChanges {
+                        target: buybutton;
+                        color: "black"
+                        border.color: "white"
+                    }
+                },
+                State {
+                    name: "unclicked"
+                    PropertyChanges {
+                        target: buybutton;
+                        color: "white"
+                        border.color: "black"
+                    }
+                }
+            ]
         }
 
         Image {
