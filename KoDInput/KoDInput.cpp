@@ -22,10 +22,13 @@ void KoDInput::run(){
 
     input_event ev;
     while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
-        std::cout << "Event type: " << ev.type << ", code: " << ev.code << ", Value: " << ev.value << std::endl;
+        //std::cout << "Event type: " << ev.type << ", code: " << ev.code << ", Value: " << ev.value << std::endl;
         if(ev.code == 8){
-            position=ev.value;
-            emit positionChanged(ev.value);
+            int scarto = ev.value-position;
+            position = ev.value;
+            if(scarto==30){scarto=-1;}
+            if(scarto==-31){scarto=1;}
+            emit positionChanged(scarto);
         }
         if(ev.code == 330){
             buttonStatus=ev.value;

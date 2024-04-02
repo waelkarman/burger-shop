@@ -21,7 +21,7 @@ Item {
                 height: imageitem.height+nameText.height
                 width: imageitem.width
                 opacity: PathView.isCurrentItem ? 1 : 0.7
-                scale: PathView.isCurrentItem ? 0.3 : 0.2
+                scale: PathView.isCurrentItem ? 0.3 : 0.17
                 property var burgername : namerole
                 property var burgerprice : pricerole
                 property var burgerbackground : backgroundrole
@@ -71,12 +71,15 @@ Item {
             anchors.fill: parent
             model: m_shop
             delegate: delegate
-            pathItemCount: 10
+            pathItemCount: 13
 
             path: Path {
-                startX: root.width/9; startY: root.height-root.height/3
-                PathQuad { x: root.width/2; y: root.height/10; controlX: root.width/9; controlY: root.height/10 }
-                PathQuad { x: root.width-root.width/9; y: root.height-root.height/3; controlX: root.width-root.width/9; controlY: root.height/10 }
+
+                startX: root.width-root.width/9; startY: root.height-root.height/3;
+
+                PathQuad { x: root.width/2; y: root.height/10; controlX: root.width-root.width/9; controlY: root.height/10 }
+
+                PathQuad { x: root.width/9; y: root.height-root.height/7; controlX: root.width/9; controlY: root.height/10 }
             }
 
             Component.onCompleted: {
@@ -101,9 +104,9 @@ Item {
         Rectangle{
             id: buybutton
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 20
+            anchors.bottomMargin: 40
             anchors.right: parent.right
-            anchors.rightMargin: 20
+            anchors.rightMargin: 100
             width: 180
             height: 40
             color: "white"
@@ -238,7 +241,11 @@ Item {
     Connections {
         target: m_kod
         function onPositionChanged(value) {
-            burgerpath.currentIndex = value
+            if(value===1){
+                burgerpath.currentIndex=burgerpath.currentIndex+1
+            }else{
+                burgerpath.currentIndex=burgerpath.currentIndex-1
+            }
         }
         function onButtonStatusChanged(value) {
             if (value===1 && burgercoverfullscreenspot.visible === false){
