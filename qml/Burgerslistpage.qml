@@ -240,5 +240,12 @@ Item {
         function onPositionChanged(value) {
             burgerpath.currentIndex = value
         }
+        function onButtonStatusChanged(value) {
+            if (value===1 && burgercoverfullscreenspot.visible === false){
+                burgercoverfullscreenspot.visible = true
+            }else if(value===1 && burgercoverfullscreenspot.visible === true){
+                burgercoverfullscreenspot.visible = false
+            }
+        }
     }
 }
