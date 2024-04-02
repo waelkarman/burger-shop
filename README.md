@@ -1,4 +1,4 @@
-## Burger Shop App [in development]
+## DM Embedded Presentation App [in development]
 
 Just for fun !
 
@@ -11,11 +11,16 @@ Just for fun !
 - Cmake
 
 
-# Build and run
-please source the environment and run: 
-> cmake . ; make; ./burger-shop
+# Build :
+please source the environment to build for target: 
+> cmake . ; make; 
 
-export WAYLAND_DISPLAY=wayland-1
-export XDG_RUNTIME_DIR=/run/user/1000
-export QT_QPA_PLATFORM=wayland
-LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./cart:./shop:./KoDInput:./burger:./dbhelper:./sqlite ./burger-shop
+
+# Run the app within weston environment:
+
+> export WAYLAND_DISPLAY=wayland-1
+> export XDG_RUNTIME_DIR=/run/user/1000
+> export QT_QPA_PLATFORM=wayland
+> LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./cart:./shop:./KoDInput:./burger:./dbhelper:./sqlite ./burger-shop
+
+
