@@ -5,6 +5,14 @@ Item{
     width: 1920
     height: 1080
 
+    Image {
+        id: background
+        anchors.fill: parent
+        source: "./media/background.png"
+        opacity: 0.3
+    }
+
+
     SwipeView {
         id: view
 

@@ -10,14 +10,7 @@ Item {
     Rectangle{
         id: root
         anchors.fill: parent
-        color: "black"
-
-        Image {
-            id: background1
-            anchors.fill: parent
-            source: "./media/background1.jpg"
-            opacity: 0.3
-        }
+        color:"transparent"
 
         Text {
             anchors.top: parent.top
@@ -27,9 +20,9 @@ Item {
             text: "Shopping Cart"
             font.family: "HelveticaS"
             font.pointSize: 24
-            color: "white"
+            color: "black"
             style: Text.Outline;
-            styleColor: "black"
+            styleColor: "white"
         }
 
         Text {
@@ -40,9 +33,9 @@ Item {
             text: m_cart.sum + "€"
             font.family: "HelveticaS"
             font.pointSize: 80
-            color: "white"
+            color: "black"
             style: Text.Outline;
-            styleColor: "black"
+            styleColor: "white"
         }
 
         Rectangle{

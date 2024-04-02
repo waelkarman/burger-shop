@@ -15,18 +15,22 @@ using namespace std;
 
 int main(int argv, char** args){
 
-    Burger m_burger_a("Burger","Hot Dog",23,"./media/a1.jpg", "descrizione");
-    Burger m_burger_b("Burger","Chicken Burger",12,"./media/a2.jpg", "descrizione");
-    Burger m_burger_c("Burger","Cheeseburger",18,"./media/a3.jpg", "descrizione");
-    Burger m_burger_d("Burger","Chicken Little",16,"./media/a4.jpg", "descrizione");
-    Burger m_burger_e("Burger","Vegan Burger",8,"./media/a5.jpg", "");
-    Burger m_burger_f("Burger","Quentin Tarallino",10,"./media/a6.jpg", "descrizione");
-    Burger m_burger_g("Burger","Central Park",11,"./media/a7.jpg", "descrizione");
-    Burger m_burger_h("Burger","Santana Burger",12,"./media/a8.jpg", "descrizione");
-    Burger m_burger_i("Burger","Beyonce Burger",14,"./media/a9.jpg", "descrizione");
-    Burger m_burger_l("Burger","Algo Burger",12,"./media/a10.jpg", "descrizione");
-    Burger m_burger_m("Burger","Safari Burger",11,"./media/a11.jpg", "descrizione");
-    Burger m_burger_n("Burger","Latin Burger",17,"./media/a12.jpg", "descrizione");
+    Burger m_burger_a("Burger","DMM_easyTOUCH-StarterKit_mXT2942TD-board",23,"./media/b1.png", "descrizione");
+    Burger m_burger_b("Burger","DMM_kombi-monitore",12,"./media/b2.png", "descrizione");
+    Burger m_burger_c("Burger","DMM_monitor_Samsung_OH55A",18,"./media/b3.png", "descrizione");
+    Burger m_burger_d("Burger","DMM_TFT_18.5in_wide_right",16,"./media/b4.png", "descrizione");
+    Burger m_burger_e("Burger","DMM_Touch_Komposing",8,"./media/b5.png", "");
+    Burger m_burger_f("Burger","DM_teaser-easyanalyzer",10,"./media/b6.jpg", "descrizione");
+    Burger m_burger_g("Burger","DM_TFT_tianma-p-series",11,"./media/b7.png", "descrizione");
+    Burger m_burger_h("Burger","DMW_Kundenterminal-Icons_VB_081020_001 ohne schatten",12,"./media/b8.png", "descrizione");
+    Burger m_burger_i("Burger","eMotion NT1-3_persp",14,"./media/b9.png", "descrizione");
+    Burger m_burger_l("Burger","eMotion NT2-3_persp",12,"./media/b10.png", "descrizione");
+    Burger m_burger_m("Burger","emotion_USB_persp1_high",11,"./media/b11.png", "descrizione");
+    Burger m_burger_n("Burger","LCDBoard_DATA-MODUL_eMotionUHD-II_1805_persp2",17,"./media/b12.png", "descrizione");
+    Burger m_burger_o("Burger","ortustech_5-0in_12025084_COM50H5N01ULC_2402",17,"./media/b13.png", "descrizione");
+    Burger m_burger_p("Burger","panelpc_DATA-MODUL_EP101WAD131-1-PCAP-U-DM",17,"./media/b14.png", "descrizione");
+    Burger m_burger_q("Burger","SITO_10_6_pers_high",17,"./media/b15.png", "descrizione");
+    Burger m_burger_r("Burger","touch_Metal Mesh",17,"./media/b16.png", "descrizione");
 
     Shop m_shop;
     m_shop.insertBurger(m_burger_a);
@@ -41,6 +45,10 @@ int main(int argv, char** args){
     m_shop.insertBurger(m_burger_l);
     m_shop.insertBurger(m_burger_m);
     m_shop.insertBurger(m_burger_n);
+    m_shop.insertBurger(m_burger_o);
+    m_shop.insertBurger(m_burger_p);
+    m_shop.insertBurger(m_burger_q);
+    m_shop.insertBurger(m_burger_r);
 
     Cart m_cart;
 

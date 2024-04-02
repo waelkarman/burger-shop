@@ -11,14 +11,7 @@ Item {
     Rectangle {
         id: root
         anchors.fill: parent
-        color: "black"
-
-        Image {
-            id: background0
-            anchors.fill: parent
-            source: "./media/background2.png"
-            opacity: 0.3
-        }
+        color:"transparent"
 
         Text {
             id: currentprice
@@ -27,9 +20,9 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaS"
             font.pointSize: 16
-            color: "white"
+            color: "black"
             style: Text.Outline;
-            styleColor: "black"
+            styleColor: "white"
         }
 
         Text {
@@ -39,9 +32,9 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             font.family: "HelveticaS"
             font.pointSize: 24
-            color: "white"
+            color: "black"
             style: Text.Outline;
-            styleColor: "black"
+            styleColor: "white"
         }
 
         Text {
@@ -51,10 +44,10 @@ Item {
             anchors.leftMargin: 50
             text: "Data Modul Shop"
             style: Text.Outline;
-            styleColor: "black"
+            styleColor: "white"
             font.family: "HelveticaS"
             font.pointSize: 24
-            color: "white"
+            color: "black"
         }
 
         Component {
@@ -86,18 +79,18 @@ Item {
                     id: nameText
                     text: burgername
                     font.pointSize: 8
-                    color: "white"
+                    color: "black"
                     style: Text.Outline;
-                    styleColor: "black"
+                    styleColor: "white"
                 }
 
                 Text {
                     id: priceText
                     text: burgerprice+" €"
                     font.pointSize: 7
-                    color: "white"
+                    color: "black"
                     style: Text.Outline;
-                    styleColor: "black"
+                    styleColor: "white"
                 }
             }
         }
