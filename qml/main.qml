@@ -9,9 +9,8 @@ Item{
         id: background
         anchors.fill: parent
         source: "./media/background.png"
-        opacity: 0.3
+        opacity: 0.4
     }
-
 
     SwipeView {
         id: view

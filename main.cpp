@@ -15,14 +15,14 @@ using namespace std;
 
 int main(int argv, char** args){
 
-    Burger m_burger_a("Burger","DMM_easyTOUCH-StarterKit_mXT2942TD-board",23,"./media/b1.png", "descrizione");
-    Burger m_burger_b("Burger","DMM_kombi-monitore",12,"./media/b2.png", "descrizione");
-    Burger m_burger_c("Burger","DMM_monitor_Samsung_OH55A",18,"./media/b3.png", "descrizione");
-    Burger m_burger_d("Burger","DMM_TFT_18.5in_wide_right",16,"./media/b4.png", "descrizione");
-    Burger m_burger_e("Burger","DMM_Touch_Komposing",8,"./media/b5.png", "");
-    Burger m_burger_f("Burger","DM_teaser-easyanalyzer",10,"./media/b6.jpg", "descrizione");
-    Burger m_burger_g("Burger","DM_TFT_tianma-p-series",11,"./media/b7.png", "descrizione");
-    Burger m_burger_h("Burger","DMW_Kundenterminal-Icons_VB_081020_001 ohne schatten",12,"./media/b8.png", "descrizione");
+    Burger m_burger_a("Burger","easyTOUCH-StarterKit_mXT2942TD-board",23,"./media/b1.png", "descrizione");
+    Burger m_burger_b("Burger","kombi-monitore",12,"./media/b2.png", "descrizione");
+    Burger m_burger_c("Burger","monitor_Samsung_OH55A",18,"./media/b3.png", "descrizione");
+    Burger m_burger_d("Burger","TFT_18.5in_wide_right",16,"./media/b4.png", "descrizione");
+    Burger m_burger_e("Burger","Touch_Komposing",8,"./media/b5.png", "");
+    //Burger m_burger_f("Burger","teaser-easyanalyzer",10,"./media/b6.jpg", "descrizione");
+    Burger m_burger_g("Burger","TFT_tianma-p-series",11,"./media/b7.png", "descrizione");
+    Burger m_burger_h("Burger","Kundenterminal-Icons_VB_081020_001 ohne schatten",12,"./media/b8.png", "descrizione");
     Burger m_burger_i("Burger","eMotion NT1-3_persp",14,"./media/b9.png", "descrizione");
     Burger m_burger_l("Burger","eMotion NT2-3_persp",12,"./media/b10.png", "descrizione");
     Burger m_burger_m("Burger","emotion_USB_persp1_high",11,"./media/b11.png", "descrizione");
@@ -38,7 +38,7 @@ int main(int argv, char** args){
     m_shop.insertBurger(m_burger_c);
     m_shop.insertBurger(m_burger_d);
     m_shop.insertBurger(m_burger_e);
-    m_shop.insertBurger(m_burger_f);
+    //m_shop.insertBurger(m_burger_f);
     m_shop.insertBurger(m_burger_g);
     m_shop.insertBurger(m_burger_h);
     m_shop.insertBurger(m_burger_i);

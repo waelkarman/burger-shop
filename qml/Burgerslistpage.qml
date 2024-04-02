@@ -13,58 +13,22 @@ Item {
         anchors.fill: parent
         color:"transparent"
 
-        Text {
-            id: currentprice
-            anchors.top: currentburger.bottom
-            anchors.topMargin: 15
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.family: "HelveticaS"
-            font.pointSize: 16
-            color: "black"
-            style: Text.Outline;
-            styleColor: "white"
-        }
-
-        Text {
-            id: currentburger
-            anchors.top: burgercover.bottom
-            anchors.topMargin: 20
-            anchors.horizontalCenter: parent.horizontalCenter
-            font.family: "HelveticaS"
-            font.pointSize: 24
-            color: "black"
-            style: Text.Outline;
-            styleColor: "white"
-        }
-
-        Image {
-            anchors.top: parent.top
-            anchors.topMargin: 10
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            source: "./media/logo.jpeg"
-            asynchronous: true
-            smooth: true
-            opacity: 1
-            scale: 0.8
-        }
-
         Component {
             id: delegate
 
-            Column {
+            Item {
                 id: wrapper
+                height: imageitem.height+nameText.height
+                width: imageitem.width
                 opacity: PathView.isCurrentItem ? 1 : 0.7
-                scale: PathView.isCurrentItem ? 1 : 0.5
+                scale: PathView.isCurrentItem ? 0.3 : 0.2
                 property var burgername : namerole
                 property var burgerprice : pricerole
                 property var burgerbackground : backgroundrole
 
                 Image {
-                    anchors.horizontalCenter: nameText.horizontalCenter
-                    width: root.width/10
-                    height: root.height/4
-
+                    id: imageitem
+                    anchors.centerIn: parent
                     source: burgerbackground
 
                     MouseArea{
@@ -78,8 +42,10 @@ Item {
 
                 Text {
                     id: nameText
+                    anchors.top: imageitem.bottom
+                    anchors.horizontalCenter: imageitem.horizontalCenter
                     text: burgername
-                    font.pointSize: 20
+                    font.pointSize:45
                     color: "black"
                     style: Text.Outline;
                     styleColor: "white"
@@ -87,12 +53,15 @@ Item {
 
                 Text {
                     id: priceText
+                    anchors.top: nameText.bottom
+                    anchors.horizontalCenter: imageitem.horizontalCenter
                     text: burgerprice+" €"
-                    font.pointSize: 15
+                    font.pointSize: 35
                     color: "black"
                     style: Text.Outline;
                     styleColor: "white"
                 }
+
             }
         }
 
@@ -170,22 +139,47 @@ Item {
             }
         }
 
-        Image {
-            id: burgercover
-            height: root.height/6
-            width: root.width/10
+        Item{
+            scale: 0.5
             anchors.top: parent.top
             anchors.topMargin: parent.height/4
             anchors.horizontalCenter: parent.horizontalCenter
-            asynchronous: true
-            smooth: true
-            opacity: 1
 
-            MouseArea{
-                anchors.fill: parent
-                onClicked: {
-                    burgercoverfullscreenspot.visible = true
+            Image {
+                id: burgercover
+                anchors.horizontalCenter: parent.horizontalCenter
+                asynchronous: true
+                smooth: true
+                opacity: 1
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        burgercoverfullscreenspot.visible = true
+                    }
                 }
+            }
+
+            Text {
+                id: currentburger
+                anchors.top: burgercover.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.family: "HelveticaS"
+                font.pointSize: 55
+                color: "black"
+                style: Text.Outline;
+                styleColor: "white"
+            }
+
+            Text {
+                id: currentprice
+                anchors.top: currentburger.bottom
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.family: "HelveticaS"
+                font.pointSize: 40
+                color: "black"
+                style: Text.Outline;
+                styleColor: "white"
             }
         }
 
@@ -199,14 +193,11 @@ Item {
                 source: "./media/background.png"
                 anchors.centerIn: parent
                 anchors.fill: parent
-                opacity: 0.4
+                opacity: 0.6
             }
 
             Image {
                 id: burgercoverfullscreen
-                //height: parent.height-50
-                //width: parent.width-50
-                scale: 0.4
                 anchors.centerIn: parent
                 asynchronous: true
                 smooth: true
@@ -230,10 +221,18 @@ Item {
                 style: Text.Outline;
                 styleColor: "white"
             }
-
-
         }
+    }
 
+    Image {
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        source: "./media/logo.jpeg"
+        asynchronous: true
+        smooth: true
+        opacity: 1
     }
 
     Connections {
