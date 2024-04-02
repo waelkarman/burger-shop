@@ -232,7 +232,7 @@ Item {
         anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 10
-        source: "./media/logo.jpeg"
+        source: "./media/logo.png"
         asynchronous: true
         smooth: true
         opacity: 1

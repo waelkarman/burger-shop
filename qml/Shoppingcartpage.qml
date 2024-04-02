@@ -20,6 +20,7 @@ Item {
             text: "Shopping Cart"
             font.family: "HelveticaS"
             font.pointSize: 24
+            font.bold: true
             color: "black"
             style: Text.Outline;
             styleColor: "white"
@@ -81,12 +82,14 @@ Item {
 
         ListView {
             id: chartlist
-            width: 400
-            height: 160
+            width: root.width
+            height: root.height
             anchors.top: parent.top
-            anchors.topMargin: 300
+            anchors.topMargin: 200
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 280
             anchors.left: parent.left
-            anchors.leftMargin: 50
+            anchors.leftMargin: 30
             orientation: ListView.Vertical
             clip: false
             model: m_cart
@@ -99,26 +102,47 @@ Item {
 
                 Rectangle {
                     id: wrapper
-                    width: 400
-                    height: contactInfo.height
 
-                    color: ListView.isCurrentItem ? "gray" : "white"
+                    height: entryimage.height + 10
+                    width: 4 + entryimage.width + 5 + entryInfo.width + 5 + entrypriceInfo.width + 10
+                    opacity: ListView.isCurrentItem ? 1 : 0.5
+                    border.color: ListView.isCurrentItem ? "black" : "transparent"
+                    border.width: 3
+                    color: "transparent"
                     property var burgername : namerole
                     property var burgerprice : pricerole
 
+
+                    Image {
+                        id: entryimage
+                        anchors.left: parent.left
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.leftMargin: 4
+                        asynchronous: true
+                        opacity: 1
+                        source: "./media/l0.png"
+                    }
+
                     Text {
-                        id: contactInfo
-                        text: burgername
+                        id: entryInfo
+                        anchors.left: entryimage.right
+                        anchors.leftMargin: 5
+                        anchors.verticalCenter: entryimage.verticalCenter
+                        text: burgername + ",  "
+                        font.pointSize: 30
                         color: wrapper.ListView.isCurrentItem ? "black" : "black"
                     }
 
                     Text {
-                        id: priceInfo
+                        id: entrypriceInfo
                         text: burgerprice + "€"
+                        font.pointSize: 30
                         color: wrapper.ListView.isCurrentItem ? "black" : "black"
-                        anchors.left: contactInfo.right
-                        anchors.leftMargin: 4
+                        anchors.left: entryInfo.right
+                        anchors.leftMargin: 5
+                        anchors.verticalCenter: entryimage.verticalCenter
                     }
+
 
                     MouseArea{
                         anchors.fill: parent
@@ -127,6 +151,7 @@ Item {
                             main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
                         }
                     }
+
                 }
             }
 

@@ -4,8 +4,8 @@
         <file>qml/Burgerslistpage.qml</file>
         <file>qml/Shoppingcartpage.qml</file>
         <file>qml/media/background.png</file>
-        <file>qml/media/l0.jpg</file>
-        <file>qml/media/logo.jpeg</file>
+        <file>qml/media/l0.png</file>
+        <file>qml/media/logo.png</file>
         <file>qml/media/b1.png</file>
         <file>qml/media/b2.png</file>
         <file>qml/media/b3.png</file>
