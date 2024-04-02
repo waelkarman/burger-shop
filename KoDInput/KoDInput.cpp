@@ -22,8 +22,8 @@ void KoDInput::run(){
 
     input_event ev;
     while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
+        //std::cout << "Event type: " << ev.type << ", code: " << ev.code << ", Value: " << ev.value << std::endl;
         if(ev.code == 8){
-            std::cout << "Event type: " << ev.type << ", code: " << ev.code << ", Value: " << ev.value << std::endl;
             position=ev.value;
             emit positionChanged(ev.value);
         }

@@ -37,17 +37,16 @@ Item {
             styleColor: "white"
         }
 
-        Text {
+        Image {
             anchors.top: parent.top
-            anchors.topMargin: 50
+            anchors.topMargin: 10
             anchors.left: parent.left
-            anchors.leftMargin: 50
-            text: "Data Modul Shop"
-            style: Text.Outline;
-            styleColor: "white"
-            font.family: "HelveticaS"
-            font.pointSize: 24
-            color: "black"
+            anchors.leftMargin: 10
+            source: "./media/logo.jpeg"
+            asynchronous: true
+            smooth: true
+            opacity: 1
+            scale: 0.8
         }
 
         Component {
@@ -56,14 +55,16 @@ Item {
             Column {
                 id: wrapper
                 opacity: PathView.isCurrentItem ? 1 : 0.7
+                scale: PathView.isCurrentItem ? 1 : 0.5
                 property var burgername : namerole
                 property var burgerprice : pricerole
                 property var burgerbackground : backgroundrole
 
                 Image {
                     anchors.horizontalCenter: nameText.horizontalCenter
-                    width: root.width/20
-                    height: root.height/10
+                    width: root.width/10
+                    height: root.height/4
+
                     source: burgerbackground
 
                     MouseArea{
@@ -78,7 +79,7 @@ Item {
                 Text {
                     id: nameText
                     text: burgername
-                    font.pointSize: 8
+                    font.pointSize: 20
                     color: "black"
                     style: Text.Outline;
                     styleColor: "white"
@@ -87,7 +88,7 @@ Item {
                 Text {
                     id: priceText
                     text: burgerprice+" €"
-                    font.pointSize: 7
+                    font.pointSize: 15
                     color: "black"
                     style: Text.Outline;
                     styleColor: "white"
@@ -101,6 +102,8 @@ Item {
             anchors.fill: parent
             model: m_shop
             delegate: delegate
+            pathItemCount: 10
+
             path: Path {
                 startX: root.width/9; startY: root.height-root.height/3
                 PathQuad { x: root.width/2; y: root.height/10; controlX: root.width/9; controlY: root.height/10 }
@@ -108,19 +111,21 @@ Item {
             }
 
             Component.onCompleted: {
-                currentburger.text = itemAtIndex(currentIndex).burgername
-                currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
-                burgercover.source = itemAtIndex(currentIndex).burgerbackground
-                burgercoverfullscreen.source = itemAtIndex(currentIndex).burgerbackground
-                main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
+                currentburger.text = m_shop.getNamerole(currentIndex)
+                currentprice.text = m_shop.getPricerole(currentIndex)+" €"
+                burgercover.source = m_shop.getBackgroundrole(currentIndex)
+                burgercoverfullscreen.source = m_shop.getBackgroundrole(currentIndex)
+                burgertextfullscreen.text = m_shop.getNamerole(currentIndex)
+                main.currentpriceBurger = m_shop.getPricerole(currentIndex)
             }
 
             onCurrentIndexChanged: {
-                currentburger.text = itemAtIndex(currentIndex).burgername
-                currentprice.text = itemAtIndex(currentIndex).burgerprice+" €"
-                burgercover.source = itemAtIndex(currentIndex).burgerbackground
-                burgercoverfullscreen.source = itemAtIndex(currentIndex).burgerbackground
-                main.currentpriceBurger = itemAtIndex(currentIndex).burgerprice
+                currentburger.text = m_shop.getNamerole(currentIndex)
+                currentprice.text = m_shop.getPricerole(currentIndex)+" €"
+                burgercover.source = m_shop.getBackgroundrole(currentIndex)
+                burgercoverfullscreen.source = m_shop.getBackgroundrole(currentIndex)
+                burgertextfullscreen.text = m_shop.getNamerole(currentIndex)
+                main.currentpriceBurger = m_shop.getPricerole(currentIndex)
             }
         }
 
@@ -179,28 +184,56 @@ Item {
             MouseArea{
                 anchors.fill: parent
                 onClicked: {
-                    burgercoverfullscreen.visible = true
+                    burgercoverfullscreenspot.visible = true
                 }
             }
         }
 
-        Image {
-            id: burgercoverfullscreen
-            height: parent.height-50
-            width: parent.width-50
+        Rectangle{
+            id: burgercoverfullscreenspot
             visible: false
             anchors.centerIn: parent
-            asynchronous: true
-            smooth: true
-            opacity: 1
+            anchors.fill: parent
 
-            MouseArea{
+            Image {
+                source: "./media/background.png"
+                anchors.centerIn: parent
                 anchors.fill: parent
-                onClicked: {
-                    burgercoverfullscreen.visible = false
+                opacity: 0.4
+            }
+
+            Image {
+                id: burgercoverfullscreen
+                //height: parent.height-50
+                //width: parent.width-50
+                scale: 0.4
+                anchors.centerIn: parent
+                asynchronous: true
+                smooth: true
+                opacity: 1
+
+                MouseArea{
+                    anchors.fill: parent
+                    onClicked: {
+                        burgercoverfullscreenspot.visible = false
+                    }
                 }
             }
+
+            Text {
+                id: burgertextfullscreen
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 20
+                anchors.horizontalCenter: parent.horizontalCenter
+                font.pointSize: 25
+                color: "black"
+                style: Text.Outline;
+                styleColor: "white"
+            }
+
+
         }
+
     }
 
     Connections {

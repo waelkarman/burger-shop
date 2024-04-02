@@ -147,6 +147,33 @@ int Shop::columnCount(const QModelIndex &parent) const
     return 2;
 }
 
+QString Shop::getNamerole(int index)
+{
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT NAME FROM SHOP WHERE ID = " << index+1 << ";";
+    execute(ss,&result);
+    return QString(result.records[0].columns[0].c_str());
+
+}
+
+QString Shop::getPricerole(int index)
+{
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT PRICE FROM SHOP WHERE ID = " << index+1 << ";";
+    execute(ss,&result);
+    return QString(result.records[0].columns[0].c_str());
+}
+
+QString Shop::getBackgroundrole(int index)
+{
+    stringstream ss;
+    QueryResult result;
+    ss << "SELECT BACKGROUND FROM SHOP WHERE ID = " << index+1 << ";";
+    execute(ss,&result);
+    return QString(result.records[0].columns[0].c_str());
+}
 
 enum ItemDataRole
 {
@@ -164,11 +191,11 @@ QVariant Shop::data(const QModelIndex &index, int role) const
 
     switch (role) 
     {
-    case namerole:
+    case ItemDataRole::namerole:
         return QString(result.records[0].columns[0].c_str());
-    case pricerole:
+    case ItemDataRole::pricerole:
         return QString(result.records[0].columns[1].c_str());
-    case backgroundrole:
+    case ItemDataRole::backgroundrole:
         return QString(result.records[0].columns[2].c_str());
     default:
         return QVariant();
