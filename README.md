@@ -1,7 +1,5 @@
 ## DM Embedded World Presentation Demo [in development]
 
-Just for fun !
-
 <img src="doc/screen.gif">
 
 - SQLite
