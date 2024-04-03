@@ -30,6 +30,7 @@ Item {
                     id: imageitem
                     anchors.centerIn: parent
                     source: burgerbackground
+                    asynchronous: true
 
                     MouseArea{
                         anchors.fill: parent
@@ -196,6 +197,7 @@ Item {
                 source: "./media/background.png"
                 anchors.centerIn: parent
                 anchors.fill: parent
+                asynchronous: true
                 opacity: 0.6
             }
 

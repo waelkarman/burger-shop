@@ -10,6 +10,7 @@ Item{
         anchors.fill: parent
         source: "./media/background.png"
         opacity: 0.4
+        asynchronous: true
     }
 
     SwipeView {
