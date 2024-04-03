@@ -235,6 +235,7 @@ Item {
                 color: "#a8ea25"
                 style: Text.Outline;
                 styleColor: "black"
+                font.bold: true
             }
         }
     }
