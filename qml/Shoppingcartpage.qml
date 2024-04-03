@@ -21,9 +21,9 @@ Item {
             font.family: "HelveticaS"
             font.pointSize: 24
             font.bold: true
-            color: "black"
+            color: "#a8ea25"
             style: Text.Outline;
-            styleColor: "white"
+            styleColor: "black"
         }
 
         Text {
@@ -34,9 +34,9 @@ Item {
             text: m_cart.sum + "€"
             font.family: "HelveticaS"
             font.pointSize: 80
-            color: "black"
+            color: "white"
             style: Text.Outline;
-            styleColor: "white"
+            styleColor: "black"
         }
 
         Rectangle{
@@ -105,10 +105,10 @@ Item {
 
                     height: entryimage.height + 10
                     width: 4 + entryimage.width + 5 + entryInfo.width + 5 + entrypriceInfo.width + 10
-                    opacity: ListView.isCurrentItem ? 1 : 0.5
-                    border.color: ListView.isCurrentItem ? "black" : "transparent"
+                    opacity: ListView.isCurrentItem ? 1 : 0.7
+                    border.color: ListView.isCurrentItem ? "#a8ea25" : "transparent"
                     border.width: 3
-                    color: "transparent"
+                    color: ListView.isCurrentItem ? "black" : "transparent"
                     property var burgername : namerole
                     property var burgerprice : pricerole
 
@@ -130,14 +130,14 @@ Item {
                         anchors.verticalCenter: entryimage.verticalCenter
                         text: burgername + ",  "
                         font.pointSize: 30
-                        color: wrapper.ListView.isCurrentItem ? "black" : "black"
+                        color: wrapper.ListView.isCurrentItem ? "#a8ea25" : "#a8ea25"
                     }
 
                     Text {
                         id: entrypriceInfo
                         text: burgerprice + "€"
                         font.pointSize: 30
-                        color: wrapper.ListView.isCurrentItem ? "black" : "black"
+                        color: wrapper.ListView.isCurrentItem ? "#a8ea25" : "#a8ea25"
                         anchors.left: entryInfo.right
                         anchors.leftMargin: 5
                         anchors.verticalCenter: entryimage.verticalCenter

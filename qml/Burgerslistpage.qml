@@ -47,9 +47,10 @@ Item {
                     anchors.horizontalCenter: imageitem.horizontalCenter
                     text: burgername
                     font.pointSize:45
-                    color: "black"
+                    color: "#a8ea25"
                     style: Text.Outline;
-                    styleColor: "white"
+                    styleColor: "black"
+                    font.bold: true
                 }
 
                 Text {
@@ -58,9 +59,10 @@ Item {
                     anchors.horizontalCenter: imageitem.horizontalCenter
                     text: burgerprice+" €"
                     font.pointSize: 35
-                    color: "black"
+                    color: "#a8ea25"
                     style: Text.Outline;
-                    styleColor: "white"
+                    styleColor: "black"
+                    font.bold: true
                 }
 
             }
@@ -170,9 +172,10 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.family: "HelveticaS"
                 font.pointSize: 55
-                color: "black"
+                color: "#a8ea25"
                 style: Text.Outline;
-                styleColor: "white"
+                styleColor: "black"
+                font.bold: true
             }
 
             Text {
@@ -181,9 +184,10 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.family: "HelveticaS"
                 font.pointSize: 40
-                color: "black"
+                color: "#a8ea25"
                 style: Text.Outline;
-                styleColor: "white"
+                styleColor: "black"
+                font.bold: true
             }
         }
 
@@ -193,12 +197,18 @@ Item {
             anchors.centerIn: parent
             anchors.fill: parent
 
+            Rectangle {
+                id: backgroundcover
+                anchors.fill: parent
+                color:"black"
+            }
+
             Image {
                 source: "./media/background.png"
                 anchors.centerIn: parent
                 anchors.fill: parent
                 asynchronous: true
-                opacity: 0.6
+                opacity: 0.4
             }
 
             Image {
@@ -222,20 +232,21 @@ Item {
                 anchors.bottomMargin: 20
                 anchors.horizontalCenter: parent.horizontalCenter
                 font.pointSize: 25
-                color: "black"
+                color: "#a8ea25"
                 style: Text.Outline;
-                styleColor: "white"
+                styleColor: "black"
             }
         }
     }
 
     Image {
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.topMargin: -120
         anchors.left: parent.left
-        anchors.leftMargin: 10
-        source: "./media/logo.png"
+        anchors.leftMargin: -380
+        source: "./media/ddm.png"
         asynchronous: true
+        scale: 0.3
         smooth: true
         opacity: 1
     }
