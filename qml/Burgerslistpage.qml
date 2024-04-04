@@ -190,10 +190,7 @@ Item {
         Rectangle{
             id: burgercoverfullscreenspot
             visible: false
-            anchors.top: parent.top
-            anchors.topMargin: 50
-            anchors.right: parent.right
-            anchors.rightMargin: 100
+            anchors.centerIn: parent
             anchors.fill: parent
 
             Image {
@@ -206,7 +203,10 @@ Item {
 
             Image {
                 id: burgercoverfullscreen
-                anchors.centerIn: parent
+                anchors.top: parent.top
+                anchors.topMargin: 50
+                anchors.right: parent.right
+                anchors.rightMargin: 100
                 asynchronous: true
                 smooth: true
                 opacity: 1
