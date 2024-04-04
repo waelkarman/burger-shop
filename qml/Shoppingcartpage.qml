@@ -43,7 +43,8 @@ Item {
             id: buybutton
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 40
-            anchors.horizontalCenter: chartlist.horizontalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 100
             width: 180
             height: 40
             border.color: "black"
