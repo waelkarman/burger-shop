@@ -19,7 +19,7 @@ int main(int argv, char** args){
     Burger m_burger_b("Burger","Kombi Monitore",12,"./media/b2.png", "descrizione");
     Burger m_burger_c("Burger","TFT Samsung 55.0 inch",18,"./media/b3.png", "descrizione");
     Burger m_burger_d("Burger","TFT AUO 18",16,"./media/b4.png", "descrizione");
-    Burger m_burger_e("Burger","Touch_Komposing",8,"./media/b5.png", "");
+    Burger m_burger_e("Burger","Touch Komposing",8,"./media/b5.png", "");
     //Burger m_burger_f("Burger","teaser-easyanalyzer",10,"./media/b6.jpg", "descrizione");
     Burger m_burger_g("Burger","TFT Tianma p series",11,"./media/b7.png", "descrizione");
     Burger m_burger_h("Burger","Kundenterminal",12,"./media/b8.png", "descrizione");
@@ -27,7 +27,7 @@ int main(int argv, char** args){
     Burger m_burger_l("Burger","eMotion NT2-3",12,"./media/b10.png", "descrizione");
     Burger m_burger_m("Burger","emotion USB",11,"./media/b11.png", "descrizione");
     Burger m_burger_n("Burger","eMotionUHD II",17,"./media/b12.png", "descrizione");
-    Burger m_burger_o("Burger","TFT Ortustech_5.0 inch",17,"./media/b13.png", "descrizione");
+    Burger m_burger_o("Burger","TFT Ortustech 5.0 inch",17,"./media/b13.png", "descrizione");
     Burger m_burger_p("Burger","PanelPc 13.1 inch",17,"./media/b14.png", "descrizione");
     Burger m_burger_q("Burger","SITO 10.6 inch",17,"./media/b15.png", "descrizione");
     Burger m_burger_r("Burger","Metal Mesh 13.3",17,"./media/b16.png", "descrizione");
