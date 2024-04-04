@@ -190,7 +190,10 @@ Item {
         Rectangle{
             id: burgercoverfullscreenspot
             visible: false
-            anchors.centerIn: parent
+            anchors.top: parent.top
+            anchors.topMargin: 50
+            anchors.right: parent.right
+            anchors.rightMargin: 100
             anchors.fill: parent
 
             Image {
@@ -218,9 +221,9 @@ Item {
 
             Text {
                 id: burgertextfullscreen
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 20
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.right: burgercoverfullscreen.left
+                anchors.rightMargin: 30
+                anchors.verticalCenter: burgercoverfullscreen.verticalCenter
                 font.pointSize: 25
                 color: "black"
                 style: Text.Outline;
