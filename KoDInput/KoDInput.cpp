@@ -15,14 +15,15 @@ KoDInput::KoDInput(int r){
 
 void KoDInput::run(){
 
-    int fd = open("/dev/input/event2", O_RDONLY);
-    if (fd < 0) {
+    int fd = -1;
+    while (fd < 0) {
+        fd = open("/dev/input/event2", O_RDONLY);
         std::cerr << "Error." << std::endl;
     }
 
     input_event ev;
     while (read(fd, &ev, sizeof(ev)) == sizeof(ev)) {
-        //std::cout << "Event type: " << ev.type << ", code: " << ev.code << ", Value: " << ev.value << std::endl;
+        std::cout << "Event type: " << ev.type << ", code: " << ev.code << ", Value: " << ev.value << std::endl;
         if(ev.code == 8){
             int scarto = ev.value-position;
             position = ev.value;
