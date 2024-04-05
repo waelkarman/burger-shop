@@ -1,0 +1,10 @@
+[Unit]
+After=weston.service
+Wants=weston.service
+
+[Service]
+EnvironmentFile=/etc/default/dmoapp
+ExecStart=/home/root/build/burger-shop
+
+[Install]
+WantedBy=multi-user.target

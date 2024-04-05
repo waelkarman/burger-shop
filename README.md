@@ -21,4 +21,19 @@ please source the environment to build for target:
 > export QT_QPA_PLATFORM=wayland<br>
 > LD_LIBRARY_PATH=$LD_LIBRARY_PATH:./cart:./shop:./KoDInput:./burger:./dbhelper:./sqlite ./burger-shop
 
+# To autorun on startup 
+copy dmoapp.service file to:
+
+> /lib/systemd/system/dmoapp.service
+
+copy dmoapp file to:
+
+> /etc/default/dmoapp
+
+then run :
+
+> systemctl enable dmoapp<br>
+> systemctl daemon-reload<br>
+> reboot
+
 
