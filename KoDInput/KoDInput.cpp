@@ -30,10 +30,10 @@ void KoDInput::run(){
             if(scarto==-31){scarto=1;}
             emit positionChanged(scarto);
         }
-        if(ev.code == 330){
-            buttonStatus=ev.value;
-            emit buttonStatusChanged(ev.value);
-        }
+        //if(ev.code == 330){
+        //    buttonStatus=ev.value;
+        //    emit buttonStatusChanged(ev.value);
+        //}
     }
 
     close(fd);
