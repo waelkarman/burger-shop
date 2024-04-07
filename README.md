@@ -1,4 +1,4 @@
-## Burger Shop App [Discontinued]
+## Burger Shop App [deferred]
 
 Just for fun !
 
