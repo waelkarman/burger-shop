@@ -1,4 +1,4 @@
-## DM Embedded World Presentation Demo [in development]
+## DM Embedded World Presentation Demo [deferred]
 
 <img src="doc/screen.gif">
 
