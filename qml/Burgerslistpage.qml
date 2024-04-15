@@ -243,6 +243,8 @@ Item {
         opacity: 1
     }
 
+
+//FIXME CONNECTIONS NOT NEEDED
     Connections {
         target: m_kod
         function onPositionChanged(value) {
