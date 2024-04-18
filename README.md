@@ -1,6 +1,7 @@
 ## Burger Shop App [deferred]
 
-Just for fun !
+Just for fun ! This app is integrated in [bunch-linux](https://github.com/waelkarman/bunch-linux-manifests) project.
+
 
 <img src="doc/screen.gif">
 
