@@ -31,10 +31,6 @@ jobs:
         run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin
       - name: build 
         run: cmake .; make
-      - name: list
-        run: |
-          ls ${{ github.workspace }}
-
 
   release:
     needs: build
@@ -54,7 +50,9 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
-        
+    - name: list
+      run: |
+        ls ${{ github.workspace }}
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1
       env:
