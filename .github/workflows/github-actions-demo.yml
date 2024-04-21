@@ -12,6 +12,13 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+          wget https://github.com/unicode-org/icu/releases/download/release-56-2/icu4c-56_2-src.tgz
+          tar xvf icu4c-56_2-src.tgz
+          cd icu/source
+          ./configure --prefix=/usr/local
+          make
+          sudo make install
+
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
