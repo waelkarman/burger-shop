@@ -15,7 +15,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v3
         with:
-          version: '6.5.0'
+          version: '6.6.3'
       - name: Install required libs
         run: |
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.70 /usr/lib/x86_64-linux-gnu/libicui18n.so.56
@@ -24,8 +24,7 @@ jobs:
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.70 /usr/lib/x86_64-linux-gnu/libicuuc.so.56.1
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicudata.so.70 /usr/lib/x86_64-linux-gnu/libicudata.so.56
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicudata.so.70 /usr/lib/x86_64-linux-gnu/libicudata.so.56.1
-          find /usr/lib -name "libicui18n.so.*"
-          find /usr/lib -name "libicuuc.so.*"
-          find /usr/lib -name "libicudata.so.*"
+      - name: Set environment 
+        run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin
       - name: build 
-        run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.5.0/gcc_64/bin; cmake .; make
+        run: cmake .; make
