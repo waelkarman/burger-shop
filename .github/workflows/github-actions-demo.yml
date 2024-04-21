@@ -3,7 +3,7 @@ name: Build on Ubuntu Latest
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
@@ -24,13 +24,5 @@ jobs:
           setup-python: 'true'
           set-env: 'true'
           tools-only: 'false'
-      - name: Install required libs
-        run: |
-          sudo apt-get update
-          find /usr -name "libicui18n.so.*"
-          sudo apt-get install libicu-dev
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.70 /usr/lib/x86_64-linux-gnu/libicui18n.so.56
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.70 /usr/lib/x86_64-linux-gnu/libicui18n.so.56.1
-          find /usr -name "libicui18n.so.*"
       - name: build 
         run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin; cmake .; make
