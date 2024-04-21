@@ -16,13 +16,6 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: '6.5.0'
-          host: 'linux'
-          target: 'desktop'
-          install-deps: 'true'
-          archives: 'qtmultimedia qtqml qtwidgets qtquick qtquickcontrols qtopengl qtbase qtcore qtdeclarative qtsvg qtcmake qtconcurrent qtgui'
-          setup-python: 'true'
-          set-env: 'true'
-          tools-only: 'false'
       - name: Install required libs
         run: |
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.70 /usr/lib/x86_64-linux-gnu/libicui18n.so.56
