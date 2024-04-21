@@ -33,8 +33,7 @@ jobs:
         run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin
       - name: build 
         run: cmake .; make
-        
-      - uses: actions/checkout@v4
+
   
       - name: Create Release
         id: create_release
