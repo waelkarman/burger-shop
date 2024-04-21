@@ -19,7 +19,7 @@ jobs:
           host: 'linux'
           target: 'desktop'
           install-deps: 'true'
-          archives: 'qtbase qtdeclarative qtsvg'
+          archives: 'qtcore qtbase qtdeclarative qtsvg'
           modules: 'qtmultimedia'
           setup-python: 'true'
           set-env: 'true'
