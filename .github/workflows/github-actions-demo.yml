@@ -27,6 +27,7 @@ jobs:
       - name: Install required libs
         run: |
           sudo apt-get update
+          find /usr -name "libicui18n.so.*"
           sudo apt-get install libicu-dev
       - name: build 
         run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin; cmake .; make
