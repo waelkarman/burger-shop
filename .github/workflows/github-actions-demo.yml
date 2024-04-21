@@ -3,7 +3,7 @@ name: Build on Ubuntu Latest
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
@@ -19,7 +19,7 @@ jobs:
           host: 'linux'
           target: 'desktop'
           install-deps: 'true'
-          archives: 'qtmultimedia qtqml qtwidgets qtquick qtquickcontrols qtopengl qtcore qtdeclarative qtsvg qtcmake qtconcurrent qtgui'
+          archives: 'qtmultimedia qtqml qtwidgets qtquick qtquickcontrols qtopengl qtbase qtcore qtdeclarative qtsvg qtcmake qtconcurrent qtgui'
           setup-python: 'true'
           set-env: 'true'
           tools-only: 'false'
