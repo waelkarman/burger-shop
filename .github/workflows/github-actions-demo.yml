@@ -27,14 +27,6 @@ jobs:
       - name: Install required libs
         run: |
           sudo apt install ninja-build cmake build-essential libgl1-mesa-dev libicu-dev
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.66 /usr/lib/x86_64-linux-gnu/libicui18n.so.56
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.66 /usr/lib/x86_64-linux-gnu/libicui18n.so.56.1
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.66 /usr/lib/x86_64-linux-gnu/libicuuc.so.56
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.66 /usr/lib/x86_64-linux-gnu/libicuuc.so.56.1
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicudata.so.66 /usr/lib/x86_64-linux-gnu/libicudata.so.56
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicudata.so.66 /usr/lib/x86_64-linux-gnu/libicudata.so.56.1
-          find /usr/lib -name "libicui18n.so.*"
-          find /usr/lib -name "libicuuc.so.*"
-          find /usr/lib -name "libicudata.so.*"
+          sudo apt-get install libicu-dev=56
       - name: build 
         run: cmake .; make
