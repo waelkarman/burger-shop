@@ -19,7 +19,7 @@ jobs:
           host: 'linux'
           target: 'desktop'
           install-deps: 'true'
-          archives: 'qtqml qtqmlcore qtqmlmodels qtwidgets qtquick qtquickcontrols qtopengl qtcore qtbase qtdeclarative qtsvg qtcmake qtconcurrent qtgui'
+          archives: 'qtmultimedia qtqml qtqmlcore qtqmlmodels qtwidgets qtquick qtquickcontrols qtopengl qtcore qtbase qtdeclarative qtsvg qtcmake qtconcurrent qtgui'
           modules: 'qtmultimedia'
           setup-python: 'true'
           set-env: 'true'
