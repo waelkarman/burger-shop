@@ -1,0 +1,23 @@
+name: Build on Ubuntu Latest
+
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v3
+        with:
+          version: '6.6.3'
+          host: 'linux'
+          target: 'desktop'
+          install-deps: 'true'
+          archives: 'qtbase qtsvg'
+          setup-python: 'true'
+          set-env: 'true'
+          tools-only: 'false'
+      - name: build 
+        run: cmake .; make
