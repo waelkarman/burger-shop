@@ -3,7 +3,7 @@ name: Build on Ubuntu Latest
 on: [push]
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
@@ -26,11 +26,10 @@ jobs:
           tools-only: 'false'
       - name: Install required libs
         run: |
-          sudo apt-get install libicu-dev
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.70 /usr/lib/x86_64-linux-gnu/libicui18n.so.56
           sudo ln -s /usr/lib/x86_64-linux-gnu/libicui18n.so.70 /usr/lib/x86_64-linux-gnu/libicui18n.so.56.1
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.66 /usr/lib/x86_64-linux-gnu/libicuuc.so.56
-          sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.66 /usr/lib/x86_64-linux-gnu/libicuuc.so.56.1
+          sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.70 /usr/lib/x86_64-linux-gnu/libicuuc.so.56
+          sudo ln -s /usr/lib/x86_64-linux-gnu/libicuuc.so.70 /usr/lib/x86_64-linux-gnu/libicuuc.so.56.1
           find /usr -name "libicui18n.so.*"
           find /usr -name "libicuuc.so.*"
       - name: build 
