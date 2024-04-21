@@ -24,4 +24,4 @@ jobs:
           set-env: 'true'
           tools-only: 'false'
       - name: build 
-        run: cmake .; make
+        run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin; cmake .; make
