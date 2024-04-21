@@ -37,4 +37,4 @@ jobs:
           find /usr/lib -name "libicuuc.so.*"
           find /usr/lib -name "libicudata.so.*"
       - name: build 
-        run: export PATH=$PATH:/home/runner/work/burger-shop/Qt/6.6.3/gcc_64/bin; cmake .; make
+        run: cmake .; make
