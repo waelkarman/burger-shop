@@ -1,6 +1,9 @@
 name: Build on Ubuntu Latest
 
-on: [push]
+on:
+  push:
+    tags:
+      - 'v*'
 jobs:
   build:
     runs-on: ubuntu-latest
