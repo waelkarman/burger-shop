@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
@@ -34,7 +32,11 @@ jobs:
       - name: build 
         run: cmake .; make
 
-  
+  release:  
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -55,5 +57,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./burger-shop
-          asset_name: burger-shop.zip
-          asset_content_type: application/zip
+          asset_name: burger-shop
+          asset_content_type: application
