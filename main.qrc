@@ -3,23 +3,24 @@
         <file>qml/main.qml</file>
         <file>qml/Burgerslistpage.qml</file>
         <file>qml/Shoppingcartpage.qml</file>
-        <file>qml/media/background.jpg</file>
-        <file>qml/media/background0.jpg</file>
-        <file>qml/media/background1.jpg</file>
-        <file>qml/media/book.png</file>
+        <file>qml/media/background.png</file>
+        <file>qml/media/l0.png</file>
+        <file>qml/media/logo.png</file>
+        <file>qml/media/b1.png</file>
+        <file>qml/media/b2.png</file>
+        <file>qml/media/b3.png</file>
+        <file>qml/media/b4.png</file>
+        <file>qml/media/b5.png</file>
+        <file>qml/media/b7.png</file>
+        <file>qml/media/b8.png</file>
+        <file>qml/media/b9.png</file>
+        <file>qml/media/b10.png</file>
+        <file>qml/media/b11.png</file>
+        <file>qml/media/b12.png</file>
+        <file>qml/media/b13.png</file>
+        <file>qml/media/b14.png</file>
+        <file>qml/media/b15.png</file>
+        <file>qml/media/b16.png</file>
         <file>qml/media/burger.png</file>
-        <file>qml/media/a1.jpg</file>
-        <file>qml/media/a2.jpg</file>
-        <file>qml/media/a3.jpg</file>
-        <file>qml/media/a4.jpg</file>
-        <file>qml/media/a5.jpg</file>
-        <file>qml/media/a6.jpg</file>
-        <file>qml/media/a7.jpg</file>
-        <file>qml/media/a8.jpg</file>
-        <file>qml/media/a9.jpg</file>
-        <file>qml/media/a10.jpg</file>
-        <file>qml/media/a11.jpg</file>
-        <file>qml/media/a12.jpg</file>
-        <file>qml/media/a13.jpg</file>
     </qresource>
 </RCC>

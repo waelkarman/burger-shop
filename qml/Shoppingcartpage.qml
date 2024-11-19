@@ -2,22 +2,15 @@ import QtQuick 2.15
 
 Item {
     id: main
-    width: 800
-    height: 600
+    width: 1920
+    height: 1080
 
     property string nameBurger : ""
 
     Rectangle{
         id: root
         anchors.fill: parent
-        color: "black"
-
-        Image {
-            id: background1
-            anchors.fill: parent
-            source: "./media/background1.jpg"
-            opacity: 0.3
-        }
+        color:"transparent"
 
         Text {
             anchors.top: parent.top
@@ -27,6 +20,7 @@ Item {
             text: "Shopping Cart"
             font.family: "HelveticaS"
             font.pointSize: 24
+            font.bold: true
             color: "white"
             style: Text.Outline;
             styleColor: "black"
@@ -49,7 +43,8 @@ Item {
             id: buybutton
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 40
-            anchors.horizontalCenter: chartlist.horizontalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 100            
             width: 180
             height: 40
             border.color: "black"
@@ -88,12 +83,14 @@ Item {
 
         ListView {
             id: chartlist
-            width: 400
-            height: 160
+            width: root.width
+            height: root.height
             anchors.top: parent.top
-            anchors.topMargin: 300
+            anchors.topMargin: 200
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 280
             anchors.left: parent.left
-            anchors.leftMargin: 50
+            anchors.leftMargin: 45
             orientation: ListView.Vertical
             clip: false
             model: m_cart
@@ -106,26 +103,47 @@ Item {
 
                 Rectangle {
                     id: wrapper
-                    width: 400
-                    height: contactInfo.height
 
-                    color: ListView.isCurrentItem ? "gray" : "white"
+                    height: entryInfo.height + 10
+                    width: 5 + entryInfo.width + 5 + entrypriceInfo.width + 10
+                    opacity: ListView.isCurrentItem ? 1 : 0.5
+                    border.color: ListView.isCurrentItem ? "black" : "transparent"
+                    border.width: 3
+                    color: "transparent"
                     property var burgername : namerole
                     property var burgerprice : pricerole
 
+
+                    // Image {
+                    //     id: entryimage
+                    //     anchors.left: parent.left
+                    //     anchors.verticalCenter: parent.verticalCenter
+                    //     anchors.leftMargin: 4
+                    //     asynchronous: true
+                    //     opacity: 1
+                    //     source: "./media/l0.png"
+                    // }
+
                     Text {
-                        id: contactInfo
-                        text: burgername
-                        color: wrapper.ListView.isCurrentItem ? "black" : "black"
+                        id: entryInfo
+                        anchors.left: parent.left
+                        anchors.leftMargin: 5
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: burgername + ",  "
+                        font.pointSize: 30
+                        color: wrapper.ListView.isCurrentItem ? "white" : "white"
                     }
 
                     Text {
-                        id: priceInfo
+                        id: entrypriceInfo
                         text: burgerprice + "€"
-                        color: wrapper.ListView.isCurrentItem ? "black" : "black"
-                        anchors.left: contactInfo.right
-                        anchors.leftMargin: 4
+                        font.pointSize: 30
+                        anchors.left: entryInfo.right
+                        anchors.leftMargin: 5
+                        anchors.verticalCenter: parent.verticalCenter
+                        color: wrapper.ListView.isCurrentItem ? "white" : "white"
                     }
+
 
                     MouseArea{
                         anchors.fill: parent
@@ -134,6 +152,7 @@ Item {
                             main.nameBurger = m_cart.fetchById(chartlist.currentIndex)
                         }
                     }
+
                 }
             }
 

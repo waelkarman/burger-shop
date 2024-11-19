@@ -1,4 +1,4 @@
-## Burger Shop App [deferred]
+## Burger Shop App [in development]
 
 Just for fun ! This app is integrated in [bunch-linux](https://github.com/waelkarman/bunch-linux-manifests) project.
 
@@ -16,10 +16,3 @@ Just for fun ! This app is integrated in [bunch-linux](https://github.com/waelka
 please run: 
 > cmake . ; make; ./burger-shop
 
-# Build and check code issue with SonarQube
-replace the token in "sonar-project.properties" and build using "build.sh" to enable SonarQube Code Analysis 
-
-then run: 
-> sonar-scanner
-
-to perform the analysis 

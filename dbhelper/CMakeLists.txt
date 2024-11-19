@@ -10,7 +10,7 @@ set(HEADERS
     dbhelper.hpp
 )
 
-add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES}
+add_library(${PROJECT_NAME} SHARED ${HEADERS} ${SOURCES}
     dberrors.hpp
 )
 

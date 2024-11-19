@@ -25,6 +25,10 @@ public:
     QueryResult fetchById(const int& n);
     QueryResult countAllBurgers();
     void execute(const stringstream& ss, void* vp);
+    Q_INVOKABLE QString getNamerole(int index);
+    Q_INVOKABLE QString getPricerole(int index);
+    Q_INVOKABLE QString getBackgroundrole(int index);
+
 
     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
     QModelIndex parent(const QModelIndex &child) const override;

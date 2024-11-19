@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(cart)
+project(KoDInput)
 
 find_package(Qt6 REQUIRED COMPONENTS Core)
 
 set(SOURCES
-    cart.cpp
+    KoDInput.cpp
 )
 
 set(HEADERS
-    cart.hpp
+    KoDInput.hpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${HEADERS} ${SOURCES})
@@ -20,6 +20,4 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(${PROJECT_NAME}
     Qt6::Core
-    dbhelper
-    burger
 )
